@@ -19,6 +19,10 @@
 		D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DBF1C461EBF00575424 /* ProgressViewController.m */; };
 		D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC21C4620B700575424 /* MoreViewController.m */; };
 		D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC51C46445700575424 /* UIView+Autolayout.m */; };
+		D482EC4D1C474C360018D3AB /* LiturgyOfTheHoursButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */; };
+		D482EC4F1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */; };
+		D4D73AED1C471C4E00346568 /* PreviewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D73AEC1C471C4E00346568 /* PreviewButton.m */; };
+		D4D73AF11C472A6500346568 /* PreviewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D73AF01C472A6500346568 /* PreviewButton.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,12 @@
 		D44F1DC21C4620B700575424 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		D44F1DC41C46445700575424 /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
 		D44F1DC51C46445700575424 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
+		D482EC4B1C474C360018D3AB /* LiturgyOfTheHoursButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiturgyOfTheHoursButton.h; sourceTree = "<group>"; };
+		D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiturgyOfTheHoursButton.m; sourceTree = "<group>"; };
+		D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiturgyOfTheHoursButton.xib; sourceTree = "<group>"; };
+		D4D73AEB1C471C4E00346568 /* PreviewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewButton.h; sourceTree = "<group>"; };
+		D4D73AEC1C471C4E00346568 /* PreviewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewButton.m; sourceTree = "<group>"; };
+		D4D73AF01C472A6500346568 /* PreviewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewButton.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +135,12 @@
 				D44F1DC21C4620B700575424 /* MoreViewController.m */,
 				D44F1DC41C46445700575424 /* UIView+Autolayout.h */,
 				D44F1DC51C46445700575424 /* UIView+Autolayout.m */,
+				D4D73AEB1C471C4E00346568 /* PreviewButton.h */,
+				D4D73AEC1C471C4E00346568 /* PreviewButton.m */,
+				D4D73AF01C472A6500346568 /* PreviewButton.xib */,
+				D482EC4B1C474C360018D3AB /* LiturgyOfTheHoursButton.h */,
+				D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */,
+				D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */,
 				D44F1D941C46184E00575424 /* Main.storyboard */,
 				D44F1D971C46184E00575424 /* Assets.xcassets */,
 				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
@@ -263,8 +279,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D73AF11C472A6500346568 /* PreviewButton.xib in Resources */,
 				D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */,
 				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
+				D482EC4F1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib in Resources */,
 				D44F1D961C46184E00575424 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D73AED1C471C4E00346568 /* PreviewButton.m in Sources */,
 				D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */,
 				D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */,
 				D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */,
+				D482EC4D1C474C360018D3AB /* LiturgyOfTheHoursButton.m in Sources */,
 				D44F1D931C46184E00575424 /* LiteratureViewController.m in Sources */,
 				D44F1D8D1C46184E00575424 /* AppDelegate.m in Sources */,
 				D44F1D901C46184E00575424 /* DayViewController.m in Sources */,
@@ -522,6 +542,7 @@
 				D44F1DB71C46184E00575424 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D44F1DB81C46184E00575424 /* Build configuration list for PBXNativeTarget "AppostolicTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +551,7 @@
 				D44F1DBA1C46184E00575424 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D44F1DBB1C46184E00575424 /* Build configuration list for PBXNativeTarget "AppostolicUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +560,7 @@
 				D44F1DBD1C46184E00575424 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

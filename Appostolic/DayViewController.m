@@ -8,6 +8,7 @@
 
 #import "DayViewController.h"
 #import "UIView+Autolayout.h"
+#import "PreviewButton.h"
 
 @interface DayViewController ()
 
@@ -17,86 +18,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIView *viewSet_dailyReadings = [UIView autolayoutView];
-    UIView *viewSet_liturgyOfTheHours = [UIView autolayoutView];
-    UIView *viewSet_saintOfTheDay = [UIView autolayoutView];
-    
-    UILabel *dailyReadingsTitle = [UILabel autolayoutView];
-    [dailyReadingsTitle setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleTitle1]];
-    [dailyReadingsTitle setText:@"Today's Readings"];
-    UILabel *reading1 = [UILabel autolayoutView];
-    [reading1 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [reading1 setText:@"Mk 10 etc etc blah blah blah"];
-    UILabel *reading2 = [UILabel autolayoutView];
-    [reading2 setText:@"Psalm blah"];
-    [reading2 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    UILabel *reading3 = [UILabel autolayoutView];
-    [reading3 setText:@"This is the Gospel and shall be bigger"];
-    [reading3 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
-    
-    [viewSet_dailyReadings addSubview:dailyReadingsTitle];
-    [viewSet_dailyReadings addSubview:reading1];
-    [viewSet_dailyReadings addSubview:reading2];
-    [viewSet_dailyReadings addSubview:reading3];
-    NSDictionary *viewSet_dailyReadingsViews = NSDictionaryOfVariableBindings(dailyReadingsTitle,reading1,reading2,reading3);
-    [viewSet_dailyReadings addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dailyReadingsTitle]-[reading1]-[reading3]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewSet_dailyReadingsViews]];
-    [viewSet_dailyReadings addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dailyReadingsTitle]-[reading2]-[reading3]|"
-                                                                                  options:0
-                                                                                  metrics:nil
-                                                                                    views:viewSet_dailyReadingsViews]];
-    [viewSet_dailyReadings addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[dailyReadingsTitle]-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewSet_dailyReadingsViews]];
-    [viewSet_dailyReadings addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[reading1]-[reading2]-|"
-                                                                                  options:0
-                                                                                  metrics:nil
-                                                                                    views:viewSet_dailyReadingsViews]];
-    [viewSet_dailyReadings addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[reading3]-|"
-                                                                                  options:0
-                                                                                  metrics:nil
-                                                                                    views:viewSet_dailyReadingsViews]];
+        
+    [[[self firstReading] title] setText:@"1st Reading"];
+    [[[self firstReading] subtitle] setText:@"1 Sm 3:1-10, 19-20"];
+    [[[self firstReading] bodyText] setText:@"During the time young Samuel was minister to the LORD under Eli, a revelation of the LORD was uncommon and vision infrequent. One day Eli was asleep in his usual place. His eyes had lately grown so weak that he could not see. The lamp of God was not yet extinguished, and Samuel was sleeping in the temple of the LORD where the ark of God was. The LORD called to Samuel, who answered, “Here I am.”"];
 
+    [[[self secondReading] title] setText:@"Psalm"];
+    [[[self secondReading] subtitle] setText:@"Ps 40:2, 5, 7-8A, 8B-9, 10"];
+    [[[self secondReading] bodyText] setText:@"R. (8a and 9a) Here am I, Lord; I come to do your will.\
+     I have waited, waited for the LORD,\
+     and he stooped toward me and heard my cry.\
+     Blessed the man who makes the LORD his trust;\
+     who turns not to idolatry\
+     or to those who stray after falsehood."];
     
-    UILabel *liturgyOfTheHoursTitle = [UILabel autolayoutView];
-    [liturgyOfTheHoursTitle setText:@"Liturgy of the Hours"];
-    [viewSet_liturgyOfTheHours addSubview:liturgyOfTheHoursTitle];
+    [[[self gospelReading] title] setText:@"Gospel"];
+    [[[self gospelReading] subtitle] setText:@"Mk 1:29-39"];
+    [[[self gospelReading] bodyText] setText:@"On leaving the synagogue Jesus entered the house of Simon and Andrew with James and John. Simon’s mother-in-law lay sick with a fever. They immediately told him about her. He approached, grasped her hand, and helped her up. Then the fever left her and she waited on them."];
     
-    UILabel *saintOfTheDayTitle = [UILabel autolayoutView];
-    [saintOfTheDayTitle setText:@"Saint of the Day"];
-    [viewSet_saintOfTheDay addSubview:saintOfTheDayTitle];
-    
-    UIStackView *stackView = [UIStackView autolayoutView];
-    [stackView addArrangedSubview:viewSet_dailyReadings];
-    [stackView addArrangedSubview:liturgyOfTheHoursTitle];
-    [stackView addArrangedSubview:saintOfTheDayTitle];
-    [stackView setAxis:UILayoutConstraintAxisVertical];
-    [stackView setDistribution:UIStackViewDistributionFillProportionally];
-    [stackView setAlignment:UIStackViewAlignmentLeading];
-    [stackView setSpacing:10.0];
-
-    UIView *view = [self view];
-    [view addSubview:stackView];
-    
-    id bottomGuide = [self bottomLayoutGuide];
-    NSDictionary *views = NSDictionaryOfVariableBindings(stackView,bottomGuide);
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[stackView]-[bottomGuide]|"
-                                                                options:0
-                                                                metrics:nil
-                                                                  views:views]];
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[stackView]-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:views]];
-
+    [[[self invitatory] time] setText:@"3am"];
+    [[[self invitatory] caption] setText:@"Invitatory"];
+    [[[self officeOfReadings] time] setText:@"Office"];
+    [[[self officeOfReadings] caption] setText:@"of Readings"];
+    [[[self lauds] time] setText:@"6am"];
+    [[[self lauds] caption] setText:@"Lauds"];
+    [[[self terce] time] setText:@"9am"];
+    [[[self terce] caption] setText:@"Terce"];
+    [[[self sext] time] setText:@"12pm"];
+    [[[self sext] caption] setText:@"Sext"];
+    [[[self none] time] setText:@"3pm"];
+    [[[self none] caption] setText:@"None"];
+    [[[self vespers] time] setText:@"6pm"];
+    [[[self vespers] caption] setText:@"Vespers"];
+    [[[self compline] time] setText:@"9pm"];
+    [[[self compline] caption] setText:@"Compline"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
