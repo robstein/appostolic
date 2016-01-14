@@ -9,6 +9,7 @@
 #import "DayViewController.h"
 #import "UIView+Autolayout.h"
 #import "PreviewButton.h"
+#import "DailyReadings.h"
 
 @interface DayViewController ()
 
@@ -18,7 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    NSDate *today = [NSDate date];
+    DailyReadings *model = [[DailyReadings alloc] initForDate:today];
+     (void)model;
+    
     [[[self firstReading] title] setText:@"1st Reading"];
     [[[self firstReading] subtitle] setText:@"1 Sm 3:1-10, 19-20"];
     [[[self firstReading] bodyText] setText:@"During the time young Samuel was minister to the LORD under Eli, a revelation of the LORD was uncommon and vision infrequent. One day Eli was asleep in his usual place. His eyes had lately grown so weak that he could not see. The lamp of God was not yet extinguished, and Samuel was sleeping in the temple of the LORD where the ark of God was. The LORD called to Samuel, who answered, “Here I am.”"];
