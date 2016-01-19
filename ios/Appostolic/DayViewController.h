@@ -7,25 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PreviewButton.h"
-#import "LiturgyOfTheHoursButton.h"
+#import "WideButton.h"
+#import "SquareButton.h"
 
 @interface DayViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
-@property (weak, nonatomic) IBOutlet PreviewButton *firstReading;
-@property (weak, nonatomic) IBOutlet PreviewButton *secondReading;
-@property (weak, nonatomic) IBOutlet PreviewButton *gospelReading;
 
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *invitatory;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *officeOfReadings;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *lauds;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *terce;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *sext;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *none;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *vespers;
-@property (weak, nonatomic) IBOutlet LiturgyOfTheHoursButton *compline;
+@property (weak, nonatomic) IBOutlet UIScrollView *readings;
+@property (weak, nonatomic) IBOutlet WideButton *reading1;
+@property (weak, nonatomic) IBOutlet WideButton *reading2;
+@property (weak, nonatomic) IBOutlet WideButton *reading3;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *liturgyOfTheHours;
+@property (weak, nonatomic) IBOutlet SquareButton *invitatory;
+@property (weak, nonatomic) IBOutlet SquareButton *officeOfReadings;
+@property (weak, nonatomic) IBOutlet SquareButton *lauds;
+@property (weak, nonatomic) IBOutlet SquareButton *terce;
+@property (weak, nonatomic) IBOutlet SquareButton *sext;
+@property (weak, nonatomic) IBOutlet SquareButton *none;
+@property (weak, nonatomic) IBOutlet SquareButton *vespers;
+@property (weak, nonatomic) IBOutlet SquareButton *compline;
 
 
 

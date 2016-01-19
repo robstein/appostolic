@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D41858051C476C3700B3FCCD /* DailyReadings.m in Sources */ = {isa = PBXBuildFile; fileRef = D41858041C476C3700B3FCCD /* DailyReadings.m */; };
-		D41858171C47768500B3FCCD /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = D41858121C47768500B3FCCD /* TFHpple.m */; };
-		D41858181C47768500B3FCCD /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D41858141C47768500B3FCCD /* TFHppleElement.m */; };
-		D41858191C47768500B3FCCD /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D41858161C47768500B3FCCD /* XPathQuery.m */; };
-		D418581C1C47775D00B3FCCD /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D418581B1C47775D00B3FCCD /* libxml2.2.tbd */; };
 		D44F1D8A1C46184E00575424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D891C46184E00575424 /* main.m */; };
 		D44F1D8D1C46184E00575424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D8C1C46184E00575424 /* AppDelegate.m */; };
 		D44F1D901C46184E00575424 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D8F1C46184E00575424 /* DayViewController.m */; };
@@ -24,10 +19,15 @@
 		D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DBF1C461EBF00575424 /* ProgressViewController.m */; };
 		D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC21C4620B700575424 /* MoreViewController.m */; };
 		D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC51C46445700575424 /* UIView+Autolayout.m */; };
-		D482EC4D1C474C360018D3AB /* LiturgyOfTheHoursButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */; };
-		D482EC4F1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */; };
-		D4D73AED1C471C4E00346568 /* PreviewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D73AEC1C471C4E00346568 /* PreviewButton.m */; };
-		D4D73AF11C472A6500346568 /* PreviewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D73AF01C472A6500346568 /* PreviewButton.xib */; };
+		D479FA101C49E2010051879A /* SquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA0F1C49E2010051879A /* SquareButton.m */; };
+		D479FA121C49E2110051879A /* SquareButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D479FA111C49E2110051879A /* SquareButton.xib */; };
+		D479FA151C49E6B20051879A /* WideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA141C49E6B20051879A /* WideButton.m */; };
+		D479FA171C49E6C50051879A /* WideButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D479FA161C49E6C50051879A /* WideButton.xib */; };
+		D48466961C4DD52000A26DAA /* DayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466951C4DD52000A26DAA /* DayModel.m */; };
+		D48466991C4DE30B00A26DAA /* Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466981C4DE30B00A26DAA /* Reading.m */; };
+		D484669F1C4DE35E00A26DAA /* Saint.m in Sources */ = {isa = PBXBuildFile; fileRef = D484669E1C4DE35E00A26DAA /* Saint.m */; };
+		D48466A21C4DE42900A26DAA /* Liturgy.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466A11C4DE42900A26DAA /* Liturgy.m */; };
+		DB3595B9A03AD6F505DEE6FB /* libPods-Appostolic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,15 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D41858031C476C3700B3FCCD /* DailyReadings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyReadings.h; sourceTree = "<group>"; };
-		D41858041C476C3700B3FCCD /* DailyReadings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyReadings.m; sourceTree = "<group>"; };
-		D41858111C47768400B3FCCD /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Appostolic/Hpple/Classes/TFHpple.h; sourceTree = "<group>"; };
-		D41858121C47768500B3FCCD /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Appostolic/Hpple/Classes/TFHpple.m; sourceTree = "<group>"; };
-		D41858131C47768500B3FCCD /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Appostolic/Hpple/Classes/TFHppleElement.h; sourceTree = "<group>"; };
-		D41858141C47768500B3FCCD /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Appostolic/Hpple/Classes/TFHppleElement.m; sourceTree = "<group>"; };
-		D41858151C47768500B3FCCD /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Appostolic/Hpple/Classes/XPathQuery.h; sourceTree = "<group>"; };
-		D41858161C47768500B3FCCD /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Appostolic/Hpple/Classes/XPathQuery.m; sourceTree = "<group>"; };
-		D418581B1C47775D00B3FCCD /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		C0574220D23D0B4BFAF9FBB9 /* Pods-Appostolic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appostolic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic.debug.xcconfig"; sourceTree = "<group>"; };
 		D44F1D851C46184E00575424 /* Appostolic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appostolic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F1D891C46184E00575424 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D44F1D8B1C46184E00575424 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,12 +73,23 @@
 		D44F1DC21C4620B700575424 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		D44F1DC41C46445700575424 /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
 		D44F1DC51C46445700575424 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
-		D482EC4B1C474C360018D3AB /* LiturgyOfTheHoursButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiturgyOfTheHoursButton.h; sourceTree = "<group>"; };
-		D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiturgyOfTheHoursButton.m; sourceTree = "<group>"; };
-		D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiturgyOfTheHoursButton.xib; sourceTree = "<group>"; };
-		D4D73AEB1C471C4E00346568 /* PreviewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewButton.h; sourceTree = "<group>"; };
-		D4D73AEC1C471C4E00346568 /* PreviewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewButton.m; sourceTree = "<group>"; };
-		D4D73AF01C472A6500346568 /* PreviewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewButton.xib; sourceTree = "<group>"; };
+		D479FA0E1C49E2010051879A /* SquareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareButton.h; sourceTree = "<group>"; };
+		D479FA0F1C49E2010051879A /* SquareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareButton.m; sourceTree = "<group>"; };
+		D479FA111C49E2110051879A /* SquareButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SquareButton.xib; sourceTree = "<group>"; };
+		D479FA131C49E6B20051879A /* WideButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WideButton.h; sourceTree = "<group>"; };
+		D479FA141C49E6B20051879A /* WideButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WideButton.m; sourceTree = "<group>"; };
+		D479FA161C49E6C50051879A /* WideButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WideButton.xib; sourceTree = "<group>"; };
+		D48466931C4CDD2500A26DAA /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		D48466941C4DD52000A26DAA /* DayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayModel.h; sourceTree = "<group>"; };
+		D48466951C4DD52000A26DAA /* DayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayModel.m; sourceTree = "<group>"; };
+		D48466971C4DE30B00A26DAA /* Reading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reading.h; sourceTree = "<group>"; };
+		D48466981C4DE30B00A26DAA /* Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reading.m; sourceTree = "<group>"; };
+		D484669D1C4DE35E00A26DAA /* Saint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saint.h; sourceTree = "<group>"; };
+		D484669E1C4DE35E00A26DAA /* Saint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saint.m; sourceTree = "<group>"; };
+		D48466A01C4DE42900A26DAA /* Liturgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Liturgy.h; sourceTree = "<group>"; };
+		D48466A11C4DE42900A26DAA /* Liturgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Liturgy.m; sourceTree = "<group>"; };
+		E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appostolic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic.release.xcconfig"; sourceTree = "<group>"; };
+		EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appostolic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D418581C1C47775D00B3FCCD /* libxml2.2.tbd in Frameworks */,
+				DB3595B9A03AD6F505DEE6FB /* libPods-Appostolic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,18 +118,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E5B41E15DDA9CDEEE4BF483 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D41858011C476B9E00B3FCCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D482EC4B1C474C360018D3AB /* LiturgyOfTheHoursButton.h */,
-				D482EC4C1C474C360018D3AB /* LiturgyOfTheHoursButton.m */,
-				D482EC4E1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib */,
 				D44F1D941C46184E00575424 /* Main.storyboard */,
-				D4D73AEB1C471C4E00346568 /* PreviewButton.h */,
-				D4D73AEC1C471C4E00346568 /* PreviewButton.m */,
-				D4D73AF01C472A6500346568 /* PreviewButton.xib */,
 				D44F1DC41C46445700575424 /* UIView+Autolayout.h */,
 				D44F1DC51C46445700575424 /* UIView+Autolayout.m */,
+				D479FA0E1C49E2010051879A /* SquareButton.h */,
+				D479FA0F1C49E2010051879A /* SquareButton.m */,
+				D479FA111C49E2110051879A /* SquareButton.xib */,
+				D479FA131C49E6B20051879A /* WideButton.h */,
+				D479FA141C49E6B20051879A /* WideButton.m */,
+				D479FA161C49E6C50051879A /* WideButton.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -149,23 +160,16 @@
 		D41858061C476C4100B3FCCD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D41858031C476C3700B3FCCD /* DailyReadings.h */,
-				D41858041C476C3700B3FCCD /* DailyReadings.m */,
+				D48466941C4DD52000A26DAA /* DayModel.h */,
+				D48466951C4DD52000A26DAA /* DayModel.m */,
+				D48466971C4DE30B00A26DAA /* Reading.h */,
+				D48466981C4DE30B00A26DAA /* Reading.m */,
+				D48466A01C4DE42900A26DAA /* Liturgy.h */,
+				D48466A11C4DE42900A26DAA /* Liturgy.m */,
+				D484669D1C4DE35E00A26DAA /* Saint.h */,
+				D484669E1C4DE35E00A26DAA /* Saint.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		D418581A1C47768D00B3FCCD /* Hpple */ = {
-			isa = PBXGroup;
-			children = (
-				D41858111C47768400B3FCCD /* TFHpple.h */,
-				D41858121C47768500B3FCCD /* TFHpple.m */,
-				D41858131C47768500B3FCCD /* TFHppleElement.h */,
-				D41858141C47768500B3FCCD /* TFHppleElement.m */,
-				D41858151C47768500B3FCCD /* XPathQuery.h */,
-				D41858161C47768500B3FCCD /* XPathQuery.m */,
-			);
-			name = Hpple;
 			sourceTree = "<group>";
 		};
 		D44F1D7C1C46184E00575424 = {
@@ -175,8 +179,8 @@
 				D44F1DA41C46184E00575424 /* AppostolicTests */,
 				D44F1DAF1C46184E00575424 /* AppostolicUITests */,
 				D44F1D861C46184E00575424 /* Products */,
-				D418581A1C47768D00B3FCCD /* Hpple */,
-				D418581B1C47775D00B3FCCD /* libxml2.2.tbd */,
+				E4CE239430FDABCAEF7DEDA6 /* Pods */,
+				3E5B41E15DDA9CDEEE4BF483 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +205,7 @@
 				D44F1D971C46184E00575424 /* Assets.xcassets */,
 				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
 				D44F1D9C1C46184E00575424 /* Info.plist */,
+				D48466931C4CDD2500A26DAA /* Utils.h */,
 				D44F1D881C46184E00575424 /* Supporting Files */,
 			);
 			path = Appostolic;
@@ -232,6 +237,15 @@
 			path = AppostolicUITests;
 			sourceTree = "<group>";
 		};
+		E4CE239430FDABCAEF7DEDA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0574220D23D0B4BFAF9FBB9 /* Pods-Appostolic.debug.xcconfig */,
+				E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D44F1DB51C46184E00575424 /* Build configuration list for PBXNativeTarget "Appostolic" */;
 			buildPhases = (
+				28E741CE243B48BF832E53B1 /* Check Pods Manifest.lock */,
 				D44F1D811C46184E00575424 /* Sources */,
 				D44F1D821C46184E00575424 /* Frameworks */,
 				D44F1D831C46184E00575424 /* Resources */,
+				AF95C67B830FE542837B3503 /* Embed Pods Frameworks */,
+				D593AB4D60C7A03DDD11ABC2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,10 +352,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4D73AF11C472A6500346568 /* PreviewButton.xib in Resources */,
 				D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */,
 				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
-				D482EC4F1C474C4F0018D3AB /* LiturgyOfTheHoursButton.xib in Resources */,
+				D479FA171C49E6C50051879A /* WideButton.xib in Resources */,
+				D479FA121C49E2110051879A /* SquareButton.xib in Resources */,
 				D44F1D961C46184E00575424 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,23 +376,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28E741CE243B48BF832E53B1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AF95C67B830FE542837B3503 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D593AB4D60C7A03DDD11ABC2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D44F1D811C46184E00575424 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41858181C47768500B3FCCD /* TFHppleElement.m in Sources */,
-				D4D73AED1C471C4E00346568 /* PreviewButton.m in Sources */,
+				D479FA151C49E6B20051879A /* WideButton.m in Sources */,
+				D479FA101C49E2010051879A /* SquareButton.m in Sources */,
+				D48466991C4DE30B00A26DAA /* Reading.m in Sources */,
 				D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */,
+				D48466961C4DD52000A26DAA /* DayModel.m in Sources */,
 				D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */,
 				D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */,
-				D482EC4D1C474C360018D3AB /* LiturgyOfTheHoursButton.m in Sources */,
 				D44F1D931C46184E00575424 /* LiteratureViewController.m in Sources */,
+				D484669F1C4DE35E00A26DAA /* Saint.m in Sources */,
 				D44F1D8D1C46184E00575424 /* AppDelegate.m in Sources */,
-				D41858191C47768500B3FCCD /* XPathQuery.m in Sources */,
 				D44F1D901C46184E00575424 /* DayViewController.m in Sources */,
-				D41858051C476C3700B3FCCD /* DailyReadings.m in Sources */,
-				D41858171C47768500B3FCCD /* TFHpple.m in Sources */,
+				D48466A21C4DE42900A26DAA /* Liturgy.m in Sources */,
 				D44F1D8A1C46184E00575424 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,9 +580,19 @@
 		};
 		D44F1DB61C46184E00575424 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0574220D23D0B4BFAF9FBB9 /* Pods-Appostolic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"/**",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"/**",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"/**",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"/**",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"/**",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"/**",
+				);
 				INFOPLIST_FILE = Appostolic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robert.stein.Appostolic;
@@ -527,9 +602,19 @@
 		};
 		D44F1DB71C46184E00575424 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"/**",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"/**",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"/**",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"/**",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"/**",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"/**",
+				);
 				INFOPLIST_FILE = Appostolic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robert.stein.Appostolic;

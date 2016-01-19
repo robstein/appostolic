@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,149 +18,199 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08t-LZ-Yh4" customClass="PreviewButton">
-                                <rect key="frame" x="20" y="60" width="270" height="108"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Readings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDS-sS-Yhb">
+                                <rect key="frame" x="20" y="30" width="150" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="108" id="Afh-Jb-YiW"/>
+                                    <constraint firstAttribute="width" constant="150" id="omr-mT-v1h"/>
+                                    <constraint firstAttribute="height" constant="26" id="v8p-Rj-a0e"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Readings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPb-TN-Y8i">
-                                <rect key="frame" x="20" y="20" width="172.5" height="32.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLI-c1-yaN" customClass="PreviewButton">
-                                <rect key="frame" x="310" y="60" width="270" height="108"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-9i-OD9" customClass="PreviewButton">
-                                <rect key="frame" x="20" y="176" width="560" height="108"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebQ-Xc-7rI">
+                                <rect key="frame" x="0.0" y="64" width="600" height="86"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="838-SR-rWh" customClass="WideButton">
+                                        <rect key="frame" x="20" y="0.0" width="175" height="86"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="2y6-G1-UAT"/>
+                                            <constraint firstAttribute="width" constant="175" id="xWN-jM-NME"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihL-Il-aM5" customClass="WideButton">
+                                        <rect key="frame" x="210" y="0.0" width="175" height="86"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="bzv-cS-VyV"/>
+                                            <constraint firstAttribute="height" constant="86" id="mul-Rv-eig"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-ED-KU1" customClass="WideButton">
+                                        <rect key="frame" x="400" y="0.0" width="175" height="86"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="Ymc-MX-yJ2"/>
+                                            <constraint firstAttribute="height" constant="86" id="hi6-cp-Hcm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="108" id="A1b-OX-SC7"/>
+                                    <constraint firstItem="ihL-Il-aM5" firstAttribute="top" secondItem="ebQ-Xc-7rI" secondAttribute="top" id="E9K-gL-RtJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="838-SR-rWh" secondAttribute="bottom" id="HDE-fV-eoj"/>
+                                    <constraint firstItem="838-SR-rWh" firstAttribute="leading" secondItem="ebQ-Xc-7rI" secondAttribute="leading" constant="20" id="KSW-4c-AaG"/>
+                                    <constraint firstItem="ihL-Il-aM5" firstAttribute="leading" secondItem="838-SR-rWh" secondAttribute="trailing" constant="15" id="NZW-bt-tvu"/>
+                                    <constraint firstAttribute="trailing" secondItem="tBA-ED-KU1" secondAttribute="trailing" constant="45" id="UYF-SQ-W8j"/>
+                                    <constraint firstAttribute="width" constant="600" id="aoB-Bc-73p"/>
+                                    <constraint firstItem="ihL-Il-aM5" firstAttribute="top" secondItem="tBA-ED-KU1" secondAttribute="top" id="dbZ-bn-B6e"/>
+                                    <constraint firstItem="tBA-ED-KU1" firstAttribute="leading" secondItem="ihL-Il-aM5" secondAttribute="trailing" constant="15" id="hAP-Nd-Bqx"/>
+                                    <constraint firstItem="ihL-Il-aM5" firstAttribute="top" secondItem="838-SR-rWh" secondAttribute="top" id="nCl-oK-Pz2"/>
+                                    <constraint firstItem="838-SR-rWh" firstAttribute="centerY" secondItem="ebQ-Xc-7rI" secondAttribute="centerY" id="ug3-wf-k63"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liturgy of the Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-dS-g7q">
-                                <rect key="frame" x="20" y="293" width="229.5" height="32.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liturgy of the Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flq-aS-sJm">
+                                <rect key="frame" x="20" y="158" width="206" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="206" id="2LJ-8c-GSF"/>
+                                    <constraint firstAttribute="height" constant="26" id="IMz-l5-SrX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDM-qg-fU4" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="20" y="333" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p0-N6-0El">
+                                <rect key="frame" x="0.0" y="192" width="600" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9V1-Tp-djG" customClass="SquareButton">
+                                        <rect key="frame" x="20" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Toh-92-wNj"/>
+                                            <constraint firstAttribute="height" constant="80" id="dt1-xp-OqS"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uS-ef-MND" customClass="SquareButton">
+                                        <rect key="frame" x="115" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="bfA-bY-XQ0"/>
+                                            <constraint firstAttribute="width" constant="80" id="kx0-Vs-iYt"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbm-MK-4wf" customClass="SquareButton">
+                                        <rect key="frame" x="210" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="lQn-Op-6gM"/>
+                                            <constraint firstAttribute="height" constant="80" id="zhz-8z-Hqy"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Hi-cb-aeO" customClass="SquareButton">
+                                        <rect key="frame" x="305" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="QqI-4P-fq6"/>
+                                            <constraint firstAttribute="height" constant="80" id="bWY-tC-KCC"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t80-xd-npe" customClass="SquareButton">
+                                        <rect key="frame" x="400" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Vvh-uC-pZW"/>
+                                            <constraint firstAttribute="height" constant="80" id="vCQ-o6-75Y"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AA2-Ko-xbL" customClass="SquareButton">
+                                        <rect key="frame" x="495" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="8UK-3s-Dj7"/>
+                                            <constraint firstAttribute="height" constant="80" id="P0j-uJ-l4X"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-2Q-yJE" customClass="SquareButton">
+                                        <rect key="frame" x="590" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="aOg-lh-QBx"/>
+                                            <constraint firstAttribute="height" constant="80" id="fhG-oy-sQG"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btP-Bo-3Mp" customClass="SquareButton">
+                                        <rect key="frame" x="685" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="2M9-Fx-rGV"/>
+                                            <constraint firstAttribute="width" constant="80" id="stX-mU-qVC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="NDM-qg-fU4" secondAttribute="height" multiplier="1:1" id="KdY-gc-eb6"/>
-                                    <constraint firstAttribute="width" constant="130" id="lfd-Ix-ouL"/>
+                                    <constraint firstItem="dbm-MK-4wf" firstAttribute="leading" secondItem="1uS-ef-MND" secondAttribute="trailing" constant="15" id="5Ed-mV-XXb"/>
+                                    <constraint firstItem="1uS-ef-MND" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="6TS-K0-aU2"/>
+                                    <constraint firstItem="7Hi-cb-aeO" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="7yd-4i-BxV"/>
+                                    <constraint firstItem="DxZ-2Q-yJE" firstAttribute="leading" secondItem="AA2-Ko-xbL" secondAttribute="trailing" constant="15" id="F5D-Cb-810"/>
+                                    <constraint firstItem="DxZ-2Q-yJE" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="FXA-eA-THT"/>
+                                    <constraint firstItem="AA2-Ko-xbL" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="azN-Lx-mN8"/>
+                                    <constraint firstAttribute="bottom" secondItem="9V1-Tp-djG" secondAttribute="bottom" id="byr-yZ-kAB"/>
+                                    <constraint firstItem="t80-xd-npe" firstAttribute="centerY" secondItem="9p0-N6-0El" secondAttribute="centerY" id="dTa-31-WYT"/>
+                                    <constraint firstItem="btP-Bo-3Mp" firstAttribute="leading" secondItem="DxZ-2Q-yJE" secondAttribute="trailing" constant="15" id="dtK-cF-R5j"/>
+                                    <constraint firstItem="AA2-Ko-xbL" firstAttribute="leading" secondItem="t80-xd-npe" secondAttribute="trailing" constant="15" id="eck-3r-Bhu"/>
+                                    <constraint firstItem="9V1-Tp-djG" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="gp3-aC-fOV"/>
+                                    <constraint firstItem="1uS-ef-MND" firstAttribute="leading" secondItem="9V1-Tp-djG" secondAttribute="trailing" constant="15" id="gqx-Ly-m4H"/>
+                                    <constraint firstItem="dbm-MK-4wf" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="kw3-2c-Ilx"/>
+                                    <constraint firstItem="9V1-Tp-djG" firstAttribute="leading" secondItem="9p0-N6-0El" secondAttribute="leading" constant="20" id="mAn-kr-KlZ"/>
+                                    <constraint firstItem="t80-xd-npe" firstAttribute="leading" secondItem="7Hi-cb-aeO" secondAttribute="trailing" constant="15" id="o7j-Pg-7fF"/>
+                                    <constraint firstAttribute="trailing" secondItem="btP-Bo-3Mp" secondAttribute="trailing" constant="15" id="pF8-A1-NAY"/>
+                                    <constraint firstItem="btP-Bo-3Mp" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="r1t-k8-LaG"/>
+                                    <constraint firstItem="7Hi-cb-aeO" firstAttribute="leading" secondItem="dbm-MK-4wf" secondAttribute="trailing" constant="15" id="utE-Fm-zgT"/>
+                                    <constraint firstItem="t80-xd-npe" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="top" id="vuP-qe-Yjv"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0d-zP-vZK" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="158" y="333" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saint of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-YZ-0H8">
+                                <rect key="frame" x="20" y="280" width="170" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="c0d-zP-vZK" secondAttribute="height" multiplier="1:1" id="csn-Lb-Zao"/>
-                                    <constraint firstAttribute="width" constant="130" id="h26-Tn-rW7"/>
+                                    <constraint firstAttribute="width" constant="170" id="XaH-uR-k82"/>
+                                    <constraint firstAttribute="height" constant="26" id="ccT-94-ECn"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-Vi-09x" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="296" y="333" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="pLt-Vi-09x" secondAttribute="height" multiplier="1:1" id="83X-Zw-Dui"/>
-                                    <constraint firstAttribute="width" constant="130" id="qc8-jb-llY"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-gk-459" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="434" y="333" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="PQg-gk-459" secondAttribute="height" multiplier="1:1" id="rQx-R7-3ta"/>
-                                    <constraint firstAttribute="width" constant="130" id="wmV-Fg-Xyk"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ly5-BM-fbj" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="158" y="471" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ly5-BM-fbj" secondAttribute="height" multiplier="1:1" id="EVy-4u-fBy"/>
-                                    <constraint firstAttribute="width" constant="130" id="U34-TX-kjR"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-AZ-PUp" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="296" y="471" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8CJ-AZ-PUp" secondAttribute="height" multiplier="1:1" id="TTQ-zk-SYA"/>
-                                    <constraint firstAttribute="width" constant="130" id="ZDt-Va-Rpp"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8o6-0H-WMt" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="434" y="471" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="ESH-g6-mcv"/>
-                                    <constraint firstAttribute="width" secondItem="8o6-0H-WMt" secondAttribute="height" multiplier="1:1" id="zPR-4g-aMw"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LiP-ga-HXg" customClass="LiturgyOfTheHoursButton">
-                                <rect key="frame" x="20" y="471" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LiP-ga-HXg" secondAttribute="height" multiplier="1:1" id="iEk-qd-W1e"/>
-                                    <constraint firstAttribute="width" constant="130" id="vdo-sH-rIt"/>
-                                </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="RPb-TN-Y8i" secondAttribute="leading" id="3mD-YR-uwp"/>
-                            <constraint firstItem="pLt-Vi-09x" firstAttribute="leading" secondItem="c0d-zP-vZK" secondAttribute="trailing" constant="8" id="6if-6v-oGU"/>
-                            <constraint firstItem="tLI-c1-yaN" firstAttribute="height" secondItem="08t-LZ-Yh4" secondAttribute="height" id="7RF-N3-zgz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tLI-c1-yaN" secondAttribute="trailing" id="BSI-3N-Sij"/>
-                            <constraint firstItem="pLt-Vi-09x" firstAttribute="top" secondItem="c0d-zP-vZK" secondAttribute="top" id="CPD-nK-8Ev"/>
-                            <constraint firstItem="8CJ-AZ-PUp" firstAttribute="leading" secondItem="ly5-BM-fbj" secondAttribute="trailing" constant="8" id="H4O-YH-FHt"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="08t-LZ-Yh4" secondAttribute="leading" id="NUM-C7-EyB"/>
-                            <constraint firstItem="c0d-zP-vZK" firstAttribute="leading" secondItem="NDM-qg-fU4" secondAttribute="trailing" constant="8" id="Okf-c2-dJB"/>
-                            <constraint firstItem="tLI-c1-yaN" firstAttribute="top" secondItem="08t-LZ-Yh4" secondAttribute="top" id="Q0q-GW-Bv9"/>
-                            <constraint firstItem="1ZD-dS-g7q" firstAttribute="top" secondItem="Y9N-9i-OD9" secondAttribute="bottom" constant="8.5" id="SFg-XZ-QDb"/>
-                            <constraint firstItem="8CJ-AZ-PUp" firstAttribute="top" secondItem="ly5-BM-fbj" secondAttribute="top" id="Vt8-Oj-yAD"/>
-                            <constraint firstItem="ly5-BM-fbj" firstAttribute="top" secondItem="LiP-ga-HXg" secondAttribute="top" id="ZBs-Ks-Bx6"/>
-                            <constraint firstItem="8o6-0H-WMt" firstAttribute="top" secondItem="8CJ-AZ-PUp" secondAttribute="top" id="b6Q-Tf-E7w"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="LiP-ga-HXg" secondAttribute="leading" id="b9W-5a-fiC"/>
-                            <constraint firstItem="08t-LZ-Yh4" firstAttribute="width" secondItem="tLI-c1-yaN" secondAttribute="width" id="c6A-9V-7ZS"/>
-                            <constraint firstItem="LiP-ga-HXg" firstAttribute="top" secondItem="NDM-qg-fU4" secondAttribute="bottom" constant="8" id="ceL-b4-AEx"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="NDM-qg-fU4" secondAttribute="leading" id="dBO-y2-gsq"/>
-                            <constraint firstItem="PQg-gk-459" firstAttribute="leading" secondItem="pLt-Vi-09x" secondAttribute="trailing" constant="8" id="eCL-nW-ccn"/>
-                            <constraint firstItem="ly5-BM-fbj" firstAttribute="leading" secondItem="LiP-ga-HXg" secondAttribute="trailing" constant="8" id="fVW-BI-LBV"/>
-                            <constraint firstItem="8o6-0H-WMt" firstAttribute="leading" secondItem="8CJ-AZ-PUp" secondAttribute="trailing" constant="8" id="h1e-gw-2dj"/>
-                            <constraint firstItem="NDM-qg-fU4" firstAttribute="top" secondItem="1ZD-dS-g7q" secondAttribute="bottom" constant="8" id="iX9-2e-XLs"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Y9N-9i-OD9" secondAttribute="leading" id="kJh-TB-hur"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Y9N-9i-OD9" secondAttribute="trailing" id="khG-I3-1tg"/>
-                            <constraint firstItem="tLI-c1-yaN" firstAttribute="leading" secondItem="08t-LZ-Yh4" secondAttribute="trailing" constant="20" id="lgH-3b-WAi"/>
-                            <constraint firstItem="Y9N-9i-OD9" firstAttribute="top" secondItem="08t-LZ-Yh4" secondAttribute="bottom" constant="8" id="oe6-MA-Hlg"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="1ZD-dS-g7q" secondAttribute="leading" id="oyt-It-lAN"/>
-                            <constraint firstItem="08t-LZ-Yh4" firstAttribute="top" secondItem="RPb-TN-Y8i" secondAttribute="bottom" constant="8" id="q6L-Xm-XUh"/>
-                            <constraint firstItem="PQg-gk-459" firstAttribute="top" secondItem="pLt-Vi-09x" secondAttribute="top" id="uB5-UV-DzA"/>
-                            <constraint firstItem="RPb-TN-Y8i" firstAttribute="top" secondItem="mvp-fI-mu7" secondAttribute="bottom" id="wyd-W8-ece"/>
-                            <constraint firstItem="c0d-zP-vZK" firstAttribute="top" secondItem="NDM-qg-fU4" secondAttribute="top" id="zWd-z6-MXl"/>
+                            <constraint firstItem="9p0-N6-0El" firstAttribute="trailing" secondItem="ebQ-Xc-7rI" secondAttribute="trailing" id="0fr-Bx-bAR"/>
+                            <constraint firstItem="hm3-YZ-0H8" firstAttribute="top" secondItem="9p0-N6-0El" secondAttribute="bottom" constant="8" id="89S-Mh-aox"/>
+                            <constraint firstItem="iDS-sS-Yhb" firstAttribute="top" secondItem="mvp-fI-mu7" secondAttribute="bottom" constant="10" id="EWT-mw-fYS"/>
+                            <constraint firstItem="flq-aS-sJm" firstAttribute="top" secondItem="ebQ-Xc-7rI" secondAttribute="bottom" constant="8" id="PDw-jm-l6B"/>
+                            <constraint firstItem="ebQ-Xc-7rI" firstAttribute="leading" secondItem="Dj4-da-z1e" secondAttribute="leadingMargin" constant="-20" id="Wqd-3r-Upv"/>
+                            <constraint firstItem="9p0-N6-0El" firstAttribute="leading" secondItem="Dj4-da-z1e" secondAttribute="leadingMargin" constant="-20" id="Yte-MS-frm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="iDS-sS-Yhb" secondAttribute="leading" id="eRx-D2-E9o"/>
+                            <constraint firstItem="ebQ-Xc-7rI" firstAttribute="top" secondItem="iDS-sS-Yhb" secondAttribute="bottom" constant="8" symbolic="YES" id="eaX-iw-n08"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="flq-aS-sJm" secondAttribute="leading" id="ps7-9P-Le6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hm3-YZ-0H8" secondAttribute="leading" id="qc8-Ji-FdE"/>
+                            <constraint firstItem="9p0-N6-0El" firstAttribute="top" secondItem="flq-aS-sJm" secondAttribute="bottom" constant="8" symbolic="YES" id="tiG-Kv-lOI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" image="Home-50" selectedImage="Home-50" id="acW-dT-cKf" userLabel="Today"/>
                     <connections>
-                        <outlet property="compline" destination="8o6-0H-WMt" id="qOK-VE-d7g"/>
-                        <outlet property="firstReading" destination="08t-LZ-Yh4" id="iEv-1w-tGp"/>
-                        <outlet property="gospelReading" destination="Y9N-9i-OD9" id="hTb-dK-28r"/>
-                        <outlet property="invitatory" destination="NDM-qg-fU4" id="frP-ee-4TV"/>
-                        <outlet property="lauds" destination="pLt-Vi-09x" id="2EL-DR-KkH"/>
+                        <outlet property="compline" destination="btP-Bo-3Mp" id="Wyr-cg-Ju1"/>
+                        <outlet property="invitatory" destination="9V1-Tp-djG" id="ayA-ZB-FCJ"/>
+                        <outlet property="lauds" destination="dbm-MK-4wf" id="dmo-4S-o1n"/>
+                        <outlet property="liturgyOfTheHours" destination="9p0-N6-0El" id="VRn-Zz-mkf"/>
                         <outlet property="mainScrollView" destination="Dj4-da-z1e" id="BZk-LB-5Mp"/>
-                        <outlet property="none" destination="ly5-BM-fbj" id="4hk-Db-L2N"/>
-                        <outlet property="officeOfReadings" destination="c0d-zP-vZK" id="pfY-cr-7fd"/>
-                        <outlet property="secondReading" destination="tLI-c1-yaN" id="kdo-OA-vlU"/>
-                        <outlet property="sext" destination="LiP-ga-HXg" id="oPn-3r-uQ7"/>
-                        <outlet property="terce" destination="PQg-gk-459" id="kcr-cU-6rK"/>
-                        <outlet property="vespers" destination="8CJ-AZ-PUp" id="UvZ-7p-NWa"/>
+                        <outlet property="none" destination="AA2-Ko-xbL" id="gRJ-Q0-a6R"/>
+                        <outlet property="officeOfReadings" destination="1uS-ef-MND" id="yhZ-Ym-OYy"/>
+                        <outlet property="reading1" destination="838-SR-rWh" id="tOG-ew-HKb"/>
+                        <outlet property="reading2" destination="ihL-Il-aM5" id="gjr-Ma-Feh"/>
+                        <outlet property="reading3" destination="tBA-ED-KU1" id="NCq-ox-mGs"/>
+                        <outlet property="readings" destination="ebQ-Xc-7rI" id="9JZ-v0-QC3"/>
+                        <outlet property="sext" destination="t80-xd-npe" id="reS-K2-bqm"/>
+                        <outlet property="terce" destination="7Hi-cb-aeO" id="K4V-ud-yns"/>
+                        <outlet property="vespers" destination="DxZ-2Q-yJE" id="oQ2-Ao-Xs9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
