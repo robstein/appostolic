@@ -6,14 +6,12 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "WideButton.h"
-#import "SquareButton.h"
+@class WideButton;
+@class SquareButton;
 
 @interface DayViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
-
 
 @property (weak, nonatomic) IBOutlet UIScrollView *readings;
 @property (weak, nonatomic) IBOutlet WideButton *reading1;
@@ -30,7 +28,4 @@
 @property (weak, nonatomic) IBOutlet SquareButton *vespers;
 @property (weak, nonatomic) IBOutlet SquareButton *compline;
 
-
-
 @end
-

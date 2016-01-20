@@ -6,8 +6,6 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface Saint : NSObject
 
 @property (nonatomic, copy) NSString *name;

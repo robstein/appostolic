@@ -1,0 +1,19 @@
+//
+//  Appostolic-Prefix.pch
+//  Appostolic
+//
+//  Created by Robert Stein on 1/20/16.
+//  Copyright © 2016 Rob Stein. All rights reserved.
+//
+
+#ifndef Appostolic_Prefix_pch
+#define Appostolic_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
+#endif /* Appostolic_Prefix_pch */

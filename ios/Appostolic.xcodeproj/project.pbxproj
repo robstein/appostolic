@@ -88,6 +88,7 @@
 		D484669E1C4DE35E00A26DAA /* Saint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saint.m; sourceTree = "<group>"; };
 		D48466A01C4DE42900A26DAA /* Liturgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Liturgy.h; sourceTree = "<group>"; };
 		D48466A11C4DE42900A26DAA /* Liturgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Liturgy.m; sourceTree = "<group>"; };
+		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
 		DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appostolic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +134,7 @@
 		D41858011C476B9E00B3FCCD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
 				D44F1D941C46184E00575424 /* Main.storyboard */,
 				D44F1DC41C46445700575424 /* UIView+Autolayout.h */,
 				D44F1DC51C46445700575424 /* UIView+Autolayout.m */,
@@ -201,15 +203,11 @@
 		D44F1D871C46184E00575424 /* Appostolic */ = {
 			isa = PBXGroup;
 			children = (
-				D44F1D8B1C46184E00575424 /* AppDelegate.h */,
-				D44F1D8C1C46184E00575424 /* AppDelegate.m */,
-				D41858061C476C4100B3FCCD /* Model */,
 				D41858021C476BA800B3FCCD /* Controller */,
+				D41858061C476C4100B3FCCD /* Model */,
 				D41858011C476B9E00B3FCCD /* View */,
-				D44F1D971C46184E00575424 /* Assets.xcassets */,
-				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
-				D44F1D9C1C46184E00575424 /* Info.plist */,
-				D48466931C4CDD2500A26DAA /* Utils.h */,
+				D4ADF9531C50211800F5CF99 /* Util */,
+				D4ADF9541C50212C00F5CF99 /* Resources */,
 				D44F1D881C46184E00575424 /* Supporting Files */,
 			);
 			path = Appostolic;
@@ -218,6 +216,10 @@
 		D44F1D881C46184E00575424 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D44F1D8B1C46184E00575424 /* AppDelegate.h */,
+				D44F1D8C1C46184E00575424 /* AppDelegate.m */,
+				D44F1D9C1C46184E00575424 /* Info.plist */,
+				D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */,
 				D44F1D891C46184E00575424 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -239,6 +241,22 @@
 				D44F1DB21C46184E00575424 /* Info.plist */,
 			);
 			path = AppostolicUITests;
+			sourceTree = "<group>";
+		};
+		D4ADF9531C50211800F5CF99 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D48466931C4CDD2500A26DAA /* Utils.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		D4ADF9541C50212C00F5CF99 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D44F1D971C46184E00575424 /* Assets.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E4CE239430FDABCAEF7DEDA6 /* Pods */ = {
@@ -595,6 +613,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Appostolic-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)/**",
 					"\"${PODS_ROOT}/Headers/Public\"/**",
@@ -621,6 +640,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Appostolic-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)/**",
 					"\"${PODS_ROOT}/Headers/Public\"/**",

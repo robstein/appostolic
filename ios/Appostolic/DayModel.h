@@ -6,8 +6,6 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class Reading;
 @class Liturgy;
 @class Saint;
