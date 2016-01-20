@@ -16,6 +16,7 @@
         [self addSubview:[[[NSBundle mainBundle] loadNibNamed:@"WideButton" owner:self options:nil] firstObject]];
         
         [[self layer] setBorderWidth:1.0f];
+        [[self layer] setBorderColor:[UIColorFromRGB(0xCECED2) CGColor]];
         [[self layer] setCornerRadius:10.0f];
         [self setBackgroundColor:UIColorFromRGB(0xFFCC00)];
     }

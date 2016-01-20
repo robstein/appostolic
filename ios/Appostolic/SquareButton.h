@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class GradientView;
+
 @interface SquareButton : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *caption;
+- (instancetype) initWithTitle:(NSString *)title caption:(NSString *)caption;
+
+@property (nonatomic, strong) GradientView *background;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *caption;
 
 @end

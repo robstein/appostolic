@@ -14,7 +14,7 @@
 
 @interface DayModel : NSObject
 
-- (instancetype)initForDate:(NSDate *)date;
++ (void)loadDayModelForDate:(NSDate *)date;
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *lectionary;

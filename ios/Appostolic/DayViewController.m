@@ -11,16 +11,22 @@
 
 @interface DayViewController ()
 
+@property (nonatomic, strong) DayModel *model;
+
 @end
 
 @implementation DayViewController
 
+@synthesize model = _model;
+
+- (void)loadModel:(NSNotification *)notification {
+    _model = [notification object];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSDate *today = [NSDate date];
-    DayModel *model = [[DayModel alloc] initForDate:today];
-     (void)model;
+    [DayModel loadDayModelForDate:[NSDate date]];
+
     
     [[[self reading1] title] setText:@"1st Reading"];
     //[[[self reading1] subtitle] setText:@"1 Sm 3:1-10, 19-20"];
@@ -63,6 +69,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadModel:) name:@"ModelLoaded" object:nil];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -73,6 +80,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

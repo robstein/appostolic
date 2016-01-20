@@ -7,6 +7,7 @@
 //
 
 #import "LiteratureViewController.h"
+#import "SquareButton.h"
 
 @interface LiteratureViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    SquareButton *button = [[SquareButton alloc] initWithTitle:@"9pm" caption:@"Compline"];
+    [[self view] addSubview:button];
 }
 
 - (void)didReceiveMemoryWarning {

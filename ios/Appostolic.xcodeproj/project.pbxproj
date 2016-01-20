@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314099553A494A0485F165FD /* Pods_Appostolic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D44F1D8A1C46184E00575424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D891C46184E00575424 /* main.m */; };
 		D44F1D8D1C46184E00575424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D8C1C46184E00575424 /* AppDelegate.m */; };
 		D44F1D901C46184E00575424 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D8F1C46184E00575424 /* DayViewController.m */; };
@@ -27,7 +28,6 @@
 		D48466991C4DE30B00A26DAA /* Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466981C4DE30B00A26DAA /* Reading.m */; };
 		D484669F1C4DE35E00A26DAA /* Saint.m in Sources */ = {isa = PBXBuildFile; fileRef = D484669E1C4DE35E00A26DAA /* Saint.m */; };
 		D48466A21C4DE42900A26DAA /* Liturgy.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466A11C4DE42900A26DAA /* Liturgy.m */; };
-		DB3595B9A03AD6F505DEE6FB /* libPods-Appostolic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,8 +88,10 @@
 		D484669E1C4DE35E00A26DAA /* Saint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saint.m; sourceTree = "<group>"; };
 		D48466A01C4DE42900A26DAA /* Liturgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Liturgy.h; sourceTree = "<group>"; };
 		D48466A11C4DE42900A26DAA /* Liturgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Liturgy.m; sourceTree = "<group>"; };
+		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
+		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
+		DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appostolic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appostolic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic.release.xcconfig"; sourceTree = "<group>"; };
-		EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appostolic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3595B9A03AD6F505DEE6FB /* libPods-Appostolic.a in Frameworks */,
+				314099553A494A0485F165FD /* Pods_Appostolic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +123,9 @@
 		3E5B41E15DDA9CDEEE4BF483 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB35F6FCCB8D05C2424CAFC5 /* libPods-Appostolic.a */,
+				D4BD0FA11C4F750800FD5201 /* GradientView.framework */,
+				D4BD0FA21C4F750800FD5201 /* RestKit.framework */,
+				DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -500,6 +504,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -516,6 +521,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -544,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -560,6 +567,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -583,6 +591,10 @@
 			baseConfigurationReference = C0574220D23D0B4BFAF9FBB9 /* Pods-Appostolic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)/**",
 					"\"${PODS_ROOT}/Headers/Public\"/**",
@@ -605,6 +617,10 @@
 			baseConfigurationReference = E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)/**",
 					"\"${PODS_ROOT}/Headers/Public\"/**",

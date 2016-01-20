@@ -10,28 +10,21 @@
 #import "Reading.h"
 #import "Liturgy.h"
 #import "Saint.h"
-#import <RestKit/ObjectMapping/RKObjectMapping.h>
-#import <RestKit/ObjectMapping/RKRelationshipMapping.h>
-#import <RestKit/Network/RKResponseDescriptor.h>
-#import <RestKit/Network/RKObjectRequestOperation.h>
+#import <RestKit/RKObjectMapping.h>
+#import <RestKit/RKRelationshipMapping.h>
+#import <RestKit/RKResponseDescriptor.h>
+#import <RestKit/RKObjectRequestOperation.h>
 
 NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 
 @implementation DayModel
 
-- (instancetype)initForDate:(NSDate *)date {
-    if (self = [super init]) {
-        double millisecondsSince1970 = [date timeIntervalSince1970] * 1000;
-        NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", millisecondsSince1970];
-        NSString *urlString = [NSString stringWithFormat:ReadingsServerURLFormat, lastPathComponent];
-        [self loadFromDataAtURL:[NSURL URLWithString:urlString]];
-        // Send request to the url at urlString
-    }
-    return self;
-}
-
-
-- (void)loadFromDataAtURL:(NSURL *)url {
++ (void)loadDayModelForDate:(NSDate *)date {
+    double millisecondsSince1970 = [date timeIntervalSince1970] * 1000;
+    NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", millisecondsSince1970];
+    NSString *urlString = [NSString stringWithFormat:ReadingsServerURLFormat, lastPathComponent];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
     RKObjectMapping *readingMapping = [RKObjectMapping mappingForClass:[Reading class]];
     [readingMapping addAttributeMappingsFromDictionary:@{
                                                   @"name":  @"name",
@@ -71,7 +64,9 @@ NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
     [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-        NSLog(@"The public timeline Tweets: %@", [result array]);
+        DayModel *model = [[result array] firstObject];
+        NSLog(@"The day's data: %@", model);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ModelLoaded" object:model];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Shoot! %@", [error description]);
     }];
