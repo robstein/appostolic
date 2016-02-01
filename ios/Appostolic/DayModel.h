@@ -12,8 +12,6 @@
 
 @interface DayModel : NSObject
 
-+ (void)loadDayModelForDate:(NSDate *)date;
-
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *lectionary;
 @property (nonatomic, copy) NSArray <Reading *> *readings;

@@ -2,6 +2,8 @@
 //  SquareButton.m
 //  Appostolic
 //
+//  An 80x80 square view with a gradient background and a title and caption.
+//
 //  Created by Robert Stein on 1/15/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
@@ -32,7 +34,7 @@ static const CGFloat SquareButtonCornerSideLength = 80.f;
         [_caption setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         _background = [[GradientView alloc] initWithFrame:CGRectZero];
-        [_background setColors:@[UIColorFromRGB(0x007AFF),UIColorFromRGB(0x5AC8FA)]];
+        [_background setColors:@[UIColorFromRGB(0x5AC8FA), UIColorFromRGB(0x007AFF)]];
         [[_background layer] setBorderColor:[UIColorFromRGB(0xCECED2) CGColor]];
         [[_background layer] setCornerRadius:SquareButtonCornerRadius];
         [_background setClipsToBounds:YES];

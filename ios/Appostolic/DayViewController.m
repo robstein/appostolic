@@ -7,60 +7,44 @@
 //
 
 #import "DayViewController.h"
+#import "WideButton.h"
+#import "SquareButton.h"
 #import "DayModel.h"
+#import "Reading.h"
+#import "Liturgy.h"
+#import "Saint.h"
+#import <RestKit/RKObjectMapping.h>
+#import <RestKit/RKRelationshipMapping.h>
+#import <RestKit/RKResponseDescriptor.h>
+#import <RestKit/RKObjectRequestOperation.h>
+
+NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 
 @interface DayViewController ()
 
 @property (nonatomic, strong) DayModel *model;
+@property (nonatomic, strong) UICollectionViewController *collectionViewController;
 
 @end
 
 @implementation DayViewController
 
 @synthesize model = _model;
+@synthesize collectionViewController = _collectionViewController;
 
-- (void)loadModel:(NSNotification *)notification {
-    _model = [notification object];
+- (UICollectionViewController *)collectionViewController {
+	if (_collectionViewController == nil) {
+		UICollectionViewLayout *viewLayout = [[UICollectionViewFlowLayout alloc] init];
+		_collectionViewController = [[UICollectionViewController alloc] initWithCollectionViewLayout:viewLayout];
+	}
+	return _collectionViewController;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [DayModel loadDayModelForDate:[NSDate date]];
+	[self loadDay:[NSDate date]];
+	
 
-    
-    [[[self reading1] title] setText:@"1st Reading"];
-    //[[[self reading1] subtitle] setText:@"1 Sm 3:1-10, 19-20"];
-    [[[self reading1] bodyText] setText:@"During the time young Samuel was minister to the LORD under Eli, a revelation of the LORD was uncommon and vision infrequent. One day Eli was asleep in his usual place. His eyes had lately grown so weak that he could not see. The lamp of God was not yet extinguished, and Samuel was sleeping in the temple of the LORD where the ark of God was. The LORD called to Samuel, who answered, “Here I am.”"];
-
-    [[[self reading2] title] setText:@"Responsorial Psalm"];
-    //[[[self reading2] subtitle] setText:@"Ps 40:2, 5, 7-8A, 8B-9, 10"];
-    [[[self reading2] bodyText] setText:@"R. (8a and 9a) Here am I, Lord; I come to do your will.\
-     I have waited, waited for the LORD,\
-     and he stooped toward me and heard my cry.\
-     Blessed the man who makes the LORD his trust;\
-     who turns not to idolatry\
-     or to those who stray after falsehood."];
-    
-    [[[self reading3] title] setText:@"Gospel"];
-    //[[[self reading3] subtitle] setText:@"Mk 1:29-39"];
-    [[[self reading3] bodyText] setText:@"On leaving the synagogue Jesus entered the house of Simon and Andrew with James and John. Simon’s mother-in-law lay sick with a fever. They immediately told him about her. He approached, grasped her hand, and helped her up. Then the fever left her and she waited on them."];
-    
-    [[[self invitatory] title] setText:@"3am"];
-    [[[self invitatory] caption] setText:@"Invitatory"];
-    [[[self officeOfReadings] title] setText:@"Office"];
-    [[[self officeOfReadings] caption] setText:@"of Readings"];
-    [[[self lauds] title] setText:@"6am"];
-    [[[self lauds] caption] setText:@"Lauds"];
-    [[[self terce] title] setText:@"9am"];
-    [[[self terce] caption] setText:@"Terce"];
-    [[[self sext] title] setText:@"12pm"];
-    [[[self sext] caption] setText:@"Sext"];
-    [[[self none] title] setText:@"3pm"];
-    [[[self none] caption] setText:@"None"];
-    [[[self vespers] title] setText:@"6pm"];
-    [[[self vespers] caption] setText:@"Vespers"];
-    [[[self compline] title] setText:@"9pm"];
-    [[[self compline] caption] setText:@"Compline"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,12 +53,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadModel:) name:@"ModelLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modelLoaded:) name:@"ModelLoaded" object:nil];
 }
 
 - (void)viewDidLayoutSubviews {
-    [[self readings] setContentSize:CGSizeMake(4*175+(4-1)*15+27.5, 86)];
-    [[self liturgyOfTheHours] setContentSize:CGSizeMake(10*80+(10-1)*15+27.5, 80)];
+    //[[self readings] setContentSize:CGSizeMake(4*175+(4-1)*15+27.5, 86)];
+    //[[self liturgyOfTheHours] setContentSize:CGSizeMake(10*80+(10-1)*15+27.5, 80)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +68,66 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Load model with data
+
+- (void)loadDay:(NSDate *)date {
+	double millisecondsSince1970 = [date timeIntervalSince1970] * 1000;
+	NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", millisecondsSince1970];
+	NSString *urlString = [NSString stringWithFormat:ReadingsServerURLFormat, lastPathComponent];
+	NSURL *url = [NSURL URLWithString:urlString];
+	
+	RKObjectMapping *readingMapping = [RKObjectMapping mappingForClass:[Reading class]];
+	[readingMapping addAttributeMappingsFromDictionary:@{
+														 @"name":  @"name",
+														 @"passage":   @"passage",
+														 @"body":  @"body"
+														 }];
+	
+	RKObjectMapping *liturgyMapping = [RKObjectMapping mappingForClass:[Liturgy class]];
+	[liturgyMapping addAttributeMappingsFromDictionary:@{
+														 @"name":  @"name",
+														 @"body":  @"body"
+														 }];
+	
+	RKObjectMapping *saintMapping = [RKObjectMapping mappingForClass:[Saint class]];
+	[saintMapping addAttributeMappingsFromDictionary:@{
+													   @"name":  @"name",
+													   @"body":  @"body"
+													   }];
+	
+	RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[DayModel class]];
+	[mapping addAttributeMappingsFromDictionary:@{
+												  @"title": @"title",
+												  @"lectionary":    @"lectionary",
+												  @"text":  @"text"
+												  }];
+	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"readings"
+																			toKeyPath:@"readings"
+																		  withMapping:readingMapping]];
+	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liturgyOfTheHours"
+																			toKeyPath:@"liturgyOfTheHours"
+																		  withMapping:liturgyMapping]];
+	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"saints"
+																			toKeyPath:@"saints"
+																		  withMapping:saintMapping]];
+	
+	RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
+	NSURLRequest *request = [NSURLRequest requestWithURL:url];
+	RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+	[operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+		DayModel *model = [[result array] firstObject];
+		NSLog(@"The day's data: %@", model);
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"ModelLoaded" object:model];
+	} failure:^(RKObjectRequestOperation *operation, NSError *error) {
+		NSLog(@"Shoot! %@", [error description]);
+	}];
+	[operation start];
+}
+
+- (void)modelLoaded:(NSNotification *)notification {
+	_model = [notification object];
 }
 
 @end

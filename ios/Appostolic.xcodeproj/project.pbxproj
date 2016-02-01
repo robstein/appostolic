@@ -21,7 +21,6 @@
 		D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC21C4620B700575424 /* MoreViewController.m */; };
 		D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC51C46445700575424 /* UIView+Autolayout.m */; };
 		D479FA101C49E2010051879A /* SquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA0F1C49E2010051879A /* SquareButton.m */; };
-		D479FA121C49E2110051879A /* SquareButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D479FA111C49E2110051879A /* SquareButton.xib */; };
 		D479FA151C49E6B20051879A /* WideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA141C49E6B20051879A /* WideButton.m */; };
 		D479FA171C49E6C50051879A /* WideButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D479FA161C49E6C50051879A /* WideButton.xib */; };
 		D48466961C4DD52000A26DAA /* DayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466951C4DD52000A26DAA /* DayModel.m */; };
@@ -75,7 +74,6 @@
 		D44F1DC51C46445700575424 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
 		D479FA0E1C49E2010051879A /* SquareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareButton.h; sourceTree = "<group>"; };
 		D479FA0F1C49E2010051879A /* SquareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareButton.m; sourceTree = "<group>"; };
-		D479FA111C49E2110051879A /* SquareButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SquareButton.xib; sourceTree = "<group>"; };
 		D479FA131C49E6B20051879A /* WideButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WideButton.h; sourceTree = "<group>"; };
 		D479FA141C49E6B20051879A /* WideButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WideButton.m; sourceTree = "<group>"; };
 		D479FA161C49E6C50051879A /* WideButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WideButton.xib; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				D44F1DC51C46445700575424 /* UIView+Autolayout.m */,
 				D479FA0E1C49E2010051879A /* SquareButton.h */,
 				D479FA0F1C49E2010051879A /* SquareButton.m */,
-				D479FA111C49E2110051879A /* SquareButton.xib */,
 				D479FA131C49E6B20051879A /* WideButton.h */,
 				D479FA141C49E6B20051879A /* WideButton.m */,
 				D479FA161C49E6C50051879A /* WideButton.xib */,
@@ -377,7 +374,6 @@
 				D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */,
 				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
 				D479FA171C49E6C50051879A /* WideButton.xib in Resources */,
-				D479FA121C49E2110051879A /* SquareButton.xib in Resources */,
 				D44F1D961C46184E00575424 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
