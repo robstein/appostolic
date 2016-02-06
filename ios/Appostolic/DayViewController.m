@@ -23,22 +23,13 @@ NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 @interface DayViewController ()
 
 @property (nonatomic, strong) DayModel *model;
-@property (nonatomic, strong) UICollectionViewController *collectionViewController;
 
 @end
 
 @implementation DayViewController
 
 @synthesize model = _model;
-@synthesize collectionViewController = _collectionViewController;
 
-- (UICollectionViewController *)collectionViewController {
-	if (_collectionViewController == nil) {
-		UICollectionViewLayout *viewLayout = [[UICollectionViewFlowLayout alloc] init];
-		_collectionViewController = [[UICollectionViewController alloc] initWithCollectionViewLayout:viewLayout];
-	}
-	return _collectionViewController;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

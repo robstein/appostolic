@@ -15,7 +15,7 @@
 static const CGFloat SquareButtonTitleFontSize = 20.f;
 static const CGFloat SquareButtonCaptionFontSize = 12.f;
 static const CGFloat SquareButtonCornerRadius = 15.f;
-static const CGFloat SquareButtonCornerSideLength = 80.f;
+static const CGFloat SquareButtonSideLength = 80.f;
 
 @implementation SquareButton
 
@@ -44,17 +44,14 @@ static const CGFloat SquareButtonCornerSideLength = 80.f;
         [_background addSubview:_caption];
         
         [self addSubview:_background];
-        
     }
     return self;
 }
 
 - (instancetype)initWithTitle:(NSString *)title caption:(NSString *)caption {
     if ((self = [self initWithFrame:CGRectZero])) {
-        
         [_title setText:title];
         [_caption setText:caption];
-        
     }
     return self;
 }
@@ -64,11 +61,10 @@ static const CGFloat SquareButtonCornerSideLength = 80.f;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    return CGSizeMake(SquareButtonCornerSideLength, SquareButtonCornerSideLength);
+    return CGSizeMake(SquareButtonSideLength, SquareButtonSideLength);
 }
 
 - (void)layoutSubviews {
-    
     if (_title != nil && _caption != nil && _background != nil) {
         NSDictionary *subviews = NSDictionaryOfVariableBindings(_title, _caption);
         NSArray<NSLayoutConstraint *> *subviewsVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_title]-[_caption]-|"
@@ -93,7 +89,7 @@ static const CGFloat SquareButtonCornerSideLength = 80.f;
         [_background addConstraint:centerTitleX];
         [_background addConstraint:centerCaptionX];
         
-        NSNumber *sideLength = @(SquareButtonCornerSideLength);
+        NSNumber *sideLength = @(SquareButtonSideLength);
         NSDictionary *metrics = NSDictionaryOfVariableBindings(sideLength);
         NSDictionary *views = NSDictionaryOfVariableBindings(_background);
         NSArray<NSLayoutConstraint *> *backgroundHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"|[_background(sideLength)]|"

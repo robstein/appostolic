@@ -8,6 +8,7 @@
 
 #import "LiteratureViewController.h"
 #import "SquareButton.h"
+#import "WideButton.h"
 
 @interface LiteratureViewController ()
 
@@ -17,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SquareButton *button = [[SquareButton alloc] initWithTitle:@"9pm" caption:@"Compline"];
+    //SquareButton *button = [[SquareButton alloc] initWithTitle:@"9pm" caption:@"Compline"];
+	WideButton *button = [[WideButton alloc] initWithTitle:@"Hello world" subtitle:@"Hi there" body:@"And here is a bunch of text. And here is a bunch of text. And here is a bunch of text. And here is a bunch of text. And here is a bunch of text."];
+	[button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [[self view] addSubview:button];
 }
 

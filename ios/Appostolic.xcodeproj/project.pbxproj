@@ -22,7 +22,6 @@
 		D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC51C46445700575424 /* UIView+Autolayout.m */; };
 		D479FA101C49E2010051879A /* SquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA0F1C49E2010051879A /* SquareButton.m */; };
 		D479FA151C49E6B20051879A /* WideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA141C49E6B20051879A /* WideButton.m */; };
-		D479FA171C49E6C50051879A /* WideButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D479FA161C49E6C50051879A /* WideButton.xib */; };
 		D48466961C4DD52000A26DAA /* DayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466951C4DD52000A26DAA /* DayModel.m */; };
 		D48466991C4DE30B00A26DAA /* Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466981C4DE30B00A26DAA /* Reading.m */; };
 		D484669F1C4DE35E00A26DAA /* Saint.m in Sources */ = {isa = PBXBuildFile; fileRef = D484669E1C4DE35E00A26DAA /* Saint.m */; };
@@ -76,7 +75,6 @@
 		D479FA0F1C49E2010051879A /* SquareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareButton.m; sourceTree = "<group>"; };
 		D479FA131C49E6B20051879A /* WideButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WideButton.h; sourceTree = "<group>"; };
 		D479FA141C49E6B20051879A /* WideButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WideButton.m; sourceTree = "<group>"; };
-		D479FA161C49E6C50051879A /* WideButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WideButton.xib; sourceTree = "<group>"; };
 		D48466931C4CDD2500A26DAA /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D48466941C4DD52000A26DAA /* DayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayModel.h; sourceTree = "<group>"; };
 		D48466951C4DD52000A26DAA /* DayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayModel.m; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				D479FA0F1C49E2010051879A /* SquareButton.m */,
 				D479FA131C49E6B20051879A /* WideButton.h */,
 				D479FA141C49E6B20051879A /* WideButton.m */,
-				D479FA161C49E6C50051879A /* WideButton.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -373,7 +370,6 @@
 			files = (
 				D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */,
 				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
-				D479FA171C49E6C50051879A /* WideButton.xib in Resources */,
 				D44F1D961C46184E00575424 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
