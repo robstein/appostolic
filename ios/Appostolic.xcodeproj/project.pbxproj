@@ -22,10 +22,10 @@
 		D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709191C71369D000E80D1 /* RASLiturgy.m */; };
 		D46709201C71369D000E80D1 /* RASReading.m in Sources */ = {isa = PBXBuildFile; fileRef = D467091B1C71369D000E80D1 /* RASReading.m */; };
 		D46709211C71369D000E80D1 /* RASSaint.m in Sources */ = {isa = PBXBuildFile; fileRef = D467091D1C71369D000E80D1 /* RASSaint.m */; };
-		D46709281C7136C3000E80D1 /* RASRSDayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709231C7136C3000E80D1 /* RASRSDayCollectionView.m */; };
 		D46709291C7136C3000E80D1 /* RASSquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709251C7136C3000E80D1 /* RASSquareButton.m */; };
 		D467092A1C7136C3000E80D1 /* RASWideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709271C7136C3000E80D1 /* RASWideButton.m */; };
 		D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D467092D1C713715000E80D1 /* RASAppDelegate.m */; };
+		D46709321C713A23000E80D1 /* RASDayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709311C713A23000E80D1 /* RASDayCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +75,6 @@
 		D467091B1C71369D000E80D1 /* RASReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASReading.m; sourceTree = "<group>"; };
 		D467091C1C71369D000E80D1 /* RASSaint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASSaint.h; sourceTree = "<group>"; };
 		D467091D1C71369D000E80D1 /* RASSaint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASSaint.m; sourceTree = "<group>"; };
-		D46709221C7136C3000E80D1 /* RASRSDayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASRSDayCollectionView.h; sourceTree = "<group>"; };
-		D46709231C7136C3000E80D1 /* RASRSDayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASRSDayCollectionView.m; sourceTree = "<group>"; };
 		D46709241C7136C3000E80D1 /* RASSquareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASSquareButton.h; sourceTree = "<group>"; };
 		D46709251C7136C3000E80D1 /* RASSquareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASSquareButton.m; sourceTree = "<group>"; };
 		D46709261C7136C3000E80D1 /* RASWideButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASWideButton.h; sourceTree = "<group>"; };
@@ -84,6 +82,8 @@
 		D467092B1C7136D0000E80D1 /* RASUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RASUtils.h; sourceTree = "<group>"; };
 		D467092C1C713715000E80D1 /* RASAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASAppDelegate.h; sourceTree = "<group>"; };
 		D467092D1C713715000E80D1 /* RASAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASAppDelegate.m; sourceTree = "<group>"; };
+		D46709301C713A23000E80D1 /* RASDayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDayCollectionView.h; sourceTree = "<group>"; };
+		D46709311C713A23000E80D1 /* RASDayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDayCollectionView.m; sourceTree = "<group>"; };
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
@@ -132,8 +132,8 @@
 			children = (
 				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
 				D44F1D941C46184E00575424 /* Main.storyboard */,
-				D46709221C7136C3000E80D1 /* RASRSDayCollectionView.h */,
-				D46709231C7136C3000E80D1 /* RASRSDayCollectionView.m */,
+				D46709301C713A23000E80D1 /* RASDayCollectionView.h */,
+				D46709311C713A23000E80D1 /* RASDayCollectionView.m */,
 				D46709241C7136C3000E80D1 /* RASSquareButton.h */,
 				D46709251C7136C3000E80D1 /* RASSquareButton.m */,
 				D46709261C7136C3000E80D1 /* RASWideButton.h */,
@@ -452,7 +452,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D46709281C7136C3000E80D1 /* RASRSDayCollectionView.m in Sources */,
 				D46709151C713678000E80D1 /* RASProgressViewController.m in Sources */,
 				D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */,
 				D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */,
@@ -463,6 +462,7 @@
 				D46709211C71369D000E80D1 /* RASSaint.m in Sources */,
 				D44F1D8A1C46184E00575424 /* main.m in Sources */,
 				D46709201C71369D000E80D1 /* RASReading.m in Sources */,
+				D46709321C713A23000E80D1 /* RASDayCollectionView.m in Sources */,
 				D46709291C7136C3000E80D1 /* RASSquareButton.m in Sources */,
 				D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */,
 			);

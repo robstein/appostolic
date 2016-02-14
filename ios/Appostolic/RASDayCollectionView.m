@@ -1,18 +1,18 @@
 //
-//  RASRSDayCollectionView.m
+//  RASDayCollectionView.m
 //  Appostolic
 //
 //  Created by Robert Stein on 2/14/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "RASRSDayCollectionView.h"
+#import "RASDayCollectionView.h"
 
-@interface RASRSDayCollectionView () <UICollectionViewDataSource>
+@interface RASDayCollectionView () <UICollectionViewDataSource>
 
 @end
 
-@implementation RASRSDayCollectionView
+@implementation RASDayCollectionView
 
 #pragma mark - UICollectionViewDataSource
 
