@@ -26,3 +26,25 @@ var fnGetDateData = function getDateData(dateStr, callback) {
 
 module.exports = client;
 module.exports.getDateData = fnGetDateData;
+
+function DayModel(dayID) {
+	var self = this;
+	self.dayID = dayID;
+	self.title = '';
+	self.lectionary = '';
+    self.readings = [];
+    self.liturgyOfTheHours = [];
+    self.saints = [];
+}
+function Reading() {
+	var self = this;
+	self.name = dayID;
+	self.passage = '';
+	self.body = '';
+}
+function Liturgy() {
+    var self = this;
+}
+function Saint() {
+    var self = this;
+}
