@@ -46,15 +46,17 @@ function getDateStr(theDate) {
    We take into account the request's locale. << TODO
    It converts that to the key with which we use to store day value data: MMDDYY
 */
-router.get(/^\d+$/, function(req, res, next) {
+router.get(/^\/\d+$/, function(req, res, next) {
 	var millisecondsSince1970, theDate, dateStr;
 	millisecondsSince1970 = parseInt(req.path.substr(1));
 	theDate = new Date(millisecondsSince1970); // What time zone should assume the user is in?
-	console.log("theDate: " + theDate);
+	console.log(theDate)
 	dateStr = getDateStr(theDate);
-	console.log("Look up this date: " + dateStr);
-	dateData(dateStr, function(dateData) {
-		res.send(dateData);
+	var jsonFilename = './readings/' + dateStr + '.json';
+	fs.readFile(jsonFilename, 'utf8', function (err, data) {
+		if (err) res.send({message:"There was an error."});
+		console.log("Reading from " + jsonFilename);
+		res.send(JSON.parse(data));
 	});
 });
 

@@ -9,7 +9,7 @@
 @class WideButton;
 @class SquareButton;
 
-@interface DayViewController : UIViewController
+@interface DayViewController : UICollectionViewController
 
 
 

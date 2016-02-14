@@ -34,27 +34,11 @@ NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self loadDay:[NSDate date]];
-	
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modelLoaded:) name:@"ModelLoaded" object:nil];
-}
-
-- (void)viewDidLayoutSubviews {
-    //[[self readings] setContentSize:CGSizeMake(4*175+(4-1)*15+27.5, 86)];
-    //[[self liturgyOfTheHours] setContentSize:CGSizeMake(10*80+(10-1)*15+27.5, 80)];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

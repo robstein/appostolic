@@ -8,7 +8,7 @@
         <!--Today-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" userLabel="Today" customClass="DayViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="Today" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Today" image="Home-50" selectedImage="Home-50" id="acW-dT-cKf" userLabel="Today"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

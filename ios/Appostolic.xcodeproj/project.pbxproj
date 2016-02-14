@@ -20,6 +20,7 @@
 		D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DBF1C461EBF00575424 /* ProgressViewController.m */; };
 		D44F1DC31C4620B700575424 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC21C4620B700575424 /* MoreViewController.m */; };
 		D44F1DC61C46445700575424 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DC51C46445700575424 /* UIView+Autolayout.m */; };
+		D46709091C707589000E80D1 /* RSDayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709081C707589000E80D1 /* RSDayCollectionView.m */; };
 		D479FA101C49E2010051879A /* SquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA0F1C49E2010051879A /* SquareButton.m */; };
 		D479FA151C49E6B20051879A /* WideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D479FA141C49E6B20051879A /* WideButton.m */; };
 		D48466961C4DD52000A26DAA /* DayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D48466951C4DD52000A26DAA /* DayModel.m */; };
@@ -71,6 +72,8 @@
 		D44F1DC21C4620B700575424 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		D44F1DC41C46445700575424 /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
 		D44F1DC51C46445700575424 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
+		D46709071C707589000E80D1 /* RSDayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDayCollectionView.h; sourceTree = "<group>"; };
+		D46709081C707589000E80D1 /* RSDayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDayCollectionView.m; sourceTree = "<group>"; };
 		D479FA0E1C49E2010051879A /* SquareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareButton.h; sourceTree = "<group>"; };
 		D479FA0F1C49E2010051879A /* SquareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareButton.m; sourceTree = "<group>"; };
 		D479FA131C49E6B20051879A /* WideButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WideButton.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 			children = (
 				D44F1D8E1C46184E00575424 /* DayViewController.h */,
 				D44F1D8F1C46184E00575424 /* DayViewController.m */,
+				D46709071C707589000E80D1 /* RSDayCollectionView.h */,
+				D46709081C707589000E80D1 /* RSDayCollectionView.m */,
 				D44F1D911C46184E00575424 /* LiteratureViewController.h */,
 				D44F1D921C46184E00575424 /* LiteratureViewController.m */,
 				D44F1DC11C4620B700575424 /* MoreViewController.h */,
@@ -445,6 +450,7 @@
 			files = (
 				D479FA151C49E6B20051879A /* WideButton.m in Sources */,
 				D479FA101C49E2010051879A /* SquareButton.m in Sources */,
+				D46709091C707589000E80D1 /* RSDayCollectionView.m in Sources */,
 				D48466991C4DE30B00A26DAA /* Reading.m in Sources */,
 				D44F1DC01C461EBF00575424 /* ProgressViewController.m in Sources */,
 				D48466961C4DD52000A26DAA /* DayModel.m in Sources */,

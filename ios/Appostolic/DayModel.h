@@ -12,6 +12,7 @@
 
 @interface DayModel : NSObject
 
+@property (nonatomic, copy) NSString *dayID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *lectionary;
 @property (nonatomic, copy) NSArray <Reading *> *readings;
