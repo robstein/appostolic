@@ -1,5 +1,5 @@
 //
-//  WideButton.h
+//  RASWideButton.h
 //  Appostolic
 //
 //  An 86x175 view with a gradient background and title, subtitle, and body.
@@ -10,7 +10,7 @@
 
 @class GradientView;
 
-@interface WideButton : UIView
+@interface RASWideButton : UIView
 
 - (instancetype) initWithTitle:(NSString *)title subtitle:(NSString *)subtitle body:(NSString *)body;
 

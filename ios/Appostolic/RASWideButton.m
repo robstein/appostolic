@@ -1,25 +1,25 @@
 //
-//  WideButton.m
+//  RASWideButton.m
 //  Appostolic
 //
 //  Created by Robert Stein on 1/15/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "WideButton.h"
+#import "RASWideButton.h"
 #import <GradientView/GradientView-Swift.h>
-#import "Utils.h"
+#import "RASUtils.h"
 
-static const CGFloat WideButtonTitleFontSize = 20.f;
-static const CGFloat WideButtonSubtitleFontSize = 12.f;
-static const CGFloat WideButtonBodyFontSize = 9.f;
-static const CGFloat WideButtonBodyHeight = 46.f;
-static const CGFloat WideButtonCornerRadius = 10.f;
-static const CGFloat WideButtonWidth = 175.f;
-static const CGFloat WideButtonHeight = 86.f;
-static const CGFloat WideButtonSpacing = 4.f;
+static const CGFloat RASWideButtonTitleFontSize = 20.f;
+static const CGFloat RASWideButtonSubtitleFontSize = 12.f;
+static const CGFloat RASWideButtonBodyFontSize = 9.f;
+static const CGFloat RASWideButtonBodyHeight = 46.f;
+static const CGFloat RASWideButtonCornerRadius = 10.f;
+static const CGFloat RASWideButtonWidth = 175.f;
+static const CGFloat RASWideButtonHeight = 86.f;
+static const CGFloat RASWideButtonSpacing = 4.f;
 
-@implementation WideButton
+@implementation RASWideButton
 
 @synthesize background = _background;
 @synthesize title = _title;
@@ -38,20 +38,20 @@ static const CGFloat WideButtonSpacing = 4.f;
 		[_body setTranslatesAutoresizingMaskIntoConstraints:NO];
 		[_background setTranslatesAutoresizingMaskIntoConstraints:NO];
 		
-		[_title setFont:[UIFont systemFontOfSize:WideButtonTitleFontSize]];
-		[_subtitle setFont:[UIFont systemFontOfSize:WideButtonSubtitleFontSize]];
-		[_body setFont:[UIFont systemFontOfSize:WideButtonBodyFontSize]];
+		[_title setFont:[UIFont systemFontOfSize:RASWideButtonTitleFontSize]];
+		[_subtitle setFont:[UIFont systemFontOfSize:RASWideButtonSubtitleFontSize]];
+		[_body setFont:[UIFont systemFontOfSize:RASWideButtonBodyFontSize]];
 		
 		[_body setLineBreakMode:NSLineBreakByWordWrapping];
 		[_body setNumberOfLines:0];
-		[_body setPreferredMaxLayoutWidth:(WideButtonWidth - (2 * WideButtonSpacing))];
+		[_body setPreferredMaxLayoutWidth:(RASWideButtonWidth - (2 * RASWideButtonSpacing))];
 //		[_body setClipsToBounds:NO];
 //		[_body setContentMode:UIViewContentModeTopLeft];
 //		[_body setTextAlignment:NSTextAlignmentLeft];
 		
 		[_background setColors:@[UIColorFromRGB(0xEFEFF4), UIColorFromRGB(0xCECED2)]];
 		[[_background layer] setBorderColor:[UIColorFromRGB(0xCECED2) CGColor]];
-		[[_background layer] setCornerRadius:WideButtonCornerRadius];
+		[[_background layer] setCornerRadius:RASWideButtonCornerRadius];
 		[_background setClipsToBounds:YES];
 		[_background addSubview:_title];
 		[_background addSubview:_subtitle];
@@ -75,13 +75,13 @@ static const CGFloat WideButtonSpacing = 4.f;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-	return CGSizeMake(WideButtonWidth, WideButtonHeight);
+	return CGSizeMake(RASWideButtonWidth, RASWideButtonHeight);
 }
 
 - (void)layoutSubviews {
 	if (_title != nil && _subtitle != nil && _body != nil && _background) {
-		NSNumber *spacing = @(WideButtonSpacing);
-		NSNumber *bodyHeight = @(WideButtonBodyHeight);
+		NSNumber *spacing = @(RASWideButtonSpacing);
+		NSNumber *bodyHeight = @(RASWideButtonBodyHeight);
 		NSDictionary *subviewMetrics = @{@"spacing":spacing, @"bodyHeight":bodyHeight, @"high":@(UILayoutPriorityDefaultHigh)};
 		NSDictionary *subviews = NSDictionaryOfVariableBindings(_title, _subtitle, _body);
 		NSArray<NSLayoutConstraint *> *subviewsHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(spacing)-[_title]-(spacing)-|"
@@ -95,8 +95,8 @@ static const CGFloat WideButtonSpacing = 4.f;
 		[_background addConstraints:subviewsHorizontal];
 		[_background addConstraints:subviewsVertical];
 		
-		NSNumber *width = @(WideButtonWidth);
-		NSNumber *height = @(WideButtonHeight);
+		NSNumber *width = @(RASWideButtonWidth);
+		NSNumber *height = @(RASWideButtonHeight);
 		NSDictionary *metrics = NSDictionaryOfVariableBindings(width, height);
 		NSDictionary *views = NSDictionaryOfVariableBindings(_background);
 		NSArray<NSLayoutConstraint *> *backgroundHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"|[_background(width)]|"

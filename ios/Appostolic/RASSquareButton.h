@@ -1,5 +1,5 @@
 //
-//  SquareButton.h
+//  RASSquareButton.h
 //  Appostolic
 //
 //  An 80x80 square view with a gradient background and a title and caption.
@@ -10,7 +10,7 @@
 
 @class GradientView;
 
-@interface SquareButton : UIView
+@interface RASSquareButton : UIView
 
 - (instancetype) initWithTitle:(NSString *)title caption:(NSString *)caption;
 

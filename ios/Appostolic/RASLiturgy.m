@@ -1,13 +1,13 @@
 //
-//  Liturgy.m
+//  RASLiturgy.m
 //  Appostolic
 //
 //  Created by Robert Stein on 1/18/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "Liturgy.h"
+#import "RASLiturgy.h"
 
-@implementation Liturgy
+@implementation RASLiturgy
 
 @end

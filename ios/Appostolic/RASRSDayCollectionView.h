@@ -1,5 +1,5 @@
 //
-//  RSDayCollectionView.h
+//  RASRSDayCollectionView.h
 //  Appostolic
 //
 //  Created by Robert Stein on 2/14/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSDayCollectionView : UICollectionView
+@interface RASRSDayCollectionView : UICollectionView
 
 @end

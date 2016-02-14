@@ -1,15 +1,15 @@
 //
-//  DayViewController.h
+//  RASDayViewController.h
 //  Appostolic
 //
 //  Created by Robert Stein on 1/12/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-@class WideButton;
-@class SquareButton;
+@class RASWideButton;
+@class RASSquareButton;
 
-@interface DayViewController : UICollectionViewController
+@interface RASDayViewController : UICollectionViewController
 
 
 

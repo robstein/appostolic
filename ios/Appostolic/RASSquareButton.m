@@ -1,5 +1,5 @@
 //
-//  SquareButton.m
+//  RASSquareButton.m
 //  Appostolic
 //
 //  An 80x80 square view with a gradient background and a title and caption.
@@ -8,16 +8,16 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "SquareButton.h"
+#import "RASSquareButton.h"
 #import <GradientView/GradientView-Swift.h>
-#import "Utils.h"
+#import "RASUtils.h"
 
-static const CGFloat SquareButtonTitleFontSize = 20.f;
-static const CGFloat SquareButtonCaptionFontSize = 12.f;
-static const CGFloat SquareButtonCornerRadius = 15.f;
-static const CGFloat SquareButtonSideLength = 80.f;
+static const CGFloat RASSquareButtonTitleFontSize = 20.f;
+static const CGFloat RASSquareButtonCaptionFontSize = 12.f;
+static const CGFloat RASSquareButtonCornerRadius = 15.f;
+static const CGFloat RASSquareButtonSideLength = 80.f;
 
-@implementation SquareButton
+@implementation RASSquareButton
 
 @synthesize background = _background;
 @synthesize title = _title;
@@ -26,17 +26,17 @@ static const CGFloat SquareButtonSideLength = 80.f;
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         _title = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_title setFont:[UIFont systemFontOfSize:SquareButtonTitleFontSize]];
+        [_title setFont:[UIFont systemFontOfSize:RASSquareButtonTitleFontSize]];
         [_title setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         _caption = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_caption setFont:[UIFont systemFontOfSize:SquareButtonCaptionFontSize]];
+        [_caption setFont:[UIFont systemFontOfSize:RASSquareButtonCaptionFontSize]];
         [_caption setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         _background = [[GradientView alloc] initWithFrame:CGRectZero];
         [_background setColors:@[UIColorFromRGB(0x5AC8FA), UIColorFromRGB(0x007AFF)]];
         [[_background layer] setBorderColor:[UIColorFromRGB(0xCECED2) CGColor]];
-        [[_background layer] setCornerRadius:SquareButtonCornerRadius];
+        [[_background layer] setCornerRadius:RASSquareButtonCornerRadius];
         [_background setClipsToBounds:YES];
         [_background setTranslatesAutoresizingMaskIntoConstraints:NO];
 
@@ -61,7 +61,7 @@ static const CGFloat SquareButtonSideLength = 80.f;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    return CGSizeMake(SquareButtonSideLength, SquareButtonSideLength);
+    return CGSizeMake(RASSquareButtonSideLength, RASSquareButtonSideLength);
 }
 
 - (void)layoutSubviews {
@@ -89,7 +89,7 @@ static const CGFloat SquareButtonSideLength = 80.f;
         [_background addConstraint:centerTitleX];
         [_background addConstraint:centerCaptionX];
         
-        NSNumber *sideLength = @(SquareButtonSideLength);
+        NSNumber *sideLength = @(RASSquareButtonSideLength);
         NSDictionary *metrics = NSDictionaryOfVariableBindings(sideLength);
         NSDictionary *views = NSDictionaryOfVariableBindings(_background);
         NSArray<NSLayoutConstraint *> *backgroundHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"|[_background(sideLength)]|"

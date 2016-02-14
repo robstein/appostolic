@@ -18,7 +18,7 @@
         <!--Literature-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="Literature" customClass="LiteratureViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="Literature" customClass="RASLiteratureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -58,7 +58,7 @@
         <!--Progress-->
         <scene sceneID="hwG-LG-tfm">
             <objects>
-                <viewController id="Bvi-QG-0wD" customClass="ProgressViewController" sceneMemberID="viewController">
+                <viewController id="Bvi-QG-0wD" customClass="RASProgressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDK-Me-JTH"/>
                         <viewControllerLayoutGuide type="bottom" id="AZi-4K-QOi"/>

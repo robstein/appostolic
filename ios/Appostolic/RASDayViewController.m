@@ -1,32 +1,32 @@
 //
-//  DayViewController.m
+//  RASDayViewController.m
 //  Appostolic
 //
 //  Created by Robert Stein on 1/12/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "DayViewController.h"
-#import "WideButton.h"
-#import "SquareButton.h"
-#import "DayModel.h"
-#import "Reading.h"
-#import "Liturgy.h"
-#import "Saint.h"
+#import "RASDayViewController.h"
+#import "RASWideButton.h"
+#import "RASSquareButton.h"
+#import "RASDayModel.h"
+#import "RASReading.h"
+#import "RASLiturgy.h"
+#import "RASSaint.h"
 #import <RestKit/RKObjectMapping.h>
 #import <RestKit/RKRelationshipMapping.h>
 #import <RestKit/RKResponseDescriptor.h>
 #import <RestKit/RKObjectRequestOperation.h>
 
-NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
+NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
 
-@interface DayViewController ()
+@interface RASDayViewController ()
 
-@property (nonatomic, strong) DayModel *model;
+@property (nonatomic, strong) RASDayModel *model;
 
 @end
 
-@implementation DayViewController
+@implementation RASDayViewController
 
 @synthesize model = _model;
 
@@ -50,29 +50,29 @@ NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 - (void)loadDay:(NSDate *)date {
 	double millisecondsSince1970 = [date timeIntervalSince1970] * 1000;
 	NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", millisecondsSince1970];
-	NSString *urlString = [NSString stringWithFormat:ReadingsServerURLFormat, lastPathComponent];
+	NSString *urlString = [NSString stringWithFormat:RASReadingsServerURLFormat, lastPathComponent];
 	NSURL *url = [NSURL URLWithString:urlString];
 	
-	RKObjectMapping *readingMapping = [RKObjectMapping mappingForClass:[Reading class]];
+	RKObjectMapping *readingMapping = [RKObjectMapping mappingForClass:[RASReading class]];
 	[readingMapping addAttributeMappingsFromDictionary:@{
 														 @"name":  @"name",
 														 @"passage":   @"passage",
 														 @"body":  @"body"
 														 }];
 	
-	RKObjectMapping *liturgyMapping = [RKObjectMapping mappingForClass:[Liturgy class]];
+	RKObjectMapping *liturgyMapping = [RKObjectMapping mappingForClass:[RASLiturgy class]];
 	[liturgyMapping addAttributeMappingsFromDictionary:@{
 														 @"name":  @"name",
 														 @"body":  @"body"
 														 }];
 	
-	RKObjectMapping *saintMapping = [RKObjectMapping mappingForClass:[Saint class]];
+	RKObjectMapping *saintMapping = [RKObjectMapping mappingForClass:[RASSaint class]];
 	[saintMapping addAttributeMappingsFromDictionary:@{
 													   @"name":  @"name",
 													   @"body":  @"body"
 													   }];
 	
-	RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[DayModel class]];
+	RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RASDayModel class]];
 	[mapping addAttributeMappingsFromDictionary:@{
 												  @"title": @"title",
 												  @"lectionary":    @"lectionary",
@@ -92,7 +92,7 @@ NSString *const ReadingsServerURLFormat = @"http://localhost:3000/%@";
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
 	[operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-		DayModel *model = [[result array] firstObject];
+		RASDayModel *model = [[result array] firstObject];
 		NSLog(@"The day's data: %@", model);
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ModelLoaded" object:model];
 	} failure:^(RKObjectRequestOperation *operation, NSError *error) {

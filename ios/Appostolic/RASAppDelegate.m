@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  RASAppDelegate.m
 //  Appostolic
 //
 //  Created by Robert Stein on 1/12/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RASAppDelegate.h"
 
-@interface AppDelegate ()
+@interface RASAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation RASAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

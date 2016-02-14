@@ -1,13 +1,13 @@
 //
-//  Saint.m
+//  RASSaint.m
 //  Appostolic
 //
 //  Created by Robert Stein on 1/18/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "Saint.h"
+#import "RASSaint.h"
 
-@implementation Saint
+@implementation RASSaint
 
 @end
