@@ -19,6 +19,8 @@
 #import <RestKit/RKObjectRequestOperation.h>
 
 NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
+NSString *const RASDayTabName = @"Today";
+NSString *const RASDayTabImageName = @"Home";
 
 @interface RASDayViewController ()
 
@@ -30,6 +32,14 @@ NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
 
 @synthesize model = _model;
 
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
+{
+	if (self = [super initWithCollectionViewLayout:layout]) {
+		[self setTitle:RASDayTabName];
+		[[self tabBarItem] setImage:[UIImage imageNamed:RASDayTabImageName]];
+	}
+	return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

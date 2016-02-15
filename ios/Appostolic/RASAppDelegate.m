@@ -7,6 +7,7 @@
 //
 
 #import "RASAppDelegate.h"
+#import "RASMainViewController.h"
 
 @interface RASAppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+	RASMainViewController *mainController = [[RASMainViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
+	UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	[window setRootViewController:mainController];
+	[window setBackgroundColor:[UIColor whiteColor]];
+	[window makeKeyAndVisible];
+	[self setWindow:window];
     return YES;
 }
 

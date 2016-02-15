@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		314099553A494A0485F165FD /* Pods_Appostolic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D44F1D8A1C46184E00575424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D891C46184E00575424 /* main.m */; };
-		D44F1D961C46184E00575424 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D941C46184E00575424 /* Main.storyboard */; };
 		D44F1D981C46184E00575424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D971C46184E00575424 /* Assets.xcassets */; };
-		D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D991C46184E00575424 /* LaunchScreen.storyboard */; };
 		D44F1DA61C46184E00575424 /* AppostolicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DA51C46184E00575424 /* AppostolicTests.m */; };
 		D44F1DB11C46184E00575424 /* AppostolicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DB01C46184E00575424 /* AppostolicUITests.m */; };
 		D46709121C713678000E80D1 /* RASDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467090B1C713678000E80D1 /* RASDayViewController.m */; };
@@ -26,6 +24,8 @@
 		D467092A1C7136C3000E80D1 /* RASWideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709271C7136C3000E80D1 /* RASWideButton.m */; };
 		D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D467092D1C713715000E80D1 /* RASAppDelegate.m */; };
 		D46709321C713A23000E80D1 /* RASDayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709311C713A23000E80D1 /* RASDayCollectionView.m */; };
+		D46709351C713BBA000E80D1 /* RASMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709341C713BBA000E80D1 /* RASMainViewController.m */; };
+		D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +49,7 @@
 		C0574220D23D0B4BFAF9FBB9 /* Pods-Appostolic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appostolic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic.debug.xcconfig"; sourceTree = "<group>"; };
 		D44F1D851C46184E00575424 /* Appostolic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appostolic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F1D891C46184E00575424 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D44F1D951C46184E00575424 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D44F1D971C46184E00575424 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D44F1D9A1C46184E00575424 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44F1D9C1C46184E00575424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D44F1DA11C46184E00575424 /* AppostolicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppostolicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F1DA51C46184E00575424 /* AppostolicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppostolicTests.m; sourceTree = "<group>"; };
@@ -84,6 +82,9 @@
 		D467092D1C713715000E80D1 /* RASAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASAppDelegate.m; sourceTree = "<group>"; };
 		D46709301C713A23000E80D1 /* RASDayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDayCollectionView.h; sourceTree = "<group>"; };
 		D46709311C713A23000E80D1 /* RASDayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDayCollectionView.m; sourceTree = "<group>"; };
+		D46709331C713BBA000E80D1 /* RASMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASMainViewController.h; sourceTree = "<group>"; };
+		D46709341C713BBA000E80D1 /* RASMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASMainViewController.m; sourceTree = "<group>"; };
+		D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
@@ -130,8 +131,7 @@
 		D41858011C476B9E00B3FCCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D44F1D991C46184E00575424 /* LaunchScreen.storyboard */,
-				D44F1D941C46184E00575424 /* Main.storyboard */,
+				D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */,
 				D46709301C713A23000E80D1 /* RASDayCollectionView.h */,
 				D46709311C713A23000E80D1 /* RASDayCollectionView.m */,
 				D46709241C7136C3000E80D1 /* RASSquareButton.h */,
@@ -149,6 +149,8 @@
 				D467090B1C713678000E80D1 /* RASDayViewController.m */,
 				D467090C1C713678000E80D1 /* RASLiteratureViewController.h */,
 				D467090D1C713678000E80D1 /* RASLiteratureViewController.m */,
+				D46709331C713BBA000E80D1 /* RASMainViewController.h */,
+				D46709341C713BBA000E80D1 /* RASMainViewController.m */,
 				D467090E1C713678000E80D1 /* RASMoreViewController.h */,
 				D467090F1C713678000E80D1 /* RASMoreViewController.m */,
 				D46709101C713678000E80D1 /* RASProgressViewController.h */,
@@ -377,9 +379,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44F1D9B1C46184E00575424 /* LaunchScreen.storyboard in Resources */,
 				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
-				D44F1D961C46184E00575424 /* Main.storyboard in Resources */,
+				D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +457,7 @@
 				D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */,
 				D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */,
 				D46709121C713678000E80D1 /* RASDayViewController.m in Sources */,
+				D46709351C713BBA000E80D1 /* RASMainViewController.m in Sources */,
 				D46709131C713678000E80D1 /* RASLiteratureViewController.m in Sources */,
 				D467092A1C7136C3000E80D1 /* RASWideButton.m in Sources */,
 				D46709141C713678000E80D1 /* RASMoreViewController.m in Sources */,
@@ -498,25 +500,6 @@
 			targetProxy = D44F1DAD1C46184E00575424 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D44F1D941C46184E00575424 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D44F1D951C46184E00575424 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D44F1D991C46184E00575424 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D44F1D9A1C46184E00575424 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D44F1DB31C46184E00575424 /* Debug */ = {
