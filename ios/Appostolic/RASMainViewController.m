@@ -20,7 +20,11 @@
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		RASDayViewController *dayVC = [[RASDayViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+		UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+		[layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+		[layout setItemSize:CGSizeMake(175, 86)];
+		
+		RASDayViewController *dayVC = [[RASDayViewController alloc] initWithCollectionViewLayout:layout];
 		RASLiteratureViewController *litVC = [[RASLiteratureViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];
 		RASProgressViewController *progressVC = [[RASProgressViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];
 		RASMoreViewController *moreVC = [[RASMoreViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];

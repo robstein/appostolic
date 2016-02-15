@@ -11,6 +11,7 @@
 #import "RASWideButton.h"
 #import "RASSquareButton.h"
 #import "RASDayCollectionView.h"
+#import "RASDayCollectionViewCell.h"
 
 #import "RASDayModel.h"
 #import "RASReading.h"
@@ -25,6 +26,10 @@
 NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
 NSString *const RASDayTabName = @"Today";
 NSString *const RASDayTabImageName = @"Home";
+NSString *const RASDayCollectionCellIdentifierReading = @"RASDayCollectionCellIdentifierReading";
+NSString *const RASDayCollectionCellIdentifierLiturgy = @"RASDayCollectionCellIdentifierLiturgy";
+NSString *const RASDayCollectionCellIdentifierSaint = @"RASDayCollectionCellIdentifierSaint";
+NSString *const RASDayCollectionSupplementaryKindHeader = @"RASDayCollectionSupplementaryKindHeader";
 
 typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 	RASDayCollectionSectionReadings,
@@ -49,9 +54,14 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 		[self setTitle:RASDayTabName];
 		[[self tabBarItem] setImage:[UIImage imageNamed:RASDayTabImageName]];
 		
-		RASDayCollectionView *collectionView = [[RASDayCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+		UICollectionView *collectionView = [[RASDayCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
 		[collectionView setDelegate:self];
 		[collectionView setDataSource:self];
+		[collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:RASDayCollectionCellIdentifierReading];
+		[collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:RASDayCollectionSupplementaryKindHeader withReuseIdentifier:RASDayCollectionCellIdentifierReading];
+		
+		[collectionView setScrollEnabled:YES];
+		
 		[self setCollectionView:collectionView];
 	}
 	return self;
@@ -59,6 +69,20 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	UICollectionView *collectionView = [self collectionView];
+	if (collectionView != nil) {
+		NSDictionary *subviews = NSDictionaryOfVariableBindings(collectionView);
+		NSArray<NSLayoutConstraint *> *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|[collectionView]|"
+																								  options:0
+																								  metrics:nil
+																									views:subviews];
+		[collectionView addConstraints:constraints];
+	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	[self loadDay:[NSDate date]];
 }
 
@@ -129,59 +153,23 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 
 - (void)modelLoaded:(NSNotification *)notification {
 	_model = [notification object];
+	[[self collectionView] reloadData];
+	[[self collectionView] setNeedsLayout];
+}
+
+- (void)viewWillLayoutSubviews {
+	UICollectionView *collectionView = [self collectionView];
+	CGRect screenBounds = [[UIScreen mainScreen] bounds];
+	
+	NSInteger numOfReadings = [[_model readings] count];
+	NSInteger spacingWidth = 10;
+	NSInteger cellWidth = 175;
+	CGFloat width = numOfReadings*(cellWidth + (spacingWidth-1));
+	[collectionView setContentSize:CGSizeMake(width, 106)];
+	[collectionView setFrame:CGRectMake(0, 0, screenBounds.size.width, 106)];
 }
 
 #pragma mark - UICollectionViewDelegate methods
-
-#pragma mark Managing the Selected Cells
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-#pragma mark Managing Cell Highlighting
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-#pragma mark Tracking the Addition and Removal of Views
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
-	
-}
 
 #pragma mark Handling Layout Changes
 
@@ -211,24 +199,6 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 	
 }
 
-#pragma mark Managing Collection View Focus
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canFocusItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldUpdateFocusInContext:(UICollectionViewFocusUpdateContext *)context {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didUpdateFocusInContext:(UICollectionViewFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator {
-	
-}
-
-- (NSIndexPath *)indexPathForPreferredFocusedViewInCollectionView:(UICollectionView *)collectionView {
-	return nil;
-}
-
 #pragma mark - UICollectionViewDataSource methods
 
 #pragma mark Getting Item and Section Metrics
@@ -236,7 +206,7 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	if (collectionView == [self collectionView]) {
 		NSInteger numberOfSections = [self numberOfSectionsInCollectionView:collectionView];
-		if (numberOfSections == RASDayCollectionSectionMax) {
+		if (numberOfSections == 1/*TODO change this to MAX */) {
 			RASDayCollectionSection daySection = (RASDayCollectionSection)section;
 			switch (daySection) {
 				case RASDayCollectionSectionReadings:
@@ -276,21 +246,59 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 #pragma mark Getting Views for Items
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return nil;
+	RASDayCollectionSection collectionSection = [indexPath section];
+
+	UICollectionViewCell *cell;
+	switch (collectionSection) {
+		case RASDayCollectionSectionReadings:
+		{
+			cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDayCollectionCellIdentifierReading forIndexPath:indexPath];
+			NSInteger index = [indexPath item];
+			RASReading *reading = [[_model readings] objectAtIndex:index];
+			RASWideButton *button = [[RASWideButton alloc] initWithTitle:[reading name] subtitle:[reading passage] body:[reading body]];
+			[button setTranslatesAutoresizingMaskIntoConstraints:NO];
+			[[cell contentView] addSubview:button];
+			break;
+		}
+		case RASDayCollectionSectionLiturgyOfTheHours:
+		{
+			cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDayCollectionCellIdentifierLiturgy forIndexPath:indexPath];
+			break;
+		}
+		case RASDayCollectionSectionSaints:
+		{
+			cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDayCollectionCellIdentifierSaint forIndexPath:indexPath];
+			break;
+		}
+		case RASDayCollectionSectionMax:
+		{
+			NSLog(@"Fail. This indexPath is invalid. We'll probably crash soon.");
+			break;
+		}
+	}
+	
+	return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(nonnull NSString *)kind atIndexPath:(nonnull NSIndexPath *)indexPath {
-	return nil;
+	RASDayCollectionSection collectionSection = [indexPath section];
+	UICollectionReusableView *view;
+	switch (collectionSection) {
+		case RASDayCollectionSectionReadings:
+			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierReading forIndexPath:indexPath];
+		case RASDayCollectionSectionLiturgyOfTheHours:
+			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierLiturgy forIndexPath:indexPath];
+		case RASDayCollectionSectionSaints:
+			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierSaint forIndexPath:indexPath];
+		case RASDayCollectionSectionMax:
+			NSLog(@"Fail. This indexPath is invalid. We'll probably crash soon.");
+			return nil;
+	}
+	return view;
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
 	return NO;
-}
-
-#pragma mark Reordering Items
-
-- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(nonnull NSIndexPath *)destinationIndexPath {
-	
 }
 
 @end
