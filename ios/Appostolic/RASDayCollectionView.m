@@ -8,20 +8,17 @@
 
 #import "RASDayCollectionView.h"
 
-@interface RASDayCollectionView () <UICollectionViewDataSource>
+@interface RASDayCollectionView ()
 
 @end
 
 @implementation RASDayCollectionView
 
-#pragma mark - UICollectionViewDataSource
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+	if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return nil;
+	}
+	return self;
 }
 
 @end
