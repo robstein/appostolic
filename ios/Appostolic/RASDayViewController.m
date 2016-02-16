@@ -18,12 +18,15 @@
 #import "RASLiturgy.h"
 #import "RASSaint.h"
 
+#import "RASTextViewControler.h"
+
 #import <RestKit/RKObjectMapping.h>
 #import <RestKit/RKRelationshipMapping.h>
 #import <RestKit/RKResponseDescriptor.h>
 #import <RestKit/RKObjectRequestOperation.h>
 
-NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
+//NSString *const RASReadingsServerURLFormat = @"http://localhost:3000/%@";
+NSString *const RASReadingsServerURLFormat = @"http://40.78.107.212:3000/%@";
 NSString *const RASDayTabName = @"Today";
 NSString *const RASDayTabImageName = @"Home";
 NSString *const RASDayCollectionCellIdentifierReading = @"RASDayCollectionCellIdentifierReading";
@@ -55,6 +58,7 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 		[[self tabBarItem] setImage:[UIImage imageNamed:RASDayTabImageName]];
 		
 		UICollectionView *collectionView = [[RASDayCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+		[collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 		[collectionView setDelegate:self];
 		[collectionView setDataSource:self];
 		[collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:RASDayCollectionCellIdentifierReading];
@@ -160,16 +164,38 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 - (void)viewWillLayoutSubviews {
 	UICollectionView *collectionView = [self collectionView];
 	CGRect screenBounds = [[UIScreen mainScreen] bounds];
-	
 	NSInteger numOfReadings = [[_model readings] count];
 	NSInteger spacingWidth = 10;
 	NSInteger cellWidth = 175;
 	CGFloat width = numOfReadings*(cellWidth + (spacingWidth-1));
 	[collectionView setContentSize:CGSizeMake(width, 106)];
-	[collectionView setFrame:CGRectMake(0, 0, screenBounds.size.width, 106)];
+	CGRect collectionViewFrame = [collectionView frame];
+	[collectionView setFrame:CGRectMake(0, collectionViewFrame.origin.y, screenBounds.size.width, 106)];
+	
+	id top = [self topLayoutGuide];
+	NSDictionary *views = NSDictionaryOfVariableBindings(collectionView, top);
+	NSArray <NSLayoutConstraint *> *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-(0)-[collectionView]" options:0 metrics:nil views:views];
+	[[self view] addConstraints:constraints];
 }
 
 #pragma mark - UICollectionViewDelegate methods
+
+#pragma mark Managing the Selected Cells
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	RASDayCollectionSection collectionSection = [indexPath section];
+	
+	UICollectionViewCell *cell;
+	switch (collectionSection) {
+		case RASDayCollectionSectionReadings:
+		{
+			NSInteger index = [indexPath item];
+			RASTextViewControler *vc = [[RASTextViewControler alloc] initWithReading:[[_model readings] objectAtIndex:index]];
+			[self presentViewController:vc animated:NO completion:nil];
+			break;
+		}
+	}
+}
 
 #pragma mark Handling Layout Changes
 

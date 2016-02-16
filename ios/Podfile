@@ -6,6 +6,7 @@ use_frameworks!
 target 'Appostolic' do
   pod 'RestKit', '~> 0.25.0'
   pod 'GradientView'
+  pod 'DTCoreText'
 end
 
 target 'AppostolicTests' do

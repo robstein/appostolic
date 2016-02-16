@@ -1,7 +1,8 @@
 'use strict';
 
 var express = require('express');
-var redis = require("redis"),
+
+/*var redis = require("redis"),
     client = redis.createClient();
 
 function demoMaterial() {
@@ -11,18 +12,21 @@ function demoMaterial() {
 client.on('error', function (err) {
   console.log('Error ' + err);
 });
-
+*/
 
 var fnGetDateData = function getDateData(dateStr, callback) {
   callback = (typeof callback === 'function') ? callback : function() {};
+  /*
   client.get(dateStr, function(error, reply) {
     var obj = JSON.parse(reply);
     client.quit();
     callback(obj);
   });
+  */
+  callback(null);
 }
 
 //demoMaterial();
 
-module.exports = client;
+//module.exports = client;
 module.exports.getDateData = fnGetDateData;

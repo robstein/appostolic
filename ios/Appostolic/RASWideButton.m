@@ -7,12 +7,13 @@
 //
 
 #import "RASWideButton.h"
-#import <GradientView/GradientView-Swift.h>
 #import "RASUtils.h"
+#import <GradientView/GradientView-Swift.h>
+#import <DTCoreText/DTCoreText.h>
 
-static const CGFloat RASWideButtonTitleFontSize = 20.f;
-static const CGFloat RASWideButtonSubtitleFontSize = 12.f;
-static const CGFloat RASWideButtonBodyFontSize = 9.f;
+static const CGFloat RASWideButtonTitleFontSize = 16.f;
+static const CGFloat RASWideButtonSubtitleFontSize = 9.f;
+static const CGFloat RASWideButtonBodyFontSize = 8.f;
 static const CGFloat RASWideButtonBodyHeight = 46.f;
 static const CGFloat RASWideButtonCornerRadius = 10.f;
 static const CGFloat RASWideButtonWidth = 175.f;
@@ -65,7 +66,11 @@ static const CGFloat RASWideButtonSpacing = 4.f;
 	if (self = [self initWithFrame:CGRectZero]) {
 		[_title setText:title];
 		[_subtitle setText:subtitle];
-		[_body setText:body];
+		
+		NSData *bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
+		NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
+		//[_body setAttributedText:attrString];
+		[_body setText:[attrString string]];
 	}
 	return self;
 }
