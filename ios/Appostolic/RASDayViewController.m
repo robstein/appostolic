@@ -64,6 +64,7 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 		[collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:RASDayCollectionCellIdentifierReading];
 		[collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:RASDayCollectionSupplementaryKindHeader withReuseIdentifier:RASDayCollectionCellIdentifierReading];
 		
+		[collectionView setBackgroundColor:[UIColor clearColor]];
 		[collectionView setScrollEnabled:YES];
 		
 		[self setCollectionView:collectionView];

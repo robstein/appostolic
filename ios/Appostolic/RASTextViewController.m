@@ -15,6 +15,8 @@ static const CGFloat RASTextViewControllerTitleFontSize = 20.f;
 static const CGFloat RASTextViewControllerSubtitleFontSize = 9.f;
 static const CGFloat RASTextViewControllerBodyFontSize = 12.f;
 static const CGFloat RASTextViewPanThreshold = 160.f;
+static const CGFloat RASTextViewAnimationOutDuration = 0.3;
+static const CGFloat RASTextViewAnimationBackDuration = 0.2;
 
 @interface RASTextViewController ()
 
@@ -119,21 +121,21 @@ static const CGFloat RASTextViewPanThreshold = 160.f;
 	
 	if (state == UIGestureRecognizerStateEnded) {
 		if (fabs(_totalTranslationY) > RASTextViewPanThreshold) {
-			[UIView beginAnimations:nil context:nil];
-			[UIView setAnimationDuration:0.2];
 			[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-			if (_totalTranslationY > 0) {
-				// positive translation. animate down
-				[view setCenter:CGPointMake(center.x, center.y - _totalTranslationY + bounds.size.height)];
-			} else {
-				// negative translation. animate up
-				[view setCenter:CGPointMake(center.x, center.y - _totalTranslationY - bounds.size.height)];
-			}
-			[UIView commitAnimations];
-			[self removeFromParent:self];
+			[UIView animateWithDuration:RASTextViewAnimationOutDuration animations:^{
+				if (_totalTranslationY > 0) {
+					// positive translation. animate down
+					[view setCenter:CGPointMake(center.x, center.y - _totalTranslationY + bounds.size.height)];
+				} else {
+					// negative translation. animate up
+					[view setCenter:CGPointMake(center.x, center.y - _totalTranslationY - bounds.size.height)];
+				}
+			} completion:^(BOOL finished) {
+				[self removeFromParent:self];
+			}];
 		} else {
 			[UIView beginAnimations:nil context:nil];
-			[UIView setAnimationDuration:0.2];
+			[UIView setAnimationDuration:RASTextViewAnimationBackDuration];
 			[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 			[view setCenter:CGPointMake(center.x, center.y - _totalTranslationY)];
 			[UIView commitAnimations];
