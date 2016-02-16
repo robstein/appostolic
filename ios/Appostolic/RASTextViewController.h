@@ -1,5 +1,5 @@
 //
-//  RASTextViewControler.h
+//  RASTextViewController.h
 //  Appostolic
 //
 //  Created by Robert Stein on 2/15/16.
@@ -10,7 +10,7 @@
 
 @class RASReading;
 
-@interface RASTextViewControler : UIViewController
+@interface RASTextViewController : UIViewController
 
 - (instancetype)initWithReading:(RASReading *)reading;
 

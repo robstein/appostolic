@@ -11,6 +11,4 @@
 
 @interface RASDayViewController : UICollectionViewController
 
-
-
 @end

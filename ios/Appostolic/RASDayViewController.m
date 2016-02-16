@@ -18,7 +18,7 @@
 #import "RASLiturgy.h"
 #import "RASSaint.h"
 
-#import "RASTextViewControler.h"
+#import "RASTextViewController.h"
 
 #import <RestKit/RKObjectMapping.h>
 #import <RestKit/RKRelationshipMapping.h>
@@ -97,6 +97,12 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)displayController:(UIViewController *)childViewController {
+	[self addChildViewController:childViewController];
+	[[self view] addSubview:[childViewController view]];
+	[childViewController didMoveToParentViewController:self];
 }
 
 #pragma mark - Load model with data
@@ -190,8 +196,8 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 		case RASDayCollectionSectionReadings:
 		{
 			NSInteger index = [indexPath item];
-			RASTextViewControler *vc = [[RASTextViewControler alloc] initWithReading:[[_model readings] objectAtIndex:index]];
-			[self presentViewController:vc animated:NO completion:nil];
+			RASTextViewController *textViewController = [[RASTextViewController alloc] initWithReading:[[_model readings] objectAtIndex:index]];
+			[self displayController:textViewController];
 			break;
 		}
 	}
