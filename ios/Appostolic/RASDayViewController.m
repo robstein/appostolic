@@ -117,8 +117,11 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 #pragma mark - Load model with data
 
 - (void)loadDay:(NSDate *)date {
-	double millisecondsSince1970 = [date timeIntervalSince1970] * 1000;
-	NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", millisecondsSince1970];
+	NSTimeInterval secondsSince1970 = [date timeIntervalSince1970];
+	NSInteger secondsFromGMT = [[NSTimeZone localTimeZone] secondsFromGMT];
+	NSTimeInterval localMillisecondsSince1970 = (secondsSince1970 + secondsFromGMT) * 1000;
+	
+	NSString *lastPathComponent = [NSString stringWithFormat:@"%.0f", localMillisecondsSince1970];
 	NSString *urlString = [NSString stringWithFormat:RASReadingsServerURLFormat, lastPathComponent];
 	NSURL *url = [NSURL URLWithString:urlString];
 	

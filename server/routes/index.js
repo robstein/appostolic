@@ -42,8 +42,7 @@ function getDateStr(theDate) {
 }
 
 /* GET root */
-/* This function takes the number of milliseconds since 00:00:00 UTC on 1 January 1970.
-   We take into account the request's locale. << TODO
+/* This function takes the number of milliseconds since 00:00:00 (local time) on 1 January 1970.
    It converts that to the key with which we use to store day value data: MMDDYY
 */
 router.get(/^\/\d+$/, function(req, res, next) {
@@ -56,7 +55,9 @@ router.get(/^\/\d+$/, function(req, res, next) {
 	fs.readFile(jsonFilename, 'utf8', function (err, data) {
 		if (err) res.send({message:"There was an error."});
 		console.log("Reading from " + jsonFilename);
-		res.send(JSON.parse(data));
+		var obj = JSON.parse(data);
+		obj.title = theDate;
+		res.send(obj);
 	});
 });
 
