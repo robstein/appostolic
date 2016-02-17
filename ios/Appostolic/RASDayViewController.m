@@ -32,7 +32,6 @@ NSString *const RASDayTabImageName = @"Home";
 NSString *const RASDayCollectionCellIdentifierReading = @"RASDayCollectionCellIdentifierReading";
 NSString *const RASDayCollectionCellIdentifierLiturgy = @"RASDayCollectionCellIdentifierLiturgy";
 NSString *const RASDayCollectionCellIdentifierSaint = @"RASDayCollectionCellIdentifierSaint";
-NSString *const RASDayCollectionSupplementaryKindHeader = @"RASDayCollectionSupplementaryKindHeader";
 
 typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 	RASDayCollectionSectionReadings,
@@ -51,6 +50,15 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 
 @synthesize model = _model;
 
+- (instancetype)init {
+	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+	[layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+	[layout setItemSize:CGSizeMake(175, 86)];
+	[layout setHeaderReferenceSize:CGSizeMake(0, 100.f)];
+	self = [self initWithCollectionViewLayout:layout];
+	return self;
+}
+
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
 {
 	if (self = [super initWithCollectionViewLayout:layout]) {
@@ -62,7 +70,7 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 		[collectionView setDelegate:self];
 		[collectionView setDataSource:self];
 		[collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:RASDayCollectionCellIdentifierReading];
-		[collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:RASDayCollectionSupplementaryKindHeader withReuseIdentifier:RASDayCollectionCellIdentifierReading];
+		[collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:RASDayCollectionCellIdentifierReading];
 		
 		[collectionView setBackgroundColor:[UIColor clearColor]];
 		[collectionView setScrollEnabled:YES];
@@ -174,10 +182,12 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 	NSInteger numOfReadings = [[_model readings] count];
 	NSInteger spacingWidth = 10;
 	NSInteger cellWidth = 175;
+	NSInteger cellHeight = 106;
 	CGFloat width = numOfReadings*(cellWidth + (spacingWidth-1));
-	[collectionView setContentSize:CGSizeMake(width, 106)];
+	CGFloat height = numOfReadings*(cellHeight + (spacingWidth-1));
+	[collectionView setContentSize:CGSizeMake(screenBounds.size.width, height)];
 	CGRect collectionViewFrame = [collectionView frame];
-	[collectionView setFrame:CGRectMake(0, collectionViewFrame.origin.y, screenBounds.size.width, 106)];
+	[collectionView setFrame:CGRectMake(0, collectionViewFrame.origin.y, screenBounds.size.width, screenBounds.size.height)];
 	
 	id top = [self topLayoutGuide];
 	NSDictionary *views = NSDictionaryOfVariableBindings(collectionView, top);
@@ -313,19 +323,32 @@ typedef NS_ENUM(NSInteger, RASDayCollectionSection) {
 	return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(nonnull NSString *)kind atIndexPath:(nonnull NSIndexPath *)indexPath {
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(nonnull NSIndexPath *)indexPath {
 	RASDayCollectionSection collectionSection = [indexPath section];
 	UICollectionReusableView *view;
 	switch (collectionSection) {
 		case RASDayCollectionSectionReadings:
+		{
 			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierReading forIndexPath:indexPath];
+			UILabel *label = [[UILabel alloc] initWithFrame:[view frame]];
+			[label setText:[_model title]];
+			[view addSubview:label];
+			break;
+		}
 		case RASDayCollectionSectionLiturgyOfTheHours:
+		{
 			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierLiturgy forIndexPath:indexPath];
+			break;
+		}
 		case RASDayCollectionSectionSaints:
+		{
 			view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:RASDayCollectionCellIdentifierSaint forIndexPath:indexPath];
+		}
 		case RASDayCollectionSectionMax:
+		{
 			NSLog(@"Fail. This indexPath is invalid. We'll probably crash soon.");
 			return nil;
+		}
 	}
 	return view;
 }
