@@ -10,7 +10,11 @@
 @class RASLiturgy;
 @class RASSaint;
 
+extern const NSString *RASDayModelDidLoadNotification;
+
 @interface RASDayModel : NSObject
+
+- (void)loadDay:(NSDate *)date;
 
 @property (nonatomic, copy) NSString *dayID;
 @property (nonatomic, copy) NSString *title;

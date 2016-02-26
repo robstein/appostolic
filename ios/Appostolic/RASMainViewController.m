@@ -7,10 +7,15 @@
 //
 
 #import "RASMainViewController.h"
-#import "RASDayViewController.h"
-#import "RASLiteratureViewController.h"
+#import "RASCollectionViewController.h"
 #import "RASProgressViewController.h"
-#import "RASMoreViewController.h"
+#import "UIViewController+RASTabExtensions.h"
+
+NSString *const RASTabNameToday = @"Today";
+NSString *const RASTabNameProgress = @"Progress";
+
+NSString *const RASTabImageNameToday = @"Home";
+NSString *const RASTabImageNameProgress = @"HeartMonitor";
 
 @interface RASMainViewController () <UITabBarControllerDelegate>
 
@@ -20,11 +25,10 @@
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		RASDayViewController *dayVC = [[RASDayViewController alloc] init];
-		RASLiteratureViewController *litVC = [[RASLiteratureViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];
-		RASProgressViewController *progressVC = [[RASProgressViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];
-		RASMoreViewController *moreVC = [[RASMoreViewController alloc] initWithNibName:nil bundle:nibBundleOrNil];
-		NSArray<UIViewController *> *viewControllers = @[dayVC, litVC, progressVC, moreVC];
+		RASCollectionViewController *dayViewController = [[RASCollectionViewController alloc] initWithTitle:RASTabNameToday tabBarItemImage:[UIImage imageNamed:RASTabImageNameToday]];
+		UINavigationController *dayNavigationController = [[UINavigationController alloc] initWithRootViewController:dayViewController];
+		RASProgressViewController *progressViewController = [[RASProgressViewController alloc] initWithTitle:RASTabNameProgress tabBarItemImage:[UIImage imageNamed:RASTabImageNameProgress]];
+		NSArray<UIViewController *> *viewControllers = @[dayNavigationController, progressViewController];
 		[self setViewControllers:viewControllers];
 		[self setDelegate:self];
 	}
@@ -37,5 +41,9 @@
 }
 
 #pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+	return YES;
+}
 
 @end
