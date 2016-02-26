@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, RASCollectionSection) {
 };
 
 static CGFloat const RASCollectionSmallCellHeight = 150.f;
+static CGFloat const RASCollectionLargeCellHeight = 450.f;
 static CGFloat const RASCollectionCellSpacing = 4.f;
 
 @interface RASCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -31,8 +32,6 @@ static CGFloat const RASCollectionCellSpacing = 4.f;
 
 @synthesize model = _model;
 @synthesize dataSource = _dataSource;
-
-static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 
 + (UICollectionViewFlowLayout *)defaultLayout {
 	static UICollectionViewFlowLayout *defaultInstance = nil;
@@ -75,14 +74,15 @@ static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 	UICollectionView *collectionView = [self collectionView];
 	
     // Register cell classes
-    [collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifierSmallCell];
+    [collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall];
+	[collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
 	// Load data model
-	[_model loadDay:[NSDate date]];
+	[RASDayModel loadForDay:[NSDate date]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -97,7 +97,7 @@ static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 }
 
 - (void)reload:(id)sender {
-	// TODO
+	// TODO get [sender object]
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -145,7 +145,7 @@ static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierSmallCell forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
     // Configure the cell
     
     return cell;
@@ -185,7 +185,11 @@ static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 #pragma mark - UICollectionViewDelegateFlowLayout methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return CGSizeMake([collectionView frame].size.width, RASCollectionSmallCellHeight);
+	if ([indexPath item] == 0) {
+		return CGSizeMake([collectionView frame].size.width, RASCollectionLargeCellHeight);
+	} else {
+		return CGSizeMake([collectionView frame].size.width, RASCollectionSmallCellHeight);
+	}
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

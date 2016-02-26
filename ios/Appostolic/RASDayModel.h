@@ -14,7 +14,7 @@ extern const NSString *RASDayModelDidLoadNotification;
 
 @interface RASDayModel : NSObject
 
-- (void)loadDay:(NSDate *)date;
++ (void)loadForDay:(NSDate *)date;
 
 @property (nonatomic, copy) NSString *dayID;
 @property (nonatomic, copy) NSString *title;

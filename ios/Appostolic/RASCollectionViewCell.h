@@ -6,6 +6,9 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
+extern NSString *const RASCollectionViewCellReuseIdentifierSmall;
+extern NSString *const RASCollectionViewCellReuseIdentifierLarge;
+
 @interface RASCollectionViewCell : UICollectionViewCell
 
 - (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle leftFooter:(NSString *)leftText rightFooter:(NSString *)rightText;

@@ -7,12 +7,16 @@
 //
 
 #import "RASCollectionViewCell.h"
-#import "RASLabel.h"
+
+NSString *const RASCollectionViewCellReuseIdentifierSmall = @"RASCollectionViewCellReuseIdentifierSmall";
+NSString *const RASCollectionViewCellReuseIdentifierLarge = @"RASCollectionViewCellReuseIdentifierLarge";
 
 static CGFloat const RASCollectionViewCellMargin = 18.f;
 static CGFloat const RASCollectionViewCellInnerMargin = 10.f;
 static CGFloat const RASCollectionViewCellTitleHeightMin = 18.f;
 static CGFloat const RASCollectionViewCellSubtitleHeightMin = 0.f;//14.f;
+
+static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 
 @interface RASCollectionViewCell ()
 
@@ -26,7 +30,7 @@ static CGFloat const RASCollectionViewCellSubtitleHeightMin = 0.f;//14.f;
 
 @end
 
-@implementation RASCollectionViewCell // TODO use the minimal amount of [self setNeedsUpdateConstraints]; ???
+@implementation RASCollectionViewCell
 
 @synthesize titleLabel = _titleLabel;
 @synthesize subtitleLabel = _subtitleLabel;
@@ -45,7 +49,9 @@ static CGFloat const RASCollectionViewCellSubtitleHeightMin = 0.f;//14.f;
 }
 
 - (void)setImage:(UIImage *)image {
-	//
+	_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(RASCollectionViewCellMargin, RASCollectionViewCellMargin, [[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin), RASCollectionViewCellLargeImageHeight)];
+	[_imageView setImage:image];
+	[[self contentView] addSubview:_imageView];
 	[self setNeedsUpdateConstraints];
 }
 
@@ -132,34 +138,59 @@ static CGFloat const RASCollectionViewCellSubtitleHeightMin = 0.f;//14.f;
 
 - (void)updateConstraints {
 	[super updateConstraints];
-	
 	if (![self didSetupConstraints]) {
-		
-		if (_titleLabel != nil && _subtitleLabel != nil && _leftFooterLabel != nil && _rightFooterLabel != nil) {
-			NSDictionary *subviews;
-			NSNumber *margin = @(RASCollectionViewCellMargin);
-			NSNumber *innerMargin = @(RASCollectionViewCellInnerMargin);
-			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin));
-			NSNumber *subtitleMinHeight = @(RASCollectionViewCellSubtitleHeightMin);
-			NSNumber *titleMinHeight = @(RASCollectionViewCellTitleHeightMin);
-			NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight);
-			NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
-			if (_imageView != nil) {
-				// Constraints if there is an image:
-				subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
-			} else {
-				subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel);
-				constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
-				constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_titleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
-				constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_subtitleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
-				constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_leftFooterLabel]->=0-[_rightFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
-				constraints = [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:_leftFooterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_rightFooterLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
-			}
-			
-			[[self contentView] addConstraints:constraints];
+		if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierSmall]) {
+			[self updateConstraintsForSmall];
+		} else if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierLarge]) {
+			[self updateConstraintsForLarge];
+		}
+		_didSetupConstraints = YES;
+	}
+}
+
+- (void)updateConstraintsForSmall {
+	if (_titleLabel != nil && _subtitleLabel != nil && _leftFooterLabel != nil && _rightFooterLabel != nil) {
+		NSDictionary *subviews;
+		NSNumber *margin = @(RASCollectionViewCellMargin);
+		NSNumber *innerMargin = @(RASCollectionViewCellInnerMargin);
+		NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin));
+		NSNumber *subtitleMinHeight = @(RASCollectionViewCellSubtitleHeightMin);
+		NSNumber *titleMinHeight = @(RASCollectionViewCellTitleHeightMin);
+		NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight);
+		NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
+		if (_imageView != nil) {
+			// Constraints if there is an image:
+			subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
+		} else {
+			subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel);
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_titleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_subtitleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_leftFooterLabel]->=0-[_rightFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:_leftFooterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_rightFooterLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
 		}
 		
-		_didSetupConstraints = YES;
+		[[self contentView] addConstraints:constraints];
+	}
+}
+
+- (void)updateConstraintsForLarge {
+	if (_titleLabel != nil && _subtitleLabel != nil && _leftFooterLabel != nil && _rightFooterLabel != nil && _imageView != nil) {
+		NSDictionary *subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
+		NSNumber *margin = @(RASCollectionViewCellMargin);
+		NSNumber *innerMargin = @(RASCollectionViewCellInnerMargin);
+		NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin));
+		NSNumber *subtitleMinHeight = @(RASCollectionViewCellSubtitleHeightMin);
+		NSNumber *titleMinHeight = @(RASCollectionViewCellTitleHeightMin);
+		NSNumber *imageHeight = @(RASCollectionViewCellLargeImageHeight);
+		NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight, imageHeight);
+		NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
+		constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_imageView(>=imageHeight)]-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
+		constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_titleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
+		constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_subtitleLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
+		constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_leftFooterLabel]->=0-[_rightFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
+		constraints = [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:_leftFooterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_rightFooterLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
+		[[self contentView] addConstraints:constraints];
 	}
 }
 

@@ -9,8 +9,6 @@
 #import "RASStubCollectionViewDataSource.h"
 #import "RASCollectionViewCell.h"
 
-static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
-
 @implementation RASStubCollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -22,10 +20,21 @@ static NSString *const reuseIdentifierSmallCell = @"reuseIdentifierSmallCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	RASCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierSmallCell forIndexPath:indexPath];
+	RASCollectionViewCell *cell;
+	
+	if ([indexPath item] == 0) {
+		cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge forIndexPath:indexPath];
+	} else {
+		cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+	}
+	
 
 	// Configure the cell
 	[cell setTitle:@"At Nevada Caucuses, Donald Trump's Rivals Hope to Break His Streak Let's Make This Title A Little Bit Longer" subtitle:@"It will be a test of Mr. Trump's blah blah blah yes and blah blah blah hey what's up hello seent your pretety a** since you walked in the door" leftFooter:@"The New York Times" rightFooter:@"Top Story"];
+	if ([indexPath item] == 0) {
+		[cell setImage:[UIImage imageNamed:@"Transfiguration of Christ"]];
+	}
+	
 
 	return cell;
 }

@@ -27,7 +27,7 @@ const NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotificati
 @synthesize liturgyOfTheHours = _liturgyOfTheHours;
 @synthesize saints = _saints;
 
-- (void)loadDay:(NSDate *)date {
++ (void)loadForDay:(NSDate *)date {
 	NSTimeInterval secondsSince1970 = [date timeIntervalSince1970];
 	NSInteger secondsFromGMT = [[NSTimeZone localTimeZone] secondsFromGMT];
 	NSTimeInterval localMillisecondsSince1970 = (secondsSince1970 + secondsFromGMT) * 1000;
@@ -75,14 +75,8 @@ const NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotificati
 	RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
 	[operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
 		
-		RASDayModel *model = [[result array] firstObject];
-		[self setDayID:[model dayID]];
-		[self setTitle:[model title]];
-		[self setLectionary:[model lectionary]];
-		[self setReadings:[model readings]];
-		[self setLiturgyOfTheHours:[model liturgyOfTheHours]];
-		[self setSaints:[model saints]];
-		[[NSNotificationCenter defaultCenter] postNotificationName:RASDayModelDidLoadNotification object:self];
+		RASDayModel *resultModel = [[result array] firstObject];
+		[[NSNotificationCenter defaultCenter] postNotificationName:RASDayModelDidLoadNotification object:resultModel];
 		
 	} failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		NSLog(@"Error loading day from server: %@", [error description]);
