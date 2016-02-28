@@ -16,9 +16,9 @@ function DayModel(dayID) {
 	self.dayID = dayID;
 	self.title = '';
 	self.lectionary = '';
-    self.readings = [];
-    self.liturgyOfTheHours = [];
-    self.saints = [];
+  self.readings = [];
+  self.liturgyOfTheHours = [];
+  self.saints = [];
 }
 
 function Reading() {
@@ -28,9 +28,15 @@ function Reading() {
 	self.body = '';
 }
 
-/* Helper method to turn a given date into a representative string id
+function Liturgy() {
+	var self = this;
+	self.name = '';
+	self.body = '';
+}
+
+/* Helper method to turn a given date into a representative string id for readings
  */
-function getDateStr(theDate) {
+function getDateStrUSCCB(theDate) {
 	var month, day, year, dateStr;
 	month = (theDate.getMonth() + 1).toString();
 	month = (month.length == 2) ? month : "0"+month; // MM
@@ -38,6 +44,17 @@ function getDateStr(theDate) {
 	day = (day.length == 2) ? day : "0"+day; // DD
 	year = theDate.getFullYear().toString().substr(2) // YY
 	dateStr = month + day + year;
+	return dateStr;
+}
+
+function getDateStrLOTH(theDate) {
+	var month, day, year, dateStr;
+	month = (theDate.getMonth() + 1).toString();
+	month = (month.length == 2) ? month : "0"+month; // MM
+	day = theDate.getDate().toString();
+	day = (day.length == 2) ? day : "0"+day; // DD
+	year = theDate.getFullYear().toString() // YYYY
+	dateStr = year + month + day;
 	return dateStr;
 }
 
@@ -50,14 +67,69 @@ router.get(/^\/\d+$/, function(req, res, next) {
 	millisecondsSince1970 = parseInt(req.path.substr(1));
 	theDate = new Date(millisecondsSince1970); // What time zone should assume the user is in?
 	console.log(theDate)
-	dateStr = getDateStr(theDate);
-	var jsonFilename = './readings/' + dateStr + '.json';
+	dateStr = getDateStrUSCCB(theDate);
+	var jsonFilename = './data/' + dateStr + '.json';
 	fs.readFile(jsonFilename, 'utf8', function (err, data) {
 		if (err) res.send({message:"There was an error."});
 		console.log("Reading from " + jsonFilename);
 		var obj = JSON.parse(data);
 		res.send(obj);
 	});
+});
+
+/* **** Data acquisition ****/
+/*
+/download2016Readings
+/scrape2016Readings
+/download2016LOTH
+/downloadChain2016LOTH
+/scrape2016LOTH
+/combine2016ReadingsAndLOTH
+*/
+
+/* Take DayModels from reading/*.json. Stuff them with Liturgys from loths/*.json
+   Then take the result and store it in data/*.json
+*/
+router.get("/combine2016ReadingsAndLOTH", function(req, res, next) {
+	var readingDir = './readings/';
+	var lothDir = './loth/';
+
+	var d = new Date(2016, 0, 1);
+	var combine = function () {
+		async.series([
+			function (callback) {
+				var readingDateStr = getDateStrUSCCB(d);
+				var readingFilename = readingDir + "/" + readingDateStr + ".json";
+				var lothDateStr = getDateStrLOTH(d);
+				var lothFilename = lothDir + "/" + lothDateStr + ".json";
+				fs.readFile(readingFilename, 'utf8', function (err, readingData) {
+					if (err) callback(err);
+					fs.readFile(lothFilename, 'utf8', function (err, lothData) {
+						if (err) callback(err);
+						var day = JSON.parse(readingData);
+						day.liturgyOfTheHours = JSON.parse(lothData);
+						var newFile = './data/' + readingDateStr + '.json'
+						fs.writeFile(newFile, JSON.stringify(day), function (err) {
+						  if (err) callback(err);
+						  console.log('Wrote to ' + newFile);
+							callback(null);
+						});
+					});
+				});
+			},
+			function (callback) {
+				if (d.getMonth() === 3) {
+					res.send({message:'Combine complete.'})
+					callback(null);
+				} else {
+					d.setDate(d.getDate() + 1);
+					combine();
+					callback(null);
+				}
+			}
+		]);
+	}
+	combine();
 });
 
 /* Helper method to extra data from cheerio obj into a DayModel object
@@ -134,7 +206,7 @@ function getReadings($, dateStr, callback) {
   callback(day);
 }
 
-/*
+/* Download readings into readings/*.reading files
 */
 router.get("/download2016Readings", function(req, res, next) {
 	var d = new Date(2016, 0, 1);
@@ -146,7 +218,7 @@ router.get("/download2016Readings", function(req, res, next) {
 				callback(null);
 			},
 			function (callback) {
-				var dateStr = getDateStr(d);
+				var dateStr = getDateStrUSCCB(d);
 				var url = 'http://www.usccb.org/bible/readings/' + dateStr + '.cfm';
 				console.log('url: ' + url);
 				request(url, function(error, response, html) {
@@ -180,14 +252,14 @@ router.get("/download2016Readings", function(req, res, next) {
 	download();
 });
 
-/*
+/* Scrape readings/*.reading files into DayModels. Store in  readings/*.json
 */
 router.get("/scrape2016Readings", function(req, res, next) {
 	var d = new Date(2016, 0, 1);
 	var scrape = function () {
 		async.series([
 			function (callback) {
-				var dateStr = getDateStr(d);
+				var dateStr = getDateStrUSCCB(d);
 				var filename = './readings/' + dateStr + '.reading';
 				fs.readFile(filename, 'utf8', function (err, data) {
 				  if (err) callback(err);
@@ -206,6 +278,198 @@ router.get("/scrape2016Readings", function(req, res, next) {
 			function (callback) {
 				if (d.getFullYear() >= 2017) {
 				//if (d.getMonth() === 1) {
+					res.send({message:'Scrape complete.'})
+					callback(null);
+				} else {
+					d.setDate(d.getDate() + 1);
+					scrape();
+					callback(null);
+				}
+			}
+		]);
+	}
+	scrape();
+});
+
+/* Helper method to extra data from cheerio obj into a DayModel object
+ */
+function getLOTH($, dateStr, callback) {
+  callback = (typeof callback === 'function') ? callback : function() {};
+
+	var liturgy = new Liturgy();
+  var title = $('title').text().split('|')[0].trim();
+	liturgy.name = title;
+
+	var bodyContent = $('div.post').each(function(i, elem) {
+		if (i == 0) {
+			var h1 = $(this).find('h1');
+			var powerpress_player = $(this).find('.powerpress_player');
+			var powerpress_links = $(this).find('.powerpress_links');
+			var divs = $(this).find('div');
+
+			h1.remove();
+			powerpress_player.remove();
+			powerpress_links.remove();
+			divs.remove();
+			liturgy.body = $(this).html().trim();
+		}
+	});
+  callback(liturgy);
+}
+
+/* Download loth into loth/*.loth files
+*/
+router.get("/download2016LOTH", function(req, res, next) {
+	var d = new Date(2016, 0, 1);
+	res.send({message:'Starting task. Will likely take longer than 2 minutes.'})
+	var download = function () {
+		async.series([
+			function (callback) {
+				sleep.sleep(1);
+				callback(null);
+			},
+			function (callback) {
+				var dateStr = getDateStrLOTH(d);
+				var url = 'http://divineoffice.org/?date=' + dateStr;
+				console.log('url: ' + url);
+				request(url, function(error, response, html) {
+					if(!error) {
+						console.log("request success for url: " + url);
+						var filename = './loth/' + dateStr + '.loth';
+						fs.writeFile(filename, html, function (err) {
+						  if (err) callback(err);
+						  console.log('Wrote to ' + filename);
+						});
+			    } else {
+						console.log("request failure for url: " + url);
+						callback(error);
+					}
+					callback(null);
+				});
+			},
+			function (callback) {
+				//if (d.getFullYear() >= 2017) {
+				if (d.getMonth() === 3) {
+				//if (d.getDate() == 1) {
+					console.log(' > Just hit the final date we want to download');
+					callback(null);
+				} else {
+					console.log(' > Incrementing date');
+					d.setDate(d.getDate() + 1);
+					download();
+					callback(null);
+				}
+			}
+		]);
+	}
+	download();
+});
+
+/* Scrape loth/*.loth files into Liturgy objcts. Store in loth/*.json
+*/
+router.get("/downloadChain2016LOTH", function(req, res, next) {
+	var d = new Date(2016, 0, 1);
+	var chain = function () {
+		async.series([
+			function (callback) {
+				sleep.sleep(1);
+				callback(null);
+			},
+			function (callback) {
+				var dateStr = getDateStrLOTH(d);
+				var filename = './loth/' + dateStr + '.loth';
+				fs.readFile(filename, 'utf8', function (err, data) {
+				  if (err) callback(err);
+
+					var dirname = './loth/' + dateStr;
+					fs.mkdir(dirname, function() {
+						var html = data;
+						var $ = cheerio.load(html);
+						$('div.post').find('li').each(function(i, elem) {
+							var thisA = $(this).find('a');
+							var url = thisA.attr('href')
+							console.log('url: ' + url);
+							request(url, function(error, response, html) {
+								if(!error) {
+									console.log("request success for url: " + url);
+									var filename = './loth/' + dateStr + '/' + thisA.text() + '.loth';
+									fs.writeFile(filename, html, function (err) {
+										if (err) callback(err);
+										console.log('Wrote to ' + filename);
+									});
+								} else {
+									console.log("request failure for url: " + url);
+								}
+							});
+							sleep.sleep(1);
+						});
+						callback(null);
+					});
+				});
+			},
+			function (callback) {
+				if (d.getMonth() === 3) {
+					res.send({message:'Chain download complete.'})
+					callback(null);
+				} else {
+					d.setDate(d.getDate() + 1);
+					chain();
+					callback(null);
+				}
+			}
+		]);
+	}
+	chain();
+});
+
+/*
+*/
+router.get("/scrape2016LOTH", function(req, res, next) {
+	var d = new Date(2016, 0, 1);
+	var scrape = function () {
+		async.series([
+			function (callback) {
+				var dateStr = getDateStrLOTH(d);
+				var dir = './loth/' + dateStr;
+				fs.readdir(dir, function(err, files) {
+
+					var array = new Array();
+					var itemsProcessed = 0;
+					files.forEach(function(file) {
+						if (file.endsWith('.loth')) {
+							var filename = dir + "/" + file;
+							console.log(filename);
+
+							fs.readFile(filename, 'utf8', function (err, data) {
+							  if (err) {
+									console.log(err)
+									callback(err);
+								}
+							  var html = data;
+							  var $ = cheerio.load(html);
+
+								getLOTH($, dateStr, function(data) {
+									array.push(data);
+									++itemsProcessed;
+									if (itemsProcessed === files.length) {
+										var jsonFilename = './loth/' + dateStr + '.json';
+										console.log('jsonFilename: ' + jsonFilename);
+										fs.writeFile(jsonFilename, JSON.stringify(array), function (err) {
+											if (err) callback(err);
+											console.log('Wrote to ' + jsonFilename);
+										});
+										callback(null);
+									}
+								});
+							});
+						} else {
+							++itemsProcessed;
+						}
+					});
+				});
+			},
+			function (callback) {
+				if (d.getMonth() === 3) {
 					res.send({message:'Scrape complete.'})
 					callback(null);
 				} else {
