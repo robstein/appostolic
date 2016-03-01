@@ -34,4 +34,7 @@ node_modules
 .node_repl_history
 
 readings
+loth
+data
+logs
 .DS_STORE
