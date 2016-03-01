@@ -14,8 +14,12 @@
 #import "RASReading.h"
 #import "RASLiturgy.h"
 #import "RASUtils.h"
+#import "UIViewController+RASTabExtensions.h"
 
 #import <DTCoreText/DTCoreText.h>
+
+static NSString *const RASTabNameToday = @"Today";
+static NSString *const RASTabImageNameToday = @"Home";
 
 
 typedef NS_ENUM(NSInteger, RASCollectionSection) {
@@ -23,13 +27,15 @@ typedef NS_ENUM(NSInteger, RASCollectionSection) {
 	RASCollectionSectionMax
 };
 
-static CGFloat const RASCollectionSmallCellHeight = 150.f;
-static CGFloat const RASCollectionLargeCellHeight = 450.f;
-static CGFloat const RASCollectionCellSpacing = 0.f;
+static const CGFloat RASCollectionSmallCellHeight = 150.f;
+static const CGFloat RASCollectionLargeCellHeight = 450.f;
+static const CGFloat RASCollectionCellSpacing = 0.f;
+static const NSTimeInterval RASSecondsInADay = 86400.f;
 
 @interface RASCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) RASDayModel *model;
+@property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id<UICollectionViewDataSource> dataSource;
 
 @end
@@ -37,6 +43,7 @@ static CGFloat const RASCollectionCellSpacing = 0.f;
 @implementation RASCollectionViewController
 
 @synthesize model = _model;
+@synthesize date = _date;
 @synthesize dataSource = _dataSource;
 
 + (UICollectionViewFlowLayout *)defaultLayout {
@@ -49,6 +56,28 @@ static CGFloat const RASCollectionCellSpacing = 0.f;
 	return defaultInstance;
 }
 
++ (RASCollectionViewController *)defaultController {
+	static RASCollectionViewController *defaultInstance = nil;
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		defaultInstance = [[RASCollectionViewController alloc] initWithTitle:RASTabNameToday tabBarItemImage:[UIImage imageNamed:RASTabImageNameToday]];
+	});
+	return defaultInstance;
+}
+
++ (UINavigationController *)defaultNavigationController {
+	RASCollectionViewController *defaultController = [self defaultController];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:defaultController];
+	[navigationController setToolbarHidden:NO];
+	
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:defaultController action:@selector(barButtonRewind:)];
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:defaultController action:@selector(barButtonFastForward:)];
+	UIBarButtonItem *flexibleSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	[defaultController setToolbarItems:[NSArray arrayWithObjects:leftButton, flexibleSpaceButton, rightButton, nil]];
+	
+	return navigationController;
+}
+
 - (instancetype)init {
 	if (self = [self initWithCollectionViewLayout:[RASCollectionViewController defaultLayout]]) {
 	}
@@ -57,6 +86,7 @@ static CGFloat const RASCollectionCellSpacing = 0.f;
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
 	if (self = [super initWithCollectionViewLayout:layout]) {
+		_date = [NSDate date];
 		_dataSource = nil;
 	}
 	return self;
@@ -86,8 +116,12 @@ static CGFloat const RASCollectionCellSpacing = 0.f;
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	// Load data model
-	[RASDayModel loadForDay:[NSDate date]];
+	// Load day
+	[self loadDay];
+}
+
+- (void)loadDay {
+	[RASDayModel loadForDay:_date];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -210,6 +244,18 @@ static CGFloat const RASCollectionCellSpacing = 0.f;
 	[detailViewController setTransitioningDelegate:transitionDelegate];
 	[detailViewController setModalPresentationStyle:UIModalPresentationCustom];
 	[self presentViewController:detailViewController animated:YES completion:nil];
+}
+
+- (void)barButtonRewind:(id)sender {
+	NSDate *yesterday = [_date dateByAddingTimeInterval:0-RASSecondsInADay];
+	[self setDate:yesterday];
+	[self loadDay];
+}
+
+- (void)barButtonFastForward:(id)sender {
+	NSDate *tomorrow = [_date dateByAddingTimeInterval:0+RASSecondsInADay];
+	[self setDate:tomorrow];
+	[self loadDay];
 }
 
 /*

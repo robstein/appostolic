@@ -11,11 +11,11 @@
 #import "RASProgressViewController.h"
 #import "UIViewController+RASTabExtensions.h"
 
-NSString *const RASTabNameToday = @"Today";
-NSString *const RASTabNameProgress = @"Progress";
+static NSString *const RASTabNameToday = @"Today";
+static NSString *const RASTabNameProgress = @"Progress";
 
-NSString *const RASTabImageNameToday = @"Home";
-NSString *const RASTabImageNameProgress = @"HeartMonitor";
+static NSString *const RASTabImageNameToday = @"Home";
+static NSString *const RASTabImageNameProgress = @"HeartMonitor";
 
 @interface RASMainViewController () <UITabBarControllerDelegate>
 

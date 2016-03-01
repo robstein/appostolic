@@ -8,4 +8,6 @@
 
 @interface RASCollectionViewController : UICollectionViewController
 
++ (UINavigationController *)defaultNavigationController;
+
 @end

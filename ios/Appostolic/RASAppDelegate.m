@@ -7,7 +7,8 @@
 //
 
 #import "RASAppDelegate.h"
-#import "RASMainViewController.h"
+#import "RASCollectionViewController.h"
+
 
 @interface RASAppDelegate ()
 
@@ -17,9 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	RASMainViewController *mainController = [[RASMainViewController alloc] initWithNibName:nil bundle:[NSBundle mainBundle]];
 	UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	[window setRootViewController:mainController];
+	[window setRootViewController:[RASCollectionViewController defaultNavigationController]];
 	[window setBackgroundColor:[UIColor whiteColor]];
 	[window makeKeyAndVisible];
 	[self setWindow:window];
