@@ -14,4 +14,6 @@ extern NSString *const RASCollectionViewCellReuseIdentifierLarge;
 - (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle leftFooter:(NSString *)leftText rightFooter:(NSString *)rightText;
 - (void)setImage:(UIImage *)image;
 
+- (CGRect)animateFrom;
+
 @end

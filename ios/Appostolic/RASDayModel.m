@@ -17,12 +17,13 @@
 #import <RestKit/RKResponseDescriptor.h>
 #import <RestKit/RKObjectRequestOperation.h>
 
-const NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotification";
+NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotification";
 
 @implementation RASDayModel
 
 @synthesize dayID = _dayID;
 @synthesize title = _title;
+@synthesize lectionary = _lectionary;
 @synthesize readings = _readings;
 @synthesize liturgyOfTheHours = _liturgyOfTheHours;
 @synthesize saints = _saints;

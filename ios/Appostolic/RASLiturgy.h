@@ -6,6 +6,17 @@
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
+typedef NS_ENUM(NSInteger, RASLiturgyType) {
+	RASLiturgyTypeInvitatory,
+	RASLiturgyTypeOfficeOfReadings,
+	RASLiturgyTypeMorningPrayer,
+	RASLiturgyTypeMidmorningPrayer,
+	RASLiturgyTypeMiddayPrayer,
+	RASLiturgyTypeMidafternoonPrayer,
+	RASLiturgyTypeEveningPrayer,
+	RASLiturgyTypeNightPrayer
+};
+
 @interface RASLiturgy : NSObject
 
 @property (nonatomic, copy) NSString *name;

@@ -10,7 +10,7 @@
 @class RASLiturgy;
 @class RASSaint;
 
-extern const NSString *RASDayModelDidLoadNotification;
+extern NSString *RASDayModelDidLoadNotification;
 
 @interface RASDayModel : NSObject
 

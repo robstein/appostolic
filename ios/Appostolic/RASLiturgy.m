@@ -10,4 +10,7 @@
 
 @implementation RASLiturgy
 
+@synthesize name = _name;
+@synthesize body = _body;
+
 @end

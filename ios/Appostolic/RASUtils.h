@@ -20,4 +20,6 @@ alpha:1.0]
 #define RASServerFormat @"http://40.78.107.212:3000/%@"
 #define URLWithServerQuery(query) [NSString stringWithFormat:RASServerFormat, query];
 
+#define NotReached(desc, ...) NSAssert(false, desc, ##__VA_ARGS__)
+
 #endif /* RASUtils_h */

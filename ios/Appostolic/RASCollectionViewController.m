@@ -8,9 +8,15 @@
 
 #import "RASCollectionViewController.h"
 #import "RASCollectionViewCell.h"
+#import "RASDetailViewController.h"
+#import "RASTransitioningDelegate.h"
 #import "RASDayModel.h"
+#import "RASReading.h"
+#import "RASLiturgy.h"
+#import "RASUtils.h"
 
-#import "RASStubCollectionViewDataSource.h"
+#import <DTCoreText/DTCoreText.h>
+
 
 typedef NS_ENUM(NSInteger, RASCollectionSection) {
 	RASCollectionSectionMain,
@@ -19,7 +25,7 @@ typedef NS_ENUM(NSInteger, RASCollectionSection) {
 
 static CGFloat const RASCollectionSmallCellHeight = 150.f;
 static CGFloat const RASCollectionLargeCellHeight = 450.f;
-static CGFloat const RASCollectionCellSpacing = 4.f;
+static CGFloat const RASCollectionCellSpacing = 0.f;
 
 @interface RASCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -51,7 +57,7 @@ static CGFloat const RASCollectionCellSpacing = 4.f;
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
 	if (self = [super initWithCollectionViewLayout:layout]) {
-		_dataSource = [[RASStubCollectionViewDataSource alloc] init];
+		_dataSource = nil;
 	}
 	return self;
 }
@@ -62,19 +68,18 @@ static CGFloat const RASCollectionCellSpacing = 4.f;
 	UICollectionView *collectionView = [self collectionView];
 	[collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[collectionView setDelegate:self];
-	//[collectionView setDataSource:self];
-	[collectionView setDataSource:_dataSource];
+	[collectionView setDataSource:self];
 	[collectionView setBackgroundColor:[UIColor clearColor]];
 }
 
 // Do any additional setup after loading the view.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
 	UICollectionView *collectionView = [self collectionView];
 	
-    // Register cell classes
-    [collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall];
+	// Register cell classes
+	[collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall];
 	[collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge];
 }
 
@@ -97,90 +102,130 @@ static CGFloat const RASCollectionCellSpacing = 4.f;
 }
 
 - (void)reload:(id)sender {
-	// TODO get [sender object]
+	_model = [sender object];
+	[[self collectionView] reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-	if (collectionView == [self collectionView]) {
-		NSInteger numberOfSections = 0;
-		if ([[_model readings] count]) {
-			numberOfSections += 1;
-		}
-		NSInteger liturgyCount = [[_model liturgyOfTheHours] count];
-		if (liturgyCount) {
-			numberOfSections += liturgyCount;
-		}
-		if ([[_model saints] count]) {
-			numberOfSections += 1;
-		}
-		return numberOfSections;
+	if (_model != nil) {
+		return 1;
+	} else {
+		return 0;
 	}
-	NSLog(@"Error: expected collectionView is not consistent with actual collectionView. Failing.");
-	return 0;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	if (collectionView == [self collectionView]) {
-		NSInteger numberOfSections = [self numberOfSectionsInCollectionView:collectionView];
-		if (numberOfSections == RASCollectionSectionMax) {
-			RASCollectionSection collectionSection = (RASCollectionSection)section;
-			switch (collectionSection) {
-				case RASCollectionSectionMain:
-					return [[_model readings] count];
-					break;
-				case RASCollectionSectionMax:
-					NSLog(@"Invalid section. Failing.");
-					return 0;
-					break;
+	RASCollectionSection collectionSection = (RASCollectionSection)section;
+	switch (collectionSection) {
+		case RASCollectionSectionMain:
+		{
+			NSInteger numberOfItems = 0;
+			if ([[_model readings] count]) {
+				numberOfItems += 1;
 			}
-		} else {
-			NSLog(@"Expected number of sections is not consistent with actual number. Failing.");
+			NSInteger liturgyCount = [[_model liturgyOfTheHours] count];
+			if (liturgyCount) {
+				numberOfItems += liturgyCount;
+			}
+			if ([[_model saints] count]) {
+				numberOfItems += 1;
+			}
+			return numberOfItems;
+			break;
+		}
+		case RASCollectionSectionMax:
+		{
+			NotReached(@"Invalid section. Failing.");
 			return 0;
+			break;
 		}
 	}
-	NSLog(@"Error: expected collectionView is not consistent with actual collectionView. Failing.");
-	return 0;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
-    // Configure the cell
-    
-    return cell;
+- (RASCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	RASCollectionViewCell *cell;
+	
+	RASCollectionSection collectionSection = (RASCollectionSection)[indexPath section];
+	NSInteger row = [indexPath item];
+	switch (collectionSection) {
+		case RASCollectionSectionMain:
+		{
+			NSArray <RASReading *> *readings = [_model readings];
+			if ([readings count] && row == 0)
+			{
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge forIndexPath:indexPath];
+				NSString *subtitle = @"";
+				for (RASReading *reading in readings) {
+					subtitle = [subtitle stringByAppendingString:[NSString stringWithFormat:@"%@; ", [reading passage]]];
+				}
+				[cell setTitle:[_model title] subtitle:subtitle leftFooter:nil rightFooter:[_model lectionary]];
+				[cell setImage:[UIImage imageNamed:@"Transfiguration of Christ"]];
+				return cell;
+			} else if ([[_model liturgyOfTheHours] count] && row > 0) {
+				RASLiturgy *liturgy = [[_model liturgyOfTheHours] objectAtIndex:(row-1)];
+				NSData *bodyData = [[liturgy body] dataUsingEncoding:NSUTF8StringEncoding];
+				NSAttributedString *attrBodyString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				[cell setTitle:[liturgy name] subtitle:[attrBodyString string] leftFooter:@"" rightFooter:@""];
+				[cell setImage:[UIImage imageNamed:@"divineoffice"]];
+				return cell;
+			} else {
+				NotReached(@"CollectionView model is screwy and the cells are messed up.");
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				return cell;
+			}
+		}
+		case RASCollectionSectionMax:
+		{
+			NotReached(@"Invalid section. Failing.");
+			return nil;
+		}
+	}
+	return nil;
 }
 
 #pragma mark - UICollectionViewDelegate methods
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+// animate the cell user tapped on
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	NSInteger row = [indexPath item];
+	NSArray <RASReading *> *readings = [_model readings];
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	CGRect frameToOpenFrom = [(RASCollectionViewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath] animateFrom];
+	UIView *viewToOpenFrom = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
 	
+	RASTransitioningDelegate *transitionDelegate = [[RASTransitioningDelegate alloc] init];
+	[transitionDelegate setOpeningFrame:frameToOpenFrom];
+	[transitionDelegate setOpeningView:viewToOpenFrom];
+	
+	RASDetailViewController *detailViewController;
+	if ([readings count] && row == 0) {
+		detailViewController = [[RASDetailViewController alloc] initWithReadings:readings];
+	} else if ([[_model liturgyOfTheHours] count] && row > 0) {
+		detailViewController = [[RASDetailViewController alloc] initWithLiturgy:[[_model liturgyOfTheHours] objectAtIndex:(row-1)]];
+	}
+	
+	[detailViewController setTransitioningDelegate:transitionDelegate];
+	[detailViewController setModalPresentationStyle:UIModalPresentationCustom];
+	[self presentViewController:detailViewController animated:YES completion:nil];
 }
-*/
+
+/*
+ // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+ - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
+	return NO;
+ }
+ 
+ - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	return NO;
+ }
+ 
+ - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	
+ }
+ */
 
 #pragma mark - UICollectionViewDelegateFlowLayout methods
 
@@ -198,18 +243,6 @@ static CGFloat const RASCollectionCellSpacing = 4.f;
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 	return RASCollectionCellSpacing;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-	return CGFLOAT_MIN;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-	return CGSizeZero;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-	return CGSizeZero;
 }
 
 @end

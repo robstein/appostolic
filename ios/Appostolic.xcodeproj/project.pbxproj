@@ -17,6 +17,10 @@
 		D463A1CF1C7CB39F00189034 /* RASWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1CE1C7CB39F00189034 /* RASWelcomeViewController.m */; };
 		D463A1D21C7CB6D000189034 /* RASStubCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1D11C7CB6D000189034 /* RASStubCollectionViewDataSource.m */; };
 		D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */; };
+		D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */; };
+		D463A1DE1C83B79400189034 /* RASPresentationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1DD1C83B79400189034 /* RASPresentationAnimator.m */; };
+		D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1E01C83B7AD00189034 /* RASDismissalAnimator.m */; };
+		D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1E31C83BF3500189034 /* RASDetailViewController.m */; };
 		D46709151C713678000E80D1 /* RASProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709111C713678000E80D1 /* RASProgressViewController.m */; };
 		D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709171C71369D000E80D1 /* RASDayModel.m */; };
 		D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */ = {isa = PBXBuildFile; fileRef = D46709191C71369D000E80D1 /* RASLiturgy.m */; };
@@ -67,6 +71,14 @@
 		D463A1D11C7CB6D000189034 /* RASStubCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASStubCollectionViewDataSource.m; sourceTree = "<group>"; };
 		D463A1D31C7CC3D600189034 /* RASCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASCollectionViewCell.h; sourceTree = "<group>"; };
 		D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASCollectionViewCell.m; sourceTree = "<group>"; };
+		D463A1D91C83B76F00189034 /* RASTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASTransitioningDelegate.h; sourceTree = "<group>"; };
+		D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASTransitioningDelegate.m; sourceTree = "<group>"; };
+		D463A1DC1C83B79400189034 /* RASPresentationAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASPresentationAnimator.h; sourceTree = "<group>"; };
+		D463A1DD1C83B79400189034 /* RASPresentationAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASPresentationAnimator.m; sourceTree = "<group>"; };
+		D463A1DF1C83B7AD00189034 /* RASDismissalAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDismissalAnimator.h; sourceTree = "<group>"; };
+		D463A1E01C83B7AD00189034 /* RASDismissalAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDismissalAnimator.m; sourceTree = "<group>"; };
+		D463A1E21C83BF3500189034 /* RASDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDetailViewController.h; sourceTree = "<group>"; };
+		D463A1E31C83BF3500189034 /* RASDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDetailViewController.m; sourceTree = "<group>"; };
 		D46709101C713678000E80D1 /* RASProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASProgressViewController.h; sourceTree = "<group>"; };
 		D46709111C713678000E80D1 /* RASProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASProgressViewController.m; sourceTree = "<group>"; };
 		D46709161C71369D000E80D1 /* RASDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDayModel.h; sourceTree = "<group>"; };
@@ -134,6 +146,12 @@
 				D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */,
 				D463A1D31C7CC3D600189034 /* RASCollectionViewCell.h */,
 				D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */,
+				D463A1DF1C83B7AD00189034 /* RASDismissalAnimator.h */,
+				D463A1E01C83B7AD00189034 /* RASDismissalAnimator.m */,
+				D463A1DC1C83B79400189034 /* RASPresentationAnimator.h */,
+				D463A1DD1C83B79400189034 /* RASPresentationAnimator.m */,
+				D463A1D91C83B76F00189034 /* RASTransitioningDelegate.h */,
+				D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -143,12 +161,14 @@
 			children = (
 				D4563F0C1C78309B00BBB12E /* RASCollectionViewController.h */,
 				D4563F0D1C78309B00BBB12E /* RASCollectionViewController.m */,
-				D463A1D01C7CB6D000189034 /* RASStubCollectionViewDataSource.h */,
-				D463A1D11C7CB6D000189034 /* RASStubCollectionViewDataSource.m */,
+				D463A1E21C83BF3500189034 /* RASDetailViewController.h */,
+				D463A1E31C83BF3500189034 /* RASDetailViewController.m */,
 				D46709331C713BBA000E80D1 /* RASMainViewController.h */,
 				D46709341C713BBA000E80D1 /* RASMainViewController.m */,
 				D46709101C713678000E80D1 /* RASProgressViewController.h */,
 				D46709111C713678000E80D1 /* RASProgressViewController.m */,
+				D463A1D01C7CB6D000189034 /* RASStubCollectionViewDataSource.h */,
+				D463A1D11C7CB6D000189034 /* RASStubCollectionViewDataSource.m */,
 				D4E355EA1C72B9260097A706 /* RASTextViewController.h */,
 				D4E355EB1C72B9260097A706 /* RASTextViewController.m */,
 				D463A1CD1C7CB39F00189034 /* RASWelcomeViewController.h */,
@@ -455,8 +475,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46709151C713678000E80D1 /* RASProgressViewController.m in Sources */,
+				D463A1DE1C83B79400189034 /* RASPresentationAnimator.m in Sources */,
+				D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */,
 				D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */,
 				D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */,
+				D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */,
+				D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */,
 				D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */,
 				D463A1CF1C7CB39F00189034 /* RASWelcomeViewController.m in Sources */,
 				D463A1CC1C7C956600189034 /* UIViewController+RASTabExtensions.m in Sources */,
