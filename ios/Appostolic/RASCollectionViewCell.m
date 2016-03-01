@@ -93,7 +93,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 		
 		// Add a bottom border to content view
 		CALayer *bottomBorder = [CALayer layer];
-		[bottomBorder setFrame:CGRectMake(RASCollectionViewCellMargin, frame.size.height-0.5f, frame.size.width - 2 * RASCollectionViewCellMargin, 0.5f)];
+		[bottomBorder setFrame:CGRectMake(RASCollectionViewCellMargin, frame.size.height-0.5f, frame.size.width - 1 * RASCollectionViewCellMargin, 0.5f)];
 		[bottomBorder setBackgroundColor:[[UIColor colorWithWhite:0.8f alpha:1.0f] CGColor]];
 		[[[self contentView] layer] addSublayer:bottomBorder];
 	}
@@ -113,7 +113,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 	[_leftFooterLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[_rightFooterLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
-	[_titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+	[_titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleTitle2]];
 	[_subtitleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
 	[_leftFooterLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
 	[_rightFooterLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];

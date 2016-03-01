@@ -78,6 +78,29 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	return navigationController;
 }
 
+- (void)barButtonRewind:(id)sender {
+	NSDate *yesterday = [_date dateByAddingTimeInterval:0-RASSecondsInADay];
+	[self setDate:yesterday];
+	[self loadDay];
+	[self updateTitle];
+}
+
+- (void)barButtonFastForward:(id)sender {
+	NSDate *tomorrow = [_date dateByAddingTimeInterval:0+RASSecondsInADay];
+	[self setDate:tomorrow];
+	[self loadDay];
+	[self updateTitle];
+}
+
+- (void)updateTitle {
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[dateFormatter setLocale:[NSLocale currentLocale]];
+	[dateFormatter setDoesRelativeDateFormatting:YES];
+	[self setTitle:[dateFormatter stringFromDate:_date]];
+}
+
 - (instancetype)init {
 	if (self = [self initWithCollectionViewLayout:[RASCollectionViewController defaultLayout]]) {
 	}
@@ -161,7 +184,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 			}
 			NSInteger liturgyCount = [[_model liturgyOfTheHours] count];
 			if (liturgyCount) {
-				numberOfItems += liturgyCount;
+				numberOfItems += 1;
 			}
 			if ([[_model saints] count]) {
 				numberOfItems += 1;
@@ -192,17 +215,18 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge forIndexPath:indexPath];
 				NSString *subtitle = @"";
 				for (RASReading *reading in readings) {
-					subtitle = [subtitle stringByAppendingString:[NSString stringWithFormat:@"%@; ", [reading passage]]];
+					if ([[reading name] isEqualToString:@"Gospel"]) {
+						NSData *bodyData = [[reading body] dataUsingEncoding:NSUTF8StringEncoding];
+						NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
+						subtitle = [attrString string];
+					}
 				}
 				[cell setTitle:[_model title] subtitle:subtitle leftFooter:nil rightFooter:[_model lectionary]];
 				[cell setImage:[UIImage imageNamed:@"Transfiguration of Christ"]];
 				return cell;
 			} else if ([[_model liturgyOfTheHours] count] && row > 0) {
-				RASLiturgy *liturgy = [[_model liturgyOfTheHours] objectAtIndex:(row-1)];
-				NSData *bodyData = [[liturgy body] dataUsingEncoding:NSUTF8StringEncoding];
-				NSAttributedString *attrBodyString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
 				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
-				[cell setTitle:[liturgy name] subtitle:[attrBodyString string] leftFooter:@"" rightFooter:@""];
+				[cell setTitle:@"Liturgy of the Hours" subtitle:@"Lord, open my lips. — And my mouth will proclaim your praise.\nAnt. Come, let us worship Christ the Lord, who for our sake endured temptation and suffering." leftFooter:@"" rightFooter:@""];
 				[cell setImage:[UIImage imageNamed:@"divineoffice"]];
 				return cell;
 			} else {
@@ -244,18 +268,6 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	[detailViewController setTransitioningDelegate:transitionDelegate];
 	[detailViewController setModalPresentationStyle:UIModalPresentationCustom];
 	[self presentViewController:detailViewController animated:YES completion:nil];
-}
-
-- (void)barButtonRewind:(id)sender {
-	NSDate *yesterday = [_date dateByAddingTimeInterval:0-RASSecondsInADay];
-	[self setDate:yesterday];
-	[self loadDay];
-}
-
-- (void)barButtonFastForward:(id)sender {
-	NSDate *tomorrow = [_date dateByAddingTimeInterval:0+RASSecondsInADay];
-	[self setDate:tomorrow];
-	[self loadDay];
 }
 
 /*
