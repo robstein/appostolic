@@ -1,12 +1,12 @@
 //
-//  RASCollectionViewController.m
+//  RASFrontViewController.m
 //  Appostolic
 //
 //  Created by Robert Stein on 2/19/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "RASCollectionViewController.h"
+#import "RASFrontViewController.h"
 #import "RASCollectionViewCell.h"
 #import "RASDetailViewController.h"
 #import "RASTransitioningDelegate.h"
@@ -32,7 +32,7 @@ static const CGFloat RASCollectionLargeCellHeight = 450.f;
 static const CGFloat RASCollectionCellSpacing = 0.f;
 static const NSTimeInterval RASSecondsInADay = 86400.f;
 
-@interface RASCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface RASFrontViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) RASDayModel *model;
 @property (nonatomic, strong) NSDate *date;
@@ -40,7 +40,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 
 @end
 
-@implementation RASCollectionViewController
+@implementation RASFrontViewController
 
 @synthesize model = _model;
 @synthesize date = _date;
@@ -56,17 +56,17 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	return defaultInstance;
 }
 
-+ (RASCollectionViewController *)defaultController {
-	static RASCollectionViewController *defaultInstance = nil;
++ (RASFrontViewController *)defaultController {
+	static RASFrontViewController *defaultInstance = nil;
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
-		defaultInstance = [[RASCollectionViewController alloc] initWithTitle:RASTabNameToday tabBarItemImage:[UIImage imageNamed:RASTabImageNameToday]];
+		defaultInstance = [[RASFrontViewController alloc] initWithTitle:RASTabNameToday tabBarItemImage:[UIImage imageNamed:RASTabImageNameToday]];
 	});
 	return defaultInstance;
 }
 
 + (UINavigationController *)defaultNavigationController {
-	RASCollectionViewController *defaultController = [self defaultController];
+	RASFrontViewController *defaultController = [self defaultController];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:defaultController];
 	[navigationController setToolbarHidden:NO];
 	
@@ -102,7 +102,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 }
 
 - (instancetype)init {
-	if (self = [self initWithCollectionViewLayout:[RASCollectionViewController defaultLayout]]) {
+	if (self = [self initWithCollectionViewLayout:[RASFrontViewController defaultLayout]]) {
 	}
 	return self;
 }

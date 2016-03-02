@@ -11,7 +11,7 @@
 		D44F1D8A1C46184E00575424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D891C46184E00575424 /* main.m */; };
 		D44F1DA61C46184E00575424 /* AppostolicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DA51C46184E00575424 /* AppostolicTests.m */; };
 		D44F1DB11C46184E00575424 /* AppostolicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DB01C46184E00575424 /* AppostolicUITests.m */; };
-		D4563F0E1C78309B00BBB12E /* RASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4563F0D1C78309B00BBB12E /* RASCollectionViewController.m */; };
+		D4563F0E1C78309B00BBB12E /* RASFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4563F0D1C78309B00BBB12E /* RASFrontViewController.m */; };
 		D463A1CC1C7C956600189034 /* UIViewController+RASTitleExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1CB1C7C956600189034 /* UIViewController+RASTitleExtensions.m */; };
 		D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */; };
 		D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */; };
@@ -55,8 +55,8 @@
 		D44F1DAC1C46184E00575424 /* AppostolicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppostolicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F1DB01C46184E00575424 /* AppostolicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppostolicUITests.m; sourceTree = "<group>"; };
 		D44F1DB21C46184E00575424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4563F0C1C78309B00BBB12E /* RASCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASCollectionViewController.h; sourceTree = "<group>"; };
-		D4563F0D1C78309B00BBB12E /* RASCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASCollectionViewController.m; sourceTree = "<group>"; };
+		D4563F0C1C78309B00BBB12E /* RASFrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASFrontViewController.h; sourceTree = "<group>"; };
+		D4563F0D1C78309B00BBB12E /* RASFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASFrontViewController.m; sourceTree = "<group>"; };
 		D463A1CA1C7C956600189034 /* UIViewController+RASTitleExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RASTitleExtensions.h"; sourceTree = "<group>"; };
 		D463A1CB1C7C956600189034 /* UIViewController+RASTitleExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RASTitleExtensions.m"; sourceTree = "<group>"; };
 		D463A1D31C7CC3D600189034 /* RASCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASCollectionViewCell.h; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 		D41858021C476BA800B3FCCD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D4563F0C1C78309B00BBB12E /* RASCollectionViewController.h */,
-				D4563F0D1C78309B00BBB12E /* RASCollectionViewController.m */,
+				D4563F0C1C78309B00BBB12E /* RASFrontViewController.h */,
+				D4563F0D1C78309B00BBB12E /* RASFrontViewController.m */,
 				D463A1E21C83BF3500189034 /* RASDetailViewController.h */,
 				D463A1E31C83BF3500189034 /* RASDetailViewController.m */,
 				D463A1CA1C7C956600189034 /* UIViewController+RASTitleExtensions.h */,
@@ -452,7 +452,7 @@
 				D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */,
 				D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */,
 				D463A1CC1C7C956600189034 /* UIViewController+RASTitleExtensions.m in Sources */,
-				D4563F0E1C78309B00BBB12E /* RASCollectionViewController.m in Sources */,
+				D4563F0E1C78309B00BBB12E /* RASFrontViewController.m in Sources */,
 				D44F1D8A1C46184E00575424 /* main.m in Sources */,
 				D46709201C71369D000E80D1 /* RASReading.m in Sources */,
 				D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */,
