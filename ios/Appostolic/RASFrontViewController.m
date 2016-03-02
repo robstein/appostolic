@@ -182,8 +182,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 			if ([[_model readings] count]) {
 				numberOfItems += 1;
 			}
-			NSInteger liturgyCount = [[_model liturgyOfTheHours] count];
-			if (liturgyCount) {
+			if ([[_model liturgyOfTheHours] count]) {
 				numberOfItems += 1;
 			}
 			return numberOfItems;

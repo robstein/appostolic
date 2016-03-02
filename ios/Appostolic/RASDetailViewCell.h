@@ -13,4 +13,6 @@ extern NSString *const RASDetailViewCellReuseIdentifier;
 // Can either be a RASReading or RASLiturgy
 @property (nonatomic, copy) NSString *text;
 
+- (void)setText:(NSString *)text isPoetry:(BOOL)isPoetry;
+
 @end

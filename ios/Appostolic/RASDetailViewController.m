@@ -10,9 +10,12 @@
 #import "RASDetailViewCell.h"
 #import "RASReading.h"
 #import "RASLiturgy.h"
+#import "RASUtils.h"
+#import "RASColor.h"
 #import <DTCoreText/DTCoreText.h>
 
-static const CGFloat RASDetailViewCellSpacing = 8.f;
+static const CGFloat RASDetailViewHorizontalMargin = 20.f;
+static const CGFloat RASDetailViewInterTopMargin = 30.f;
 
 @interface RASDetailViewController ()
 
@@ -31,7 +34,7 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 		[defaultInstance setScrollDirection:UICollectionViewScrollDirectionVertical];
 		
 		CGSize mainScreenSize = [[UIScreen mainScreen] bounds].size;
-		[defaultInstance setEstimatedItemSize:CGSizeMake(mainScreenSize.width, mainScreenSize.height)];
+		[defaultInstance setEstimatedItemSize:CGSizeMake(mainScreenSize.width, mainScreenSize.height/2)];
 	});
 	return defaultInstance;
 }
@@ -63,7 +66,16 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 	[collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[collectionView setDelegate:self];
 	[collectionView setDataSource:self];
-	[collectionView setBackgroundColor:[UIColor grayColor]];
+	
+	UIView *background = [[UIView alloc] init];
+	[collectionView setBackgroundView:background];
+
+	CGRect collectionViewBounds = [collectionView bounds];
+	CAGradientLayer *gradient = [CAGradientLayer layer];
+	[gradient setBounds:collectionViewBounds];
+	[gradient setAnchorPoint:CGPointZero];
+	[gradient setColors:[RASColor goldColors]];
+	[[[collectionView backgroundView] layer] insertSublayer:gradient atIndex:0];
 }
 
 // Do any additional setup after loading the view.
@@ -108,9 +120,12 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 	
 	RASDetailViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDetailViewCellReuseIdentifier forIndexPath:indexPath];
 	if (_readings != nil) {
-		[cell setText:[[_readings objectAtIndex:[indexPath section]] body]];
+		RASReading *reading = [_readings objectAtIndex:[indexPath section]];
+		NSString *name = [reading name];
+		BOOL isPoetry = ([name hasPrefix:@"Responsorial"]) || ([name hasPrefix:@"Alleluia"]) || ([name hasPrefix:@"Verse"]);
+		[cell setText:[reading body] isPoetry:isPoetry];
 	} else if (_liturgy != nil) {
-		[cell setText:[_liturgy body]];
+		[cell setText:[_liturgy body] isPoetry:YES];
 	}
 	return cell;
 }
@@ -118,15 +133,15 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 #pragma mark - UICollectionViewDelegateFlowLayout methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return CGSizeMake([collectionView frame].size.width, 40.f);
+	return CGSizeMake([collectionView frame].size.width - (2 * RASDetailViewHorizontalMargin), [[UIScreen mainScreen] bounds].size.height/2);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-	return UIEdgeInsetsZero;
+	return UIEdgeInsetsMake(RASDetailViewInterTopMargin, RASDetailViewHorizontalMargin, 0.f, RASDetailViewHorizontalMargin);
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-	return RASDetailViewCellSpacing;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+	return CGSizeZero;
 }
 
 @end

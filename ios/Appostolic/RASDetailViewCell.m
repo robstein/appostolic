@@ -11,7 +11,8 @@
 
 NSString *const RASDetailViewCellReuseIdentifier = @"RASDetailViewCellReuseIdentifier";
 
-static CGFloat const RASDetailViewCellMargin = 18.f;
+static const CGFloat RASDetailViewCellVerticalMargin = 18.f;
+static const CGFloat RASDetailViewCellHorizontalMargin = 25.f;
 
 @interface RASDetailViewCell ()
 
@@ -28,12 +29,18 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 @synthesize didSetupConstraints = _didSetupConstraints;
 @synthesize didCalculateHeight = _didCalculateHeight;
 
-- (void)setText:(NSString *)text {
+- (void)setText:(NSString *)text isPoetry:(BOOL)isPoetry {
 	_text = text;
 	
 	NSData *bodyData = [text dataUsingEncoding:NSUTF8StringEncoding];
 	NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
-	[_textLabel setText:[attrString string]];
+	NSString *string = [attrString string];
+	if (!isPoetry) {
+		string = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
+	}
+	NSString *trimmedString = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	trimmedString = [trimmedString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+	[_textLabel setText:trimmedString];
 	
 	[self setNeedsUpdateConstraints];
 }
@@ -59,7 +66,7 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 	[_textLabel setLineBreakMode:NSLineBreakByWordWrapping];
 	[_textLabel setNumberOfLines:0];
 	
-	CGFloat width = [[self contentView] frame].size.width - (2 * RASDetailViewCellMargin);
+	CGFloat width = [[self contentView] frame].size.width - (2 * RASDetailViewCellHorizontalMargin);
 	[_textLabel setPreferredMaxLayoutWidth:width];
 	[_textLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 }
@@ -75,22 +82,20 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 
 - (void)updateConstraints {
 	[super updateConstraints];
-	if (![self didSetupConstraints]) {
 
 		if (_textLabel != nil) {
 			NSDictionary *subviews;
-			NSNumber *margin = @(RASDetailViewCellMargin);
-			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASDetailViewCellMargin));
+			NSNumber *verticalMargin = @(RASDetailViewCellVerticalMargin);
+			NSNumber *horizontalMargin = @(RASDetailViewCellHorizontalMargin);
+			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASDetailViewCellHorizontalMargin));
 			NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
-			NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, labelWidth);
+			NSDictionary *metrics = NSDictionaryOfVariableBindings(verticalMargin, horizontalMargin, labelWidth);
 			subviews = NSDictionaryOfVariableBindings(_textLabel);
-			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_textLabel]-margin-|" options:0 metrics:metrics views:subviews]];
-			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_textLabel(<=labelWidth)]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-verticalMargin-[_textLabel]-verticalMargin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-horizontalMargin-[_textLabel(<=labelWidth)]-horizontalMargin-|" options:0 metrics:metrics views:subviews]];
 			[[self contentView] addConstraints:constraints];
 		}
 		
-		_didSetupConstraints = YES;
-	}
 }
 
 - (void)layoutSubviews {
@@ -108,8 +113,8 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 		[self setNeedsLayout];
 		[self layoutIfNeeded];
 		CGSize size = [[self contentView] systemLayoutSizeFittingSize:[layoutAttributes size]];
-		CGRect layoutAttributesFrame = [layoutAttributes frame];
-		CGRect newFrame = CGRectMake(layoutAttributesFrame.origin.x, layoutAttributesFrame.origin.y, layoutAttributesFrame.size.width, size.height);
+		CGRect newFrame = [layoutAttributes frame];
+		newFrame.size.height = (CGFloat)(ceilf(size.height));
 		[layoutAttributes setFrame:newFrame];
 		[self setDidCalculateHeight:YES];
 	}

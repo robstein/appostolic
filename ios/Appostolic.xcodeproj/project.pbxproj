@@ -25,6 +25,7 @@
 		D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */; };
 		D47A231F1C869B7E0003F9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D971C46184E00575424 /* Assets.xcassets */; };
 		D47A23221C86AE970003F9DF /* RASDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23211C86AE970003F9DF /* RASDetailViewCell.m */; };
+		D47A23251C86DC080003F9DF /* RASColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23241C86DC080003F9DF /* RASColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D47A23201C86AE970003F9DF /* RASDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDetailViewCell.h; sourceTree = "<group>"; };
 		D47A23211C86AE970003F9DF /* RASDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDetailViewCell.m; sourceTree = "<group>"; };
+		D47A23231C86DC080003F9DF /* RASColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASColor.h; sourceTree = "<group>"; };
+		D47A23241C86DC080003F9DF /* RASColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASColor.m; sourceTree = "<group>"; };
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				D467092B1C7136D0000E80D1 /* RASUtils.h */,
+				D47A23231C86DC080003F9DF /* RASColor.h */,
+				D47A23241C86DC080003F9DF /* RASColor.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47A23251C86DC080003F9DF /* RASColor.m in Sources */,
 				D463A1DE1C83B79400189034 /* RASPresentationAnimator.m in Sources */,
 				D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */,
 				D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */,
