@@ -29,6 +29,9 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 	dispatch_once(&once, ^{
 		defaultInstance = [[UICollectionViewFlowLayout alloc] init];
 		[defaultInstance setScrollDirection:UICollectionViewScrollDirectionVertical];
+		
+		CGSize mainScreenSize = [[UIScreen mainScreen] bounds].size;
+		[defaultInstance setEstimatedItemSize:CGSizeMake(mainScreenSize.width, mainScreenSize.height)];
 	});
 	return defaultInstance;
 }
@@ -60,7 +63,7 @@ static const CGFloat RASDetailViewCellSpacing = 8.f;
 	[collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[collectionView setDelegate:self];
 	[collectionView setDataSource:self];
-	[collectionView setBackgroundColor:[UIColor clearColor]];
+	[collectionView setBackgroundColor:[UIColor grayColor]];
 }
 
 // Do any additional setup after loading the view.

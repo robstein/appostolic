@@ -17,6 +17,7 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic) BOOL didSetupConstraints;
+@property (nonatomic) BOOL didCalculateHeight;
 
 @end
 
@@ -25,6 +26,7 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 @synthesize text = _text;
 @synthesize textLabel = _textLabel;
 @synthesize didSetupConstraints = _didSetupConstraints;
+@synthesize didCalculateHeight = _didCalculateHeight;
 
 - (void)setText:(NSString *)text {
 	_text = text;
@@ -41,6 +43,7 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 		[self initializeLabels];
 		[self configureLabels];
 		[self addLabelsToContentView];
+		[self setBackgroundColor:[UIColor whiteColor]];
 	}
 	return self;
 }
@@ -98,6 +101,19 @@ static CGFloat const RASDetailViewCellMargin = 18.f;
 		contentViewFrame.size = [self frame].size;
 		[contentView setFrame:contentViewFrame];
 	}
+}
+
+- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
+	if (!_didCalculateHeight) {
+		[self setNeedsLayout];
+		[self layoutIfNeeded];
+		CGSize size = [[self contentView] systemLayoutSizeFittingSize:[layoutAttributes size]];
+		CGRect layoutAttributesFrame = [layoutAttributes frame];
+		CGRect newFrame = CGRectMake(layoutAttributesFrame.origin.x, layoutAttributesFrame.origin.y, layoutAttributesFrame.size.width, size.height);
+		[layoutAttributes setFrame:newFrame];
+		[self setDidCalculateHeight:YES];
+	}
+	return layoutAttributes;
 }
 
 @end
