@@ -14,7 +14,7 @@
 #import "RASReading.h"
 #import "RASLiturgy.h"
 #import "RASUtils.h"
-#import "UIViewController+RASTabExtensions.h"
+#import "UIViewController+RASTitleExtensions.h"
 
 #import <DTCoreText/DTCoreText.h>
 
@@ -184,9 +184,6 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 			}
 			NSInteger liturgyCount = [[_model liturgyOfTheHours] count];
 			if (liturgyCount) {
-				numberOfItems += 1;
-			}
-			if ([[_model saints] count]) {
 				numberOfItems += 1;
 			}
 			return numberOfItems;

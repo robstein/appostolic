@@ -1,14 +1,14 @@
 //
-//  UIViewController+RASTabExtensions.m
+//  UIViewController+RASTitleExtensions.m
 //  Appostolic
 //
 //  Created by Robert Stein on 2/23/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "UIViewController+RASTabExtensions.h"
+#import "UIViewController+RASTitleExtensions.h"
 
-@implementation UIViewController (RASTabExtensions)
+@implementation UIViewController (RASTitleExtensions)
 
 - (instancetype)initWithTitle:(NSString *)title tabBarItemImage:(UIImage *)image {
 	if (self = [self init]) {

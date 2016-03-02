@@ -8,7 +8,6 @@
 
 @class RASReading;
 @class RASLiturgy;
-@class RASSaint;
 
 extern NSString *RASDayModelDidLoadNotification;
 
@@ -21,6 +20,5 @@ extern NSString *RASDayModelDidLoadNotification;
 @property (nonatomic, copy) NSString *lectionary;
 @property (nonatomic, copy) NSArray <RASReading *> *readings;
 @property (nonatomic, copy) NSArray <RASLiturgy *> *liturgyOfTheHours;
-@property (nonatomic, copy) NSArray <RASSaint *> *saints;
 
 @end

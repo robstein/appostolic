@@ -9,7 +9,6 @@
 #import "RASDayModel.h"
 #import "RASReading.h"
 #import "RASLiturgy.h"
-#import "RASSaint.h"
 #import "RASUtils.h"
 
 #import <RestKit/RKObjectMapping.h>
@@ -26,7 +25,6 @@ NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotification";
 @synthesize lectionary = _lectionary;
 @synthesize readings = _readings;
 @synthesize liturgyOfTheHours = _liturgyOfTheHours;
-@synthesize saints = _saints;
 
 + (void)loadForDay:(NSDate *)date {
 	NSTimeInterval secondsSince1970 = [date timeIntervalSince1970];
@@ -49,12 +47,6 @@ NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotification";
 														 @"body": @"body"
 														 }];
 	
-	RKObjectMapping *saintMapping = [RKObjectMapping mappingForClass:[RASSaint class]];
-	[saintMapping addAttributeMappingsFromDictionary:@{
-													   @"name": @"name",
-													   @"body": @"body"
-													   }];
-	
 	RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RASDayModel class]];
 	[mapping addAttributeMappingsFromDictionary:@{
 												  @"title": @"title",
@@ -67,9 +59,6 @@ NSString * RASDayModelDidLoadNotification = @"RASDayModelDidLoadNotification";
 	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liturgyOfTheHours"
 																			toKeyPath:@"liturgyOfTheHours"
 																		  withMapping:liturgyMapping]];
-	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"saints"
-																			toKeyPath:@"saints"
-																		  withMapping:saintMapping]];
 	
 	RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
