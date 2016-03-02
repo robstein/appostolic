@@ -26,7 +26,6 @@ static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 @property (nonatomic, strong) UILabel *leftFooterLabel;
 @property (nonatomic, strong) UILabel *rightFooterLabel;
 @property (nonatomic, strong) UIImageView *imageView;
-
 @property (nonatomic) BOOL didSetupConstraints;
 
 @end
@@ -38,7 +37,6 @@ static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 @synthesize leftFooterLabel = _leftFooterLabel;
 @synthesize rightFooterLabel = _rightFooterLabel;
 @synthesize imageView = _imageView;
-
 @synthesize didSetupConstraints = _didSetupConstraints;
 
 - (CGRect)animateFrom {
@@ -65,6 +63,7 @@ static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(RASFrontViewCellMargin, RASFrontViewCellMargin, contentViewFrame.size.width - (2 * RASFrontViewCellMargin), RASFrontViewCellLargeImageHeight)];
 	}
 	[_imageView setImage:image];
+//	[_imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[[self contentView] addSubview:_imageView];
 	[self setNeedsUpdateConstraints];
 }
@@ -178,7 +177,7 @@ static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 			// Constraints if there is an image:
 			subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
-			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
+			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_imageView(>=imageSideLength)]" options:0 metrics:metrics views:subviews]];
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_titleLabel(<=labelWidth)]-[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_subtitleLabel(<=labelWidth)]-[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
@@ -194,7 +193,6 @@ static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 		}
 		constraints = [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:_leftFooterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_rightFooterLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
 
-		
 		[[self contentView] addConstraints:constraints];
 	}
 }

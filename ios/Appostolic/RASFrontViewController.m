@@ -248,37 +248,25 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	NSInteger row = [indexPath item];
 	NSArray <RASReading *> *readings = [_model readings];
 
-	CGRect frameToOpenFrom = [(RASFrontViewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath] animateFrom];
-	UIView *viewToOpenFrom = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-	
-	RASTransitioningDelegate *transitionDelegate = [[RASTransitioningDelegate alloc] init];
-	[transitionDelegate setOpeningFrame:frameToOpenFrom];
-	[transitionDelegate setOpeningView:viewToOpenFrom];
-	
 	RASDetailViewController *detailViewController;
 	if ([readings count] && row == 0) {
 		detailViewController = [[RASDetailViewController alloc] initWithReadings:readings];
 	} else if ([[_model liturgyOfTheHours] count] && row > 0) {
 		detailViewController = [[RASDetailViewController alloc] initWithLiturgy:[[_model liturgyOfTheHours] objectAtIndex:(row-1)]];
 	}
-	
-	[detailViewController setTransitioningDelegate:transitionDelegate];
-	[detailViewController setModalPresentationStyle:UIModalPresentationCustom];
-	[self presentViewController:detailViewController animated:YES completion:nil];
+
+	[[self navigationController] pushViewController:detailViewController animated:YES];
 }
 
-/*
+/* TODO When you implement action menus
  // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
  - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
 	return NO;
  }
- 
  - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
 	return NO;
  }
- 
  - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
  }
  */
 
