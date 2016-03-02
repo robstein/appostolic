@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		314099553A494A0485F165FD /* Pods_Appostolic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D44F1D8A1C46184E00575424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1D891C46184E00575424 /* main.m */; };
-		D44F1D981C46184E00575424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D971C46184E00575424 /* Assets.xcassets */; };
 		D44F1DA61C46184E00575424 /* AppostolicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DA51C46184E00575424 /* AppostolicTests.m */; };
 		D44F1DB11C46184E00575424 /* AppostolicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DB01C46184E00575424 /* AppostolicUITests.m */; };
 		D4563F0E1C78309B00BBB12E /* RASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4563F0D1C78309B00BBB12E /* RASCollectionViewController.m */; };
@@ -24,6 +23,7 @@
 		D46709201C71369D000E80D1 /* RASReading.m in Sources */ = {isa = PBXBuildFile; fileRef = D467091B1C71369D000E80D1 /* RASReading.m */; };
 		D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D467092D1C713715000E80D1 /* RASAppDelegate.m */; };
 		D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */; };
+		D47A231F1C869B7E0003F9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D971C46184E00575424 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,7 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44F1D981C46184E00575424 /* Assets.xcassets in Resources */,
+				D47A231F1C869B7E0003F9DF /* Assets.xcassets in Resources */,
 				D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
