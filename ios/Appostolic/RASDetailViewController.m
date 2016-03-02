@@ -7,6 +7,7 @@
 //
 
 #import "RASDetailViewController.h"
+#import "RASDetailViewCell.h"
 #import "RASReading.h"
 #import "RASLiturgy.h"
 #import <DTCoreText/DTCoreText.h>
@@ -15,6 +16,8 @@ static const CGFloat RASDetailViewControllerTitleFontSize = 20.f;
 static const CGFloat RASDetailViewControllerSubtitleFontSize = 9.f;
 static const CGFloat RASDetailViewControllerBodyFontSize = 12.f;
 
+static const CGFloat RASDetailViewCellSpacing = 8.f;
+
 @interface RASDetailViewController ()
 
 @end
@@ -22,6 +25,7 @@ static const CGFloat RASDetailViewControllerBodyFontSize = 12.f;
 @implementation RASDetailViewController
 
 @synthesize readings = _readings;
+@synthesize liturgy = _liturgy;
 
 - (instancetype)initWithReadings:(NSArray<RASReading *>*)readings {
 	if (self = [self init]) {
@@ -37,7 +41,7 @@ static const CGFloat RASDetailViewControllerBodyFontSize = 12.f;
 	return self;
 }
 
-- (void)viewDidLoad {
+/*- (void)viewDidLoad {
     [super viewDidLoad];
 	
 	UIView *view = [self view];
@@ -121,10 +125,102 @@ static const CGFloat RASDetailViewControllerBodyFontSize = 12.f;
 	
 	UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
 	[view addGestureRecognizer:tapRecognizer];
+}*/
+
+// Do any additional setup after loading the view.
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	UICollectionView *collectionView = [self collectionView];
+	
+	// Register cell classes
+	[collectionView registerClass:[RASDetailViewCell class] forCellWithReuseIdentifier:RASDetailViewCellReuseIdentifier];
 }
 
-- (void)viewTapped:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+}
+
+#pragma mark - UICollectionViewDataSource methods
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	if (_readings != nil) {
+		return [_readings count];
+	} else if (_liturgy != nil) {
+		return 1;
+	}else {
+		return 0;
+	}
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return 1;
+}
+
+- (RASDetailViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	return nil;
+	/*RASFrontViewCell *cell;
+	
+	RASCollectionSection collectionSection = (RASCollectionSection)[indexPath section];
+	NSInteger row = [indexPath item];
+	switch (collectionSection) {
+		case RASCollectionSectionMain:
+		{
+			NSArray <RASReading *> *readings = [_model readings];
+			if ([readings count] && row == 0)
+			{
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge forIndexPath:indexPath];
+				NSString *subtitle = @"";
+				for (RASReading *reading in readings) {
+					if ([[reading name] isEqualToString:@"Gospel"]) {
+						NSData *bodyData = [[reading body] dataUsingEncoding:NSUTF8StringEncoding];
+						NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:bodyData documentAttributes:NULL];
+						subtitle = [attrString string];
+					}
+				}
+				[cell setTitle:[_model title] subtitle:subtitle leftFooter:nil rightFooter:[_model lectionary]];
+				[cell setImage:[UIImage imageNamed:@"Transfiguration of Christ"]];
+				return cell;
+			} else if ([[_model liturgyOfTheHours] count] && row > 0) {
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				[cell setTitle:@"Liturgy of the Hours" subtitle:@"Lord, open my lips. — And my mouth will proclaim your praise.\nAnt. Come, let us worship Christ the Lord, who for our sake endured temptation and suffering." leftFooter:@"" rightFooter:@""];
+				[cell setImage:[UIImage imageNamed:@"divineoffice"]];
+				return cell;
+			} else {
+				NotReached(@"CollectionView model is screwy and the cells are messed up.");
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				return cell;
+			}
+		}
+		case RASCollectionSectionMax:
+		{
+			NotReached(@"Invalid section. Failing.");
+			return nil;
+		}
+	}
+	return nil;*/
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout methods
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+	return CGSizeZero;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+	return UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+	return RASDetailViewCellSpacing;
 }
 
 @end

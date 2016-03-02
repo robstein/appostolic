@@ -1,15 +1,15 @@
 //
-//  RASCollectionViewCell.h
+//  RASFrontViewCell.h
 //  Appostolic
 //
 //  Created by Robert Stein on 2/23/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-extern NSString *const RASCollectionViewCellReuseIdentifierSmall;
-extern NSString *const RASCollectionViewCellReuseIdentifierLarge;
+extern NSString *const RASFrontViewCellReuseIdentifierSmall;
+extern NSString *const RASFrontViewCellReuseIdentifierLarge;
 
-@interface RASCollectionViewCell : UICollectionViewCell
+@interface RASFrontViewCell : UICollectionViewCell
 
 - (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle leftFooter:(NSString *)leftText rightFooter:(NSString *)rightText;
 - (void)setImage:(UIImage *)image;

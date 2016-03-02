@@ -13,7 +13,7 @@
 		D44F1DB11C46184E00575424 /* AppostolicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F1DB01C46184E00575424 /* AppostolicUITests.m */; };
 		D4563F0E1C78309B00BBB12E /* RASFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4563F0D1C78309B00BBB12E /* RASFrontViewController.m */; };
 		D463A1CC1C7C956600189034 /* UIViewController+RASTitleExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1CB1C7C956600189034 /* UIViewController+RASTitleExtensions.m */; };
-		D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */; };
+		D463A1D51C7CC3D600189034 /* RASFrontViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1D41C7CC3D600189034 /* RASFrontViewCell.m */; };
 		D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */; };
 		D463A1DE1C83B79400189034 /* RASPresentationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1DD1C83B79400189034 /* RASPresentationAnimator.m */; };
 		D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D463A1E01C83B7AD00189034 /* RASDismissalAnimator.m */; };
@@ -24,6 +24,7 @@
 		D467092E1C713715000E80D1 /* RASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D467092D1C713715000E80D1 /* RASAppDelegate.m */; };
 		D46709391C714BFC000E80D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */; };
 		D47A231F1C869B7E0003F9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44F1D971C46184E00575424 /* Assets.xcassets */; };
+		D47A23221C86AE970003F9DF /* RASDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23211C86AE970003F9DF /* RASDetailViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +60,8 @@
 		D4563F0D1C78309B00BBB12E /* RASFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASFrontViewController.m; sourceTree = "<group>"; };
 		D463A1CA1C7C956600189034 /* UIViewController+RASTitleExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RASTitleExtensions.h"; sourceTree = "<group>"; };
 		D463A1CB1C7C956600189034 /* UIViewController+RASTitleExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RASTitleExtensions.m"; sourceTree = "<group>"; };
-		D463A1D31C7CC3D600189034 /* RASCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASCollectionViewCell.h; sourceTree = "<group>"; };
-		D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASCollectionViewCell.m; sourceTree = "<group>"; };
+		D463A1D31C7CC3D600189034 /* RASFrontViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASFrontViewCell.h; sourceTree = "<group>"; };
+		D463A1D41C7CC3D600189034 /* RASFrontViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASFrontViewCell.m; sourceTree = "<group>"; };
 		D463A1D91C83B76F00189034 /* RASTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASTransitioningDelegate.h; sourceTree = "<group>"; };
 		D463A1DA1C83B76F00189034 /* RASTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASTransitioningDelegate.m; sourceTree = "<group>"; };
 		D463A1DC1C83B79400189034 /* RASPresentationAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASPresentationAnimator.h; sourceTree = "<group>"; };
@@ -79,6 +80,8 @@
 		D467092C1C713715000E80D1 /* RASAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASAppDelegate.h; sourceTree = "<group>"; };
 		D467092D1C713715000E80D1 /* RASAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASAppDelegate.m; sourceTree = "<group>"; };
 		D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D47A23201C86AE970003F9DF /* RASDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDetailViewCell.h; sourceTree = "<group>"; };
+		D47A23211C86AE970003F9DF /* RASDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDetailViewCell.m; sourceTree = "<group>"; };
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
@@ -126,10 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */,
-				D463A1D31C7CC3D600189034 /* RASCollectionViewCell.h */,
-				D463A1D41C7CC3D600189034 /* RASCollectionViewCell.m */,
+				D47A23201C86AE970003F9DF /* RASDetailViewCell.h */,
+				D47A23211C86AE970003F9DF /* RASDetailViewCell.m */,
 				D463A1DF1C83B7AD00189034 /* RASDismissalAnimator.h */,
 				D463A1E01C83B7AD00189034 /* RASDismissalAnimator.m */,
+				D463A1D31C7CC3D600189034 /* RASFrontViewCell.h */,
+				D463A1D41C7CC3D600189034 /* RASFrontViewCell.m */,
 				D463A1DC1C83B79400189034 /* RASPresentationAnimator.h */,
 				D463A1DD1C83B79400189034 /* RASPresentationAnimator.m */,
 				D463A1D91C83B76F00189034 /* RASTransitioningDelegate.h */,
@@ -447,10 +452,11 @@
 				D463A1DE1C83B79400189034 /* RASPresentationAnimator.m in Sources */,
 				D463A1DB1C83B76F00189034 /* RASTransitioningDelegate.m in Sources */,
 				D467091F1C71369D000E80D1 /* RASLiturgy.m in Sources */,
+				D47A23221C86AE970003F9DF /* RASDetailViewCell.m in Sources */,
 				D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */,
 				D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */,
 				D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */,
-				D463A1D51C7CC3D600189034 /* RASCollectionViewCell.m in Sources */,
+				D463A1D51C7CC3D600189034 /* RASFrontViewCell.m in Sources */,
 				D463A1CC1C7C956600189034 /* UIViewController+RASTitleExtensions.m in Sources */,
 				D4563F0E1C78309B00BBB12E /* RASFrontViewController.m in Sources */,
 				D44F1D8A1C46184E00575424 /* main.m in Sources */,

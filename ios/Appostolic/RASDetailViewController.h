@@ -9,7 +9,7 @@
 @class RASReading;
 @class RASLiturgy;
 
-@interface RASDetailViewController : UIViewController
+@interface RASDetailViewController : UICollectionViewController
 
 - (instancetype)initWithReadings:(NSArray<RASReading *>*)readings;
 - (instancetype)initWithLiturgy:(RASLiturgy *)liturgy;

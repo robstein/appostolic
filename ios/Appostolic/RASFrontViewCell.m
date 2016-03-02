@@ -1,25 +1,25 @@
 //
-//  RASCollectionViewCell.m
+//  RASFrontViewCell.m
 //  Appostolic
 //
 //  Created by Robert Stein on 2/23/16.
 //  Copyright © 2016 Rob Stein. All rights reserved.
 //
 
-#import "RASCollectionViewCell.h"
+#import "RASFrontViewCell.h"
 
-NSString *const RASCollectionViewCellReuseIdentifierSmall = @"RASCollectionViewCellReuseIdentifierSmall";
-NSString *const RASCollectionViewCellReuseIdentifierLarge = @"RASCollectionViewCellReuseIdentifierLarge";
+NSString *const RASFrontViewCellReuseIdentifierSmall = @"RASFrontViewCellReuseIdentifierSmall";
+NSString *const RASFrontViewCellReuseIdentifierLarge = @"RASFrontViewCellReuseIdentifierLarge";
 
-static CGFloat const RASCollectionViewCellMargin = 18.f;
-static CGFloat const RASCollectionViewCellInnerMargin = 10.f;
-static CGFloat const RASCollectionViewCellTitleHeightMin = 18.f;
-static CGFloat const RASCollectionViewCellSubtitleHeightMin = 0.f;//14.f;
+static CGFloat const RASFrontViewCellMargin = 18.f;
+static CGFloat const RASFrontViewCellInnerMargin = 10.f;
+static CGFloat const RASFrontViewCellTitleHeightMin = 18.f;
+static CGFloat const RASFrontViewCellSubtitleHeightMin = 0.f;//14.f;
 
-static CGFloat const RASCollectionViewCellSmallImageSideLength = 102.f;
-static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
+static CGFloat const RASFrontViewCellSmallImageSideLength = 102.f;
+static CGFloat const RASFrontViewCellLargeImageHeight = 300.f;
 
-@interface RASCollectionViewCell ()
+@interface RASFrontViewCell ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
@@ -31,7 +31,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 
 @end
 
-@implementation RASCollectionViewCell
+@implementation RASFrontViewCell
 
 @synthesize titleLabel = _titleLabel;
 @synthesize subtitleLabel = _subtitleLabel;
@@ -59,10 +59,10 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 
 - (void)setImage:(UIImage *)image {
 	CGRect contentViewFrame = [[self contentView] frame];
-	if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierSmall]) {
-		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentViewFrame.size.width - RASCollectionViewCellMargin - RASCollectionViewCellSmallImageSideLength, RASCollectionViewCellMargin, RASCollectionViewCellSmallImageSideLength, RASCollectionViewCellSmallImageSideLength)];
-	} else if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierLarge]) {
-		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(RASCollectionViewCellMargin, RASCollectionViewCellMargin, contentViewFrame.size.width - (2 * RASCollectionViewCellMargin), RASCollectionViewCellLargeImageHeight)];
+	if ([[self reuseIdentifier] isEqualToString:RASFrontViewCellReuseIdentifierSmall]) {
+		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentViewFrame.size.width - RASFrontViewCellMargin - RASFrontViewCellSmallImageSideLength, RASFrontViewCellMargin, RASFrontViewCellSmallImageSideLength, RASFrontViewCellSmallImageSideLength)];
+	} else if ([[self reuseIdentifier] isEqualToString:RASFrontViewCellReuseIdentifierLarge]) {
+		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(RASFrontViewCellMargin, RASFrontViewCellMargin, contentViewFrame.size.width - (2 * RASFrontViewCellMargin), RASFrontViewCellLargeImageHeight)];
 	}
 	[_imageView setImage:image];
 	[[self contentView] addSubview:_imageView];
@@ -93,7 +93,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 		
 		// Add a bottom border to content view
 		CALayer *bottomBorder = [CALayer layer];
-		[bottomBorder setFrame:CGRectMake(RASCollectionViewCellMargin, frame.size.height-0.5f, frame.size.width - 1 * RASCollectionViewCellMargin, 0.5f)];
+		[bottomBorder setFrame:CGRectMake(RASFrontViewCellMargin, frame.size.height-0.5f, frame.size.width - 1 * RASFrontViewCellMargin, 0.5f)];
 		[bottomBorder setBackgroundColor:[[UIColor colorWithWhite:0.8f alpha:1.0f] CGColor]];
 		[[[self contentView] layer] addSublayer:bottomBorder];
 	}
@@ -129,7 +129,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 	[_titleLabel setNumberOfLines:0];
 	[_subtitleLabel setNumberOfLines:0];
 	
-	CGFloat width = [[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin);
+	CGFloat width = [[self contentView] frame].size.width - (2 * RASFrontViewCellMargin);
 	[_titleLabel setPreferredMaxLayoutWidth:width];
 	[_titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 //	[_titleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisVertical];
@@ -153,9 +153,9 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 - (void)updateConstraints {
 	[super updateConstraints];
 	if (![self didSetupConstraints]) {
-		if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierSmall]) {
+		if ([[self reuseIdentifier] isEqualToString:RASFrontViewCellReuseIdentifierSmall]) {
 			[self updateConstraintsForSmall];
-		} else if ([[self reuseIdentifier] isEqualToString:RASCollectionViewCellReuseIdentifierLarge]) {
+		} else if ([[self reuseIdentifier] isEqualToString:RASFrontViewCellReuseIdentifierLarge]) {
 			[self updateConstraintsForLarge];
 		}
 		_didSetupConstraints = YES;
@@ -165,15 +165,15 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 - (void)updateConstraintsForSmall {
 	if (_titleLabel != nil && _subtitleLabel != nil && _leftFooterLabel != nil && _rightFooterLabel != nil) {
 		NSDictionary *subviews;
-		NSNumber *margin = @(RASCollectionViewCellMargin);
-		NSNumber *innerMargin = @(RASCollectionViewCellInnerMargin);
-		NSNumber *subtitleMinHeight = @(RASCollectionViewCellSubtitleHeightMin);
-		NSNumber *titleMinHeight = @(RASCollectionViewCellTitleHeightMin);
-		NSNumber *imageSideLength = @(RASCollectionViewCellSmallImageSideLength);
+		NSNumber *margin = @(RASFrontViewCellMargin);
+		NSNumber *innerMargin = @(RASFrontViewCellInnerMargin);
+		NSNumber *subtitleMinHeight = @(RASFrontViewCellSubtitleHeightMin);
+		NSNumber *titleMinHeight = @(RASFrontViewCellTitleHeightMin);
+		NSNumber *imageSideLength = @(RASFrontViewCellSmallImageSideLength);
 		
 		NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
 		if (_imageView != nil) {
-			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin) - RASCollectionViewCellTitleHeightMin);
+			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASFrontViewCellMargin) - RASFrontViewCellTitleHeightMin);
 			NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight, imageSideLength);
 			// Constraints if there is an image:
 			subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
@@ -184,7 +184,7 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_subtitleLabel(<=labelWidth)]-[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"|-margin-[_leftFooterLabel]->=0-[_rightFooterLabel]-[_imageView(>=imageSideLength)]-margin-|" options:0 metrics:metrics views:subviews]];
 		} else {
-			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin));
+			NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASFrontViewCellMargin));
 			NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight, imageSideLength);
 			subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel);
 			constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];
@@ -202,12 +202,12 @@ static CGFloat const RASCollectionViewCellLargeImageHeight = 300.f;
 - (void)updateConstraintsForLarge {
 	if (_titleLabel != nil && _subtitleLabel != nil && _leftFooterLabel != nil && _rightFooterLabel != nil && _imageView != nil) {
 		NSDictionary *subviews = NSDictionaryOfVariableBindings(_titleLabel, _subtitleLabel, _leftFooterLabel, _rightFooterLabel, _imageView);
-		NSNumber *margin = @(RASCollectionViewCellMargin);
-		NSNumber *innerMargin = @(RASCollectionViewCellInnerMargin);
-		NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASCollectionViewCellMargin));
-		NSNumber *subtitleMinHeight = @(RASCollectionViewCellSubtitleHeightMin);
-		NSNumber *titleMinHeight = @(RASCollectionViewCellTitleHeightMin);
-		NSNumber *imageHeight = @(RASCollectionViewCellLargeImageHeight);
+		NSNumber *margin = @(RASFrontViewCellMargin);
+		NSNumber *innerMargin = @(RASFrontViewCellInnerMargin);
+		NSNumber *labelWidth = @([[self contentView] frame].size.width - (2 * RASFrontViewCellMargin));
+		NSNumber *subtitleMinHeight = @(RASFrontViewCellSubtitleHeightMin);
+		NSNumber *titleMinHeight = @(RASFrontViewCellTitleHeightMin);
+		NSNumber *imageHeight = @(RASFrontViewCellLargeImageHeight);
 		NSDictionary *metrics = NSDictionaryOfVariableBindings(margin, innerMargin, labelWidth, subtitleMinHeight, titleMinHeight, imageHeight);
 		NSArray<NSLayoutConstraint *> *constraints = [[NSArray alloc] init];
 		constraints = [constraints arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_imageView(>=imageHeight)]-[_titleLabel(>=titleMinHeight)]-innerMargin-[_subtitleLabel(>=subtitleMinHeight)]-innerMargin-[_leftFooterLabel]-margin-|" options:0 metrics:metrics views:subviews]];

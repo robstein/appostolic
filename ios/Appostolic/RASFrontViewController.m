@@ -7,7 +7,7 @@
 //
 
 #import "RASFrontViewController.h"
-#import "RASCollectionViewCell.h"
+#import "RASFrontViewCell.h"
 #import "RASDetailViewController.h"
 #import "RASTransitioningDelegate.h"
 #import "RASDayModel.h"
@@ -132,8 +132,8 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	UICollectionView *collectionView = [self collectionView];
 	
 	// Register cell classes
-	[collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall];
-	[collectionView registerClass:[RASCollectionViewCell class] forCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge];
+	[collectionView registerClass:[RASFrontViewCell class] forCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierSmall];
+	[collectionView registerClass:[RASFrontViewCell class] forCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierLarge];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -198,8 +198,8 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	}
 }
 
-- (RASCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	RASCollectionViewCell *cell;
+- (RASFrontViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	RASFrontViewCell *cell;
 	
 	RASCollectionSection collectionSection = (RASCollectionSection)[indexPath section];
 	NSInteger row = [indexPath item];
@@ -209,7 +209,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 			NSArray <RASReading *> *readings = [_model readings];
 			if ([readings count] && row == 0)
 			{
-				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierLarge forIndexPath:indexPath];
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierLarge forIndexPath:indexPath];
 				NSString *subtitle = @"";
 				for (RASReading *reading in readings) {
 					if ([[reading name] isEqualToString:@"Gospel"]) {
@@ -222,13 +222,13 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 				[cell setImage:[UIImage imageNamed:@"Transfiguration of Christ"]];
 				return cell;
 			} else if ([[_model liturgyOfTheHours] count] && row > 0) {
-				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierSmall forIndexPath:indexPath];
 				[cell setTitle:@"Liturgy of the Hours" subtitle:@"Lord, open my lips. — And my mouth will proclaim your praise.\nAnt. Come, let us worship Christ the Lord, who for our sake endured temptation and suffering." leftFooter:@"" rightFooter:@""];
 				[cell setImage:[UIImage imageNamed:@"divineoffice"]];
 				return cell;
 			} else {
 				NotReached(@"CollectionView model is screwy and the cells are messed up.");
-				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASCollectionViewCellReuseIdentifierSmall forIndexPath:indexPath];
+				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierSmall forIndexPath:indexPath];
 				return cell;
 			}
 		}
@@ -248,7 +248,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	NSInteger row = [indexPath item];
 	NSArray <RASReading *> *readings = [_model readings];
 
-	CGRect frameToOpenFrom = [(RASCollectionViewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath] animateFrom];
+	CGRect frameToOpenFrom = [(RASFrontViewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath] animateFrom];
 	UIView *viewToOpenFrom = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
 	
 	RASTransitioningDelegate *transitionDelegate = [[RASTransitioningDelegate alloc] init];
