@@ -7,6 +7,7 @@
 //
 
 typedef NS_ENUM(NSInteger, RASLiturgyType) {
+	RASLiturgyTypeInvalid = 0,
 	RASLiturgyTypeInvitatory,
 	RASLiturgyTypeOfficeOfReadings,
 	RASLiturgyTypeMorningPrayer,
@@ -21,5 +22,10 @@ typedef NS_ENUM(NSInteger, RASLiturgyType) {
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *body;
+
+@property (nonatomic, readonly) RASLiturgyType type;
+@property (nonatomic, readonly) NSString *timeOfDay;
+
++ (NSArray <RASLiturgy *> *)liturgyArrayBySortingTimeOfDay:(NSArray <RASLiturgy *> *)unsortedArray;
 
 @end

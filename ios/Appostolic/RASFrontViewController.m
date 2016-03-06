@@ -9,6 +9,7 @@
 #import "RASFrontViewController.h"
 #import "RASFrontViewCell.h"
 #import "RASDetailViewController.h"
+#import "RASSecondViewController.h"
 #import "RASTransitioningDelegate.h"
 #import "RASDayModel.h"
 #import "RASReading.h"
@@ -226,7 +227,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 				[cell setImage:[UIImage imageNamed:@"divineoffice"]];
 				return cell;
 			} else {
-				NotReached(@"CollectionView model is screwy and the cells are messed up.");
+				//NotReached(@"CollectionView model is screwy and the cells are messed up.");
 				cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASFrontViewCellReuseIdentifierSmall forIndexPath:indexPath];
 				return cell;
 			}
@@ -247,27 +248,15 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 	NSInteger row = [indexPath item];
 	NSArray <RASReading *> *readings = [_model readings];
 
-	RASDetailViewController *detailViewController;
+	UICollectionViewController *detailViewController;
 	if ([readings count] && row == 0) {
 		detailViewController = [[RASDetailViewController alloc] initWithReadings:readings];
 	} else if ([[_model liturgyOfTheHours] count] && row > 0) {
-		detailViewController = [[RASDetailViewController alloc] initWithLiturgy:[[_model liturgyOfTheHours] objectAtIndex:(row-1)]];
+		detailViewController = [[RASSecondViewController alloc] initWithLiturgies:[_model liturgyOfTheHours]];
 	}
 
 	[[self navigationController] pushViewController:detailViewController animated:YES];
 }
-
-/* TODO When you implement action menus
- // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
- - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
- }
- - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
- }
- - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
- }
- */
 
 #pragma mark - UICollectionViewDelegateFlowLayout methods
 
