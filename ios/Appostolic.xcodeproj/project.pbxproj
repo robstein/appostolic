@@ -27,6 +27,7 @@
 		D47A23221C86AE970003F9DF /* RASDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23211C86AE970003F9DF /* RASDetailViewCell.m */; };
 		D47A23251C86DC080003F9DF /* RASColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23241C86DC080003F9DF /* RASColor.m */; };
 		D47A233C1C8CCB960003F9DF /* RASSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A233B1C8CCB960003F9DF /* RASSecondViewController.m */; };
+		D47A233F1C8D031D0003F9DF /* RASAnimatingFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A233E1C8D031D0003F9DF /* RASAnimatingFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		D47A23241C86DC080003F9DF /* RASColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASColor.m; sourceTree = "<group>"; };
 		D47A233A1C8CCB960003F9DF /* RASSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASSecondViewController.h; sourceTree = "<group>"; };
 		D47A233B1C8CCB960003F9DF /* RASSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASSecondViewController.m; sourceTree = "<group>"; };
+		D47A233D1C8D031D0003F9DF /* RASAnimatingFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASAnimatingFlowLayout.h; sourceTree = "<group>"; };
+		D47A233E1C8D031D0003F9DF /* RASAnimatingFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASAnimatingFlowLayout.m; sourceTree = "<group>"; };
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 		D41858021C476BA800B3FCCD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D47A233D1C8D031D0003F9DF /* RASAnimatingFlowLayout.h */,
+				D47A233E1C8D031D0003F9DF /* RASAnimatingFlowLayout.m */,
 				D463A1E21C83BF3500189034 /* RASDetailViewController.h */,
 				D463A1E31C83BF3500189034 /* RASDetailViewController.m */,
 				D4563F0C1C78309B00BBB12E /* RASFrontViewController.h */,
@@ -466,6 +471,7 @@
 				D47A23221C86AE970003F9DF /* RASDetailViewCell.m in Sources */,
 				D467091E1C71369D000E80D1 /* RASDayModel.m in Sources */,
 				D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */,
+				D47A233F1C8D031D0003F9DF /* RASAnimatingFlowLayout.m in Sources */,
 				D47A233C1C8CCB960003F9DF /* RASSecondViewController.m in Sources */,
 				D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */,
 				D463A1D51C7CC3D600189034 /* RASFrontViewCell.m in Sources */,

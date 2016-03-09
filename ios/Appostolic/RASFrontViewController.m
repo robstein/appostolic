@@ -139,7 +139,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
+
 	// Load day
 	[self loadDay];
 }
@@ -150,7 +150,6 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:) name:RASDayModelDidLoadNotification object:nil];
 }
 
@@ -253,6 +252,7 @@ static const NSTimeInterval RASSecondsInADay = 86400.f;
 		detailViewController = [[RASDetailViewController alloc] initWithReadings:readings];
 	} else if ([[_model liturgyOfTheHours] count] && row > 0) {
 		detailViewController = [[RASSecondViewController alloc] initWithLiturgies:[_model liturgyOfTheHours]];
+		[detailViewController setUseLayoutToLayoutNavigationTransitions:YES];
 	}
 
 	[[self navigationController] pushViewController:detailViewController animated:YES];
