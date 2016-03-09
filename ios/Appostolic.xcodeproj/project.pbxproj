@@ -28,6 +28,7 @@
 		D47A23251C86DC080003F9DF /* RASColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A23241C86DC080003F9DF /* RASColor.m */; };
 		D47A233C1C8CCB960003F9DF /* RASSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A233B1C8CCB960003F9DF /* RASSecondViewController.m */; };
 		D47A233F1C8D031D0003F9DF /* RASAnimatingFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A233E1C8D031D0003F9DF /* RASAnimatingFlowLayout.m */; };
+		D4D5B69C1C9004190064C193 /* RASDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D5B69B1C9004190064C193 /* RASDetailHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		D4ADF9521C5020E300F5CF99 /* Appostolic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Appostolic-Prefix.pch"; path = "../Appostolic-Prefix.pch"; sourceTree = "<group>"; };
 		D4BD0FA11C4F750800FD5201 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = "Pods/../build/Debug-iphoneos/GradientView.framework"; sourceTree = "<group>"; };
 		D4BD0FA21C4F750800FD5201 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = "Pods/../build/Debug-iphoneos/RestKit.framework"; sourceTree = "<group>"; };
+		D4D5B69A1C9004190064C193 /* RASDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RASDetailHeaderView.h; sourceTree = "<group>"; };
+		D4D5B69B1C9004190064C193 /* RASDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RASDetailHeaderView.m; sourceTree = "<group>"; };
 		DE6C47C80F2E90E6DC38B622 /* Pods_Appostolic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appostolic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF5EF9D7ADD3BFDC50AD54 /* Pods-Appostolic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appostolic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appostolic/Pods-Appostolic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				D46709381C714BFC000E80D1 /* LaunchScreen.storyboard */,
+				D4D5B69A1C9004190064C193 /* RASDetailHeaderView.h */,
+				D4D5B69B1C9004190064C193 /* RASDetailHeaderView.m */,
 				D47A23201C86AE970003F9DF /* RASDetailViewCell.h */,
 				D47A23211C86AE970003F9DF /* RASDetailViewCell.m */,
 				D463A1DF1C83B7AD00189034 /* RASDismissalAnimator.h */,
@@ -473,6 +478,7 @@
 				D463A1E11C83B7AD00189034 /* RASDismissalAnimator.m in Sources */,
 				D47A233F1C8D031D0003F9DF /* RASAnimatingFlowLayout.m in Sources */,
 				D47A233C1C8CCB960003F9DF /* RASSecondViewController.m in Sources */,
+				D4D5B69C1C9004190064C193 /* RASDetailHeaderView.m in Sources */,
 				D463A1E41C83BF3500189034 /* RASDetailViewController.m in Sources */,
 				D463A1D51C7CC3D600189034 /* RASFrontViewCell.m in Sources */,
 				D463A1CC1C7C956600189034 /* UIViewController+RASTitleExtensions.m in Sources */,

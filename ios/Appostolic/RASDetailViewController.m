@@ -8,6 +8,7 @@
 
 #import "RASDetailViewController.h"
 #import "RASDetailViewCell.h"
+#import "RASDetailHeaderView.h"
 #import "RASReading.h"
 #import "RASLiturgy.h"
 #import "RASUtils.h"
@@ -86,6 +87,7 @@ static const CGFloat RASDetailViewInterTopMargin = 30.f;
 	
 	// Register cell classes
 	[collectionView registerClass:[RASDetailViewCell class] forCellWithReuseIdentifier:RASDetailViewCellReuseIdentifier];
+	[collectionView registerClass:[RASDetailHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:RASDetailHeaderViewReuseIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -117,8 +119,7 @@ static const CGFloat RASDetailViewInterTopMargin = 30.f;
 }
 
 - (RASDetailViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	
-	RASDetailViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDetailViewCellReuseIdentifier forIndexPath:indexPath];
+	RASDetailViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:RASDetailViewCellReuseIdentifier forIndexPath:indexPath];
 	if (_readings != nil) {
 		RASReading *reading = [_readings objectAtIndex:[indexPath section]];
 		NSString *name = [reading name];
@@ -130,6 +131,21 @@ static const CGFloat RASDetailViewInterTopMargin = 30.f;
 	return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+	RASDetailHeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:RASDetailHeaderViewReuseIdentifier forIndexPath:indexPath];
+	if (_readings != nil) {
+		RASReading *reading = [_readings objectAtIndex:[indexPath section]];
+		NSString *name = [reading name];
+		NSString *passage = [reading passage];
+		[view setTitle:name];
+		[view setSubtitle:passage];
+	} else if (_liturgy != nil) {
+		NSString *name = [_liturgy name];
+		[view setTitle:name];
+	}
+	return view;
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -137,11 +153,11 @@ static const CGFloat RASDetailViewInterTopMargin = 30.f;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-	return UIEdgeInsetsMake(RASDetailViewInterTopMargin, RASDetailViewHorizontalMargin, 0.f, RASDetailViewHorizontalMargin);
+	return UIEdgeInsetsMake(0.f, RASDetailViewHorizontalMargin, RASDetailViewInterTopMargin, RASDetailViewHorizontalMargin);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-	return CGSizeZero;
+	return CGSizeMake([collectionView frame].size.width - (2 * RASDetailViewHorizontalMargin), 60.f);
 }
 
 @end
